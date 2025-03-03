@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Menus Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Menus
+  m_TableCollectionNameGuidString: 0184a5219f9ffeb4199d2b5dd4be2751
+  m_Entries:
+  - m_Id: 5626458112
+    m_Key: Adventure_Button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 235860193280
+    m_Key: EditDeck_Button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3549829848166400
+    m_Key: Close_Button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4256632395329536
+    m_Key: 'Deck_Title
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4256711457959936
+    m_Key: 'Deck_Collection
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5315425422077952
+    m_Key: 'Cancel_Button
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6436468618489856
+    m_Key: Simulate_Ticks
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6436640450736128
+    m_Key: Loading_Game
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 7218209553427726732
+  references:
+    version: 2
+    RefIds:
+    - rid: 7218209553427726732
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
+        asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1737057059555

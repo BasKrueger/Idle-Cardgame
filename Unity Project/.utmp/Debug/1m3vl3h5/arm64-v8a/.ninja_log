@@ -1,0 +1,10 @@
+# ninja log v5
+42	1902	7600490207844973	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	70fabdb36cb56c04
+21	1937	7600490207984963	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	a2ef285b01827c1
+1	1990	7600490208821090	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	7b5bf9c6904e0ee7
+35	2007	7600490208921075	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	8c50b808d491ec12
+14	2054	7600490209461093	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	2e6d9b521c9a25f5
+28	2092	7600490209856266	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	8efe225c67bf15a8
+49	2296	7600490211283176	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	86d4705e97a26e17
+8	2312	7600490211403174	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	71aaf0c8ba9a3e8c
+2313	2594	7600490214048373	C:/Users/Bastian Krueger/Desktop/Projekte/Idle Roguelike/Library/PramData/AndroidApplicationController/Cache/com.DefaultCompany.IdleRoguelike/gradle-project/unityLibrary/build/intermediates/cxx/Debug/1m3vl3h5/obj/arm64-v8a/libgame.so	eca807ec120acc35

@@ -1,0 +1,5 @@
+Key,Id,English(en),German (Germany)(de-DE)
+"Attack_Name",60756389888,"Attack","Angriff"
+"Attack_Text",192826634240,"Deal {0} damage","Verursache {0} schaden"
+"FastAttack_Name",3129414053888,"Fast Attack","Schneller Angriff"
+"FastAttack_Text",3191552667648,"Deal {0} damage","Verursache {0} schaden"

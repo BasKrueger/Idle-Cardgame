@@ -1,0 +1,9 @@
+Key,Id,English(en),German (Germany)(de-DE)
+"Title",7283208192,"Adventure Log","Tagebuch"
+"CombatEncounter",999026388992,"Enemies appeared!","Gegner sind erschienen!"
+"DamageTaken",1066374328320,"{0} took {1} damage from {2}","{0} hat {1} schaden von {2} genommen"
+"CardPlayed",1307186098176,"{0} played the card ""{1}""","{0} hat die Karte ""{1}"" gespielt"
+"RunStart",2817767759474688,"And so your journey begins...","Und so beginnt deine Reise..."
+"IdleEncounter",2819677329616896,"{0} is looking for new Encounters","{0} sucht nach neuen Begegnungen"
+"Details",3548525511897088,"Details","Details"
+"Death",4237513935613952,"{0} got defeated","{0} wurde besiegt"

@@ -1,0 +1,1 @@
+C:\Users\Bastian Krueger\Desktop\Projekte\Idle Roguelike\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\cxx\RelWithDebInfo\1p1a6960\obj\arm64-v8a

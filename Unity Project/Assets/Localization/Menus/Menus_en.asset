@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Menus_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 0184a5219f9ffeb4199d2b5dd4be2751, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 5626458112
+    m_Localized: Adventure
+    m_Metadata:
+      m_Items: []
+  - m_Id: 235860193280
+    m_Localized: Deck
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3549829848166400
+    m_Localized: Close
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4256632395329536
+    m_Localized: Current Deck
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4256711457959936
+    m_Localized: Collection
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5315425422077952
+    m_Localized: Cancel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6436468618489856
+    m_Localized: Simulation AFK time
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6436640450736128
+    m_Localized: Loading the Game
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
