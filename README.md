@@ -13,7 +13,7 @@ This project is in active development.
 You play as an Adventurer that's constantly on the lookout for new encounters. One of these are combat both sides automatically play their cards until either side reaches 0 hp. Completing encounters rewards you with more cards and ressources, allowing you to improve your deck between fights.
 In addition this project keeps running even if you don't actively play the game. Open the game 1-2 times a day, see what awesome new stuff you got, improve your deck and put the game aside until next day.
 
-# Higlight: Gameplay Performance through DLL:
+# Higlight: Gameplay Performance:
 <p align="center">
     <img src="Readme/Performance.PNG" alt="Performance"><br>
 </p>
