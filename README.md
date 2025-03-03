@@ -11,7 +11,7 @@ This project is in active development.
     <img src="Readme/Gameplay.gif" alt="gameplay"><br>
 </p>
 You play as an Adventurer that's constantly on the lookout for new encounters. One of these are combat both sides automatically play their cards until either side reaches 0 hp. Completing encounters rewards you with more cards and ressources, allowing you to improve your deck between fights.
-In addition this project keeps running even if you don't actively play the game. Open the game 1-2 times a day, see what awesome new stuff you got, improve your deck and put the game aside until next day.
+In addition this project keeps running even if you don't actively play the game. Open the game 1-2 times a day, see what awesome new stuff you got, improve your deck and put the game aside until next day. You don't just get generic rewards based on your AFK time, but every single second you missed will get simulated, making it as if you never closed the game in the first place.
 
 # Higlight: Gameplay Performance:
 <p align="center">
