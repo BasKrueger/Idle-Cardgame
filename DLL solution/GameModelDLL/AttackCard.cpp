@@ -27,3 +27,12 @@ void AttackCard::ReturnToPool()
 {
     CardPool<AttackCard>().ReturnInstance(this);
 }
+
+
+
+
+
+
+
+
+

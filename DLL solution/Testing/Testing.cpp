@@ -31,7 +31,7 @@ void Localize(std::string language)
 
 void Skip() 
 {
-    const int loopCount = 50;
+    const int loopCount = 25;
 
     double anArray[loopCount];
     auto totalStart = std::chrono::system_clock::now();
@@ -74,11 +74,7 @@ void Skip()
 int main()
 {
     Skip();
-    Tick();
-    Tick();
-    Tick();
-    Tick();
-    Dump();
+    //Dump();
 
     /*
 
