@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Idle Roguelike.sln"
+    "dotnet.defaultSolution": "Unity Project.sln"
 }

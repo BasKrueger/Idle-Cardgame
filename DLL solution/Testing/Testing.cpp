@@ -20,10 +20,11 @@ std::string ReadFile(std::string path)
 
 void Localize(std::string language) 
 {
+    std::string path = "C:/Users/Bastian Krueger/Desktop/Idle-Cardgame/Unity Project/Assets/Localization/Resources/";
 
-    auto card = ReadFile("C:/Users/Bastian Krueger/Desktop/Projekte/Idle Roguelike/Assets/Localization/Resources/Cards.csv");
-    auto log = ReadFile("C:/Users/Bastian Krueger/Desktop/Projekte/Idle Roguelike/Assets/Localization/Resources/AdventureLog.csv");
-    auto character = ReadFile("C:/Users/Bastian Krueger/Desktop/Projekte/Idle Roguelike/Assets/Localization/Resources/Characters.csv");
+    auto card = ReadFile(path + "Cards.csv");
+    auto log = ReadFile(path + "AdventureLog.csv");
+    auto character = ReadFile(path + "Characters.csv");
 
     SetLanguage(&language[0], &card[0], &log[0], &character[0]);
 }

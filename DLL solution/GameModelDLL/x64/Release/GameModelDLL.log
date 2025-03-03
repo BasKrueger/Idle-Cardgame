@@ -29,9 +29,9 @@
   Player.cpp
   PlayInteraction.cpp
   TestEnemy.cpp
-     Creating library ..\..\Idle Roguelike\Assets\Plugins\__GameModelDLL.lib and object ..\..\Idle Roguelike\Assets\Plugins\__GameModelDLL.exp
+     Creating library C:\Users\Bastian Krueger\Desktop\Idle-Cardgame\Unity Project\Assets\Plugins\__GameModelDLL.lib and object C:\Users\Bastian Krueger\Desktop\Idle-Cardgame\Unity Project\Assets\Plugins\__GameModelDLL.exp
   Generating code
   Previous IPDB not found, fall back to full compilation.
   All 2359 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Finished generating code
-  GameModelDLL.vcxproj -> C:\Users\Bastian Krueger\Desktop\Projekte\Idle Roguelike\Assets\Plugins\__GameModelDLL.dll
+  GameModelDLL.vcxproj -> C:\Users\Bastian Krueger\Desktop\Idle-Cardgame\Unity Project\Assets\Plugins\__GameModelDLL.dll

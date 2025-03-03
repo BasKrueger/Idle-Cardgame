@@ -93,8 +93,9 @@ json::JSON* Player::GetState()
 	return state.get();
 }
 
+//Interaction test
 void Player::Before(DamageInteraction* interaction)
 {
 	if (interaction->pTarget != this) return;
-	interaction->attackDamage = 0;
+	//interaction->attackDamage = 0;
 }

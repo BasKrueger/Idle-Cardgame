@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 
 public class GameModelManager : MonoBehaviour
 {
+    const float TICK_COOLDOWN = 1;
+
     public List<IGameViewAsync> activeViewsAsync = new List<IGameViewAsync>();
     public List<IGameView> activeViews = new List<IGameView>();
 
@@ -15,8 +18,6 @@ public class GameModelManager : MonoBehaviour
 
     private void Awake()
     {
-        LocalizationSettings.SelectedLocaleChanged += (lang) => GameDLL.SetLanguage(lang.LocaleName);
-
         foreach (var view in views)
         {
             var v = view.GetComponent<IGameView>();
@@ -37,7 +38,7 @@ public class GameModelManager : MonoBehaviour
     {
         Application.targetFrameRate = 60;
 
-        GameDLL.Initialize("German (Germany)(de-DE)");
+        GameDLL.Initialize("English(en)");
 
         ModelTickLoop();
         AsyncViewUpdateLoop();
@@ -57,7 +58,7 @@ public class GameModelManager : MonoBehaviour
                 states.Enqueue(gameState);
             }
 
-            await UniTask.WaitForSeconds(GameModel.TICK_COOLDOWN);
+            await UniTask.WaitForSeconds(TICK_COOLDOWN);
         }
     }
 
@@ -77,14 +78,6 @@ public class GameModelManager : MonoBehaviour
             }
             
             await UniTask.WaitForEndOfFrame();
-        }
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            GameDLL.SetLanguage("English(en)");
         }
     }
 }

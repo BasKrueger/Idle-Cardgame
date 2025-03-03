@@ -21,11 +21,11 @@ public class CharacterSpriteView : MonoBehaviour
 
         switch (characterState.animationTrigger)
         {
-            case CharacterAnimationTrigger.Attacked:
+            case CharacterAnimationTrigger.CardPlayed:
                 await AnimationTrigger(ATTACK_TRIGGER);
                 break;
 
-            case CharacterAnimationTrigger.DamageTaken:
+            case CharacterAnimationTrigger.Damaged:
                 await AnimationTrigger(DAMAGETAKEN_TRIGGER);
                 break;
         }

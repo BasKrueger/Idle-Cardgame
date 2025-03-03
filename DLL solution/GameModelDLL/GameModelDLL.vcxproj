@@ -71,10 +71,10 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>..\..</OutDir>
+    <OutDir>C:\Users\Bastian Krueger\Desktop\Idle-Cardgame\Unity Project\Assets\Plugins</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>..\..\Idle Roguelike\Assets\Plugins</OutDir>
+    <OutDir>C:\Users\Bastian Krueger\Desktop\Idle-Cardgame\Unity Project\Assets\Plugins</OutDir>
     <TargetName>__GameModelDLL</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
