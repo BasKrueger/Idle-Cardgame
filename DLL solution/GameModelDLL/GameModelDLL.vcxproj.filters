@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Ressourcendateien">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Headerfiles">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Headerfiles\Encounters">
+      <UniqueIdentifier>{05b0a282-b59d-403b-8efd-8e8c8a464103}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerfiles\Characters">
+      <UniqueIdentifier>{1a2dd363-d89a-49e1-b6aa-ce83e95d49f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerfiles\Cards">
+      <UniqueIdentifier>{ee4b410c-5099-4e1a-bcd1-370ac6ccde1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerfiles\Interactions">
+      <UniqueIdentifier>{b014e532-a8ee-4d4f-8141-4b9cd1443852}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFiles">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="SourceFiles\Encounters">
+      <UniqueIdentifier>{33fc1192-608f-4e36-b7b2-0366b0ac803b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFiles\Characters">
+      <UniqueIdentifier>{04cc932d-8515-4902-9701-a1072165c8ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFiles\Cards">
+      <UniqueIdentifier>{07ec51fe-89d5-469a-978a-5d968a926aaa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFiles\Interactions">
+      <UniqueIdentifier>{725bb9cd-5e66-49a2-8f88-d9f07cec1ea5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerfiles\Thirdparty">
+      <UniqueIdentifier>{54fde7be-1cb4-413e-9ad1-8d4390fa0bfe}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h">
+      <Filter>Headerfiles</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Headerfiles</Filter>
+    </ClInclude>
+    <ClInclude Include="GameModelLib.h">
+      <Filter>Headerfiles</Filter>
+    </ClInclude>
+    <ClInclude Include="EncounterManager.h">
+      <Filter>Headerfiles\Encounters</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseEncounter.h">
+      <Filter>Headerfiles\Encounters</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Headerfiles</Filter>
+    </ClInclude>
+    <ClInclude Include="IdleEncounter.h">
+      <Filter>Headerfiles\Encounters</Filter>
+    </ClInclude>
+    <ClInclude Include="CombatEncounter.h">
+      <Filter>Headerfiles\Encounters</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>Headerfiles\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseCard.h">
+      <Filter>Headerfiles\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackCard.h">
+      <Filter>Headerfiles\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Headerfiles\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="TestEnemy.h">
+      <Filter>Headerfiles\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="DamageInteraction.h">
+      <Filter>Headerfiles\Interactions</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseInteraction.h">
+      <Filter>Headerfiles\Interactions</Filter>
+    </ClInclude>
+    <ClInclude Include="InteractionManager.h">
+      <Filter>Headerfiles\Interactions</Filter>
+    </ClInclude>
+    <ClInclude Include="BeforeInteraction.h">
+      <Filter>Headerfiles\Interactions</Filter>
+    </ClInclude>
+    <ClInclude Include="AfterInteraction.h">
+      <Filter>Headerfiles\Interactions</Filter>
+    </ClInclude>
+    <ClInclude Include="PerformInteraction.h">
+      <Filter>Headerfiles\Interactions</Filter>
+    </ClInclude>
+    <ClInclude Include="InteractionPool.h">
+      <Filter>Headerfiles\Interactions</Filter>
+    </ClInclude>
+    <ClInclude Include="DieInteraction.h">
+      <Filter>Headerfiles\Interactions</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayInteraction.h">
+      <Filter>Headerfiles\Interactions</Filter>
+    </ClInclude>
+    <ClInclude Include="InterActor.h">
+      <Filter>Headerfiles\Interactions</Filter>
+    </ClInclude>
+    <ClInclude Include="EncounterPool.h">
+      <Filter>Headerfiles\Encounters</Filter>
+    </ClInclude>
+    <ClInclude Include="CardPool.h">
+      <Filter>Headerfiles\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterPool.h">
+      <Filter>Headerfiles\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterState.h">
+      <Filter>Headerfiles</Filter>
+    </ClInclude>
+    <ClInclude Include="LocalizedString.h">
+      <Filter>Headerfiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Json.hpp">
+      <Filter>Headerfiles\Thirdparty</Filter>
+    </ClInclude>
+    <ClInclude Include="csv.h">
+      <Filter>Headerfiles\Thirdparty</Filter>
+    </ClInclude>
+    <ClInclude Include="Localizer.h">
+      <Filter>Headerfiles</Filter>
+    </ClInclude>
+    <ClInclude Include="AdventureLog.h">
+      <Filter>Headerfiles</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>SourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>SourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="EncounterManager.cpp">
+      <Filter>SourceFiles\Encounters</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseEncounter.cpp">
+      <Filter>SourceFiles\Encounters</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>SourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="IdleEncounter.cpp">
+      <Filter>SourceFiles\Encounters</Filter>
+    </ClCompile>
+    <ClCompile Include="CombatEncounter.cpp">
+      <Filter>SourceFiles\Encounters</Filter>
+    </ClCompile>
+    <ClCompile Include="GameModelLib.cpp">
+      <Filter>SourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>SourceFiles\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseCard.cpp">
+      <Filter>SourceFiles\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackCard.cpp">
+      <Filter>SourceFiles\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>SourceFiles\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="TestEnemy.cpp">
+      <Filter>SourceFiles\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="InteractionManager.cpp">
+      <Filter>SourceFiles\Interactions</Filter>
+    </ClCompile>
+    <ClCompile Include="DamageInteraction.cpp">
+      <Filter>SourceFiles\Interactions</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseInteraction.cpp">
+      <Filter>SourceFiles\Interactions</Filter>
+    </ClCompile>
+    <ClCompile Include="PerformInteraction.cpp">
+      <Filter>SourceFiles\Interactions</Filter>
+    </ClCompile>
+    <ClCompile Include="AfterInteraction.cpp">
+      <Filter>SourceFiles\Interactions</Filter>
+    </ClCompile>
+    <ClCompile Include="BeforeInteraction.cpp">
+      <Filter>SourceFiles\Interactions</Filter>
+    </ClCompile>
+    <ClCompile Include="InteractionPool.cpp">
+      <Filter>SourceFiles\Interactions</Filter>
+    </ClCompile>
+    <ClCompile Include="DieInteraction.cpp">
+      <Filter>SourceFiles\Interactions</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayInteraction.cpp">
+      <Filter>SourceFiles\Interactions</Filter>
+    </ClCompile>
+    <ClCompile Include="InterActor.cpp">
+      <Filter>SourceFiles\Interactions</Filter>
+    </ClCompile>
+    <ClCompile Include="EncounterPool.cpp">
+      <Filter>SourceFiles\Encounters</Filter>
+    </ClCompile>
+    <ClCompile Include="CardPool.cpp">
+      <Filter>SourceFiles\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterPool.cpp">
+      <Filter>SourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="LocalizedString.cpp">
+      <Filter>SourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Localizer.cpp">
+      <Filter>SourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="AdventureLog.cpp">
+      <Filter>SourceFiles</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+</Project>
