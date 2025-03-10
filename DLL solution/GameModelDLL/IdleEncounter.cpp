@@ -2,6 +2,7 @@
 #include "IdleEncounter.h"
 #include "EncounterPool.h"
 #include "AdventureLog.h"
+#include "Character.h"
 
 bool IdleEncounter::IsOngoing()
 {
@@ -18,8 +19,10 @@ void IdleEncounter::InternalInitialize(std::unique_ptr<Character>* pPlayer)
 	AdventureLog::BeginNewSection();
 
 	LocalizedString* log;
-	AdventureLog::AddLog(log, "IdleEncounter");
-	log->BindFormatVariable(pPlayer->get()->characterName);
+	if (AdventureLog::AddLog(log, "DamageTaken"))
+	{
+		log->BindFormatVariable(pPlayer->get()->characterName);
+	}
 
 	BaseEncounter::variables[0] = 60;
 }

@@ -5,6 +5,7 @@
 #include <mutex>
 #include "Json.hpp"
 #include "AdventureLog.h"
+#include <chrono>
 
 bool Game::stateGenerationEnabled = true;
 std::unique_ptr<EncounterManager> Game::pEncounters; 

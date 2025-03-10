@@ -71,7 +71,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>C:\Users\Bastian Krueger\Desktop\Idle-Cardgame\Unity Project\Assets\Plugins</OutDir>
+    <OutDir>C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\Unity Project\Assets\Plugins</OutDir>
+    <TargetName>__GameModelDLL</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>C:\Users\Bastian Krueger\Desktop\Idle-Cardgame\Unity Project\Assets\Plugins</OutDir>
