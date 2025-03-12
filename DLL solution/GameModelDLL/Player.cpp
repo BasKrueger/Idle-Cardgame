@@ -10,7 +10,7 @@
 
 void Player::InternalInitialize(int& baseHP, int& baseDamage, LocalizedString* characterName)
 {
-	baseHP = 2147483647;
+	baseHP = 100;
 	baseDamage = 0;
 	characterName->SetKey("Player");
 
@@ -83,8 +83,10 @@ json::JSON* Player::GetState()
 	if (state == 0) state = std::make_unique<json::JSON>();
 	
 	(*state)["generic"] = *Character::GetState();
-	(*state)["collection"] = json::Array();
+	(*state)["xp"] = xp;
+	(*state)["gold"] = gold;
 	
+	(*state)["collection"] = json::Array();
 	for(auto& card : collection)
 	{
 		(*state)["collection"].append(*card->GetState());
@@ -93,9 +95,13 @@ json::JSON* Player::GetState()
 	return state.get();
 }
 
-//Interaction test
 void Player::Before(DamageInteraction* interaction)
 {
-	if (interaction->pTarget != this) return;
-	//interaction->attackDamage = 0;
+	if (interaction->pTarget != this || hp > 98) return;
+	interaction->attackDamage = 0;
+}
+
+void Player::AddToCollection(BaseCard* card)
+{
+	collection.push_back(card);
 }

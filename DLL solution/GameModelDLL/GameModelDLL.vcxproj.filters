@@ -144,6 +144,18 @@
     <ClInclude Include="pch.h">
       <Filter>Headerfiles\General</Filter>
     </ClInclude>
+    <ClInclude Include="RewardStash.h">
+      <Filter>Headerfiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Reward.h">
+      <Filter>Headerfiles</Filter>
+    </ClInclude>
+    <ClInclude Include="FastAttackCard.h">
+      <Filter>Headerfiles\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="SlowAttackCard.h">
+      <Filter>Headerfiles\Cards</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EncounterManager.cpp">
@@ -232,6 +244,18 @@
     </ClCompile>
     <ClCompile Include="pch.cpp">
       <Filter>SourceFiles\General</Filter>
+    </ClCompile>
+    <ClCompile Include="RewardStash.cpp">
+      <Filter>SourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Reward.cpp">
+      <Filter>SourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="FastAttackCard.cpp">
+      <Filter>SourceFiles\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="SlowAttackCard.cpp">
+      <Filter>SourceFiles\Cards</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

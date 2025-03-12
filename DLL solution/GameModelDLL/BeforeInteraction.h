@@ -31,7 +31,6 @@ inline void BeforeInteraction<T>::InternalPerform()
 	for (auto actor : actors)  
 	{
 		if (actor == 0) continue;
-
 		actor->Before(pInteraction);  
 	}
 }

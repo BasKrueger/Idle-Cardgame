@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CardView : MonoBehaviour, IPoolable
 {
-    public event Action<CardView> ContentChanged;
+    public event Action<CardViewContent, CardView> ContentChanged;
     public event Action<CardView> Clicked;
 
     private readonly static int playKey = Animator.StringToHash("Play");
@@ -19,20 +19,31 @@ public class CardView : MonoBehaviour, IPoolable
         get => content;
         set
         {
-            content.Clicked -= OnContentClicked;
-            content.ChargeUpdated -= SetAnimCharge;
-            
+            if (value == null) return;
+            var previousContent = content;
+
+            if (previousContent != null)
+            {
+                content.Clicked -= OnContentClicked;
+                content.ChargeUpdated -= SetAnimCharge;
+            }
+
+            content = value;
             value.Clicked += OnContentClicked;
             value.ChargeUpdated += SetAnimCharge;
-            
-            content = value;
-            ContentChanged?.Invoke(this);
+
+            ContentChanged?.Invoke(previousContent, this);
         }
     }
     
     private void Awake()
     {
         Content = content;
+    }
+
+    public void Show(CardState state)
+    {
+        content.Show(state);
     }
     
     public void ShowPlayed(Pool<CardView> returnPool = null)

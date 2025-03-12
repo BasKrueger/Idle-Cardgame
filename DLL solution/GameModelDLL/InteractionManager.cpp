@@ -35,12 +35,13 @@ void InteractionManager::Resolve()
 
 int InteractionManager::AddActor(InterActor* pActor)
 {
+	pActor->Before(new DamageInteraction);
+
 	for (int i = 0; i < actors.size(); i++)
 	{
 		if (InteractionManager::actors[i] == nullptr)
 		{
 			InteractionManager::actors[i] = pActor;
-
 			return i;
 		}
 	}
@@ -55,5 +56,5 @@ void InteractionManager::RemoveActor(int index)
 {
 	if (index < 0 || index + 1 > InteractionManager::actors.size()) return;
 
-	actors[index] = 0;
+	actors[index] = nullptr;
 }

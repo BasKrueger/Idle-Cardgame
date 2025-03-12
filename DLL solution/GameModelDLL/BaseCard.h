@@ -11,6 +11,8 @@ class PlayInteraction;
 class BaseCard : public InterActor
 {
 public:
+	int id = reinterpret_cast<uint32_t>(this);
+
 	void Initialize();
 	void Reset();
 
@@ -27,7 +29,6 @@ public:
 protected:
 	int cooldown;
 	int dmg;
-	int id = reinterpret_cast<uint32_t>(this);
 
 	virtual void InternalInitialize(int& baseDmg, int& baseCooldown, LocalizedString* cardName, LocalizedString* cardDescription);
 

@@ -50,6 +50,22 @@ MonoBehaviour:
     m_Localized: Loading the Game
     m_Metadata:
       m_Items: []
+  - m_Id: 19110777329610752
+    m_Localized: Treasure Chest
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19111989399580672
+    m_Localized: Pick a card to add to your collection!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19131497577246720
+    m_Localized: '{0} new rewards'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19470130419134464
+    m_Localized: No new rewards
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

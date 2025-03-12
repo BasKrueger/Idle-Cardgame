@@ -50,13 +50,14 @@ public class DeckView : MonoBehaviour, IGameView
         marker.transform.SetAsLastSibling();
     }
     
-    private void OnCardContentChanged(CardView view)
+    private void OnCardContentChanged(CardViewContent oldContent, CardView view)
     {
-        activeViews.Clear();
-        foreach(var card in content.GetComponentsInChildren<CardView>())
+        if (oldContent != null && activeViews.ContainsKey(oldContent.displayID)) 
         {
-            activeViews.Add(card.Content.displayID, card);
+            activeViews.Remove(oldContent.displayID);
         }
+
+        activeViews.TryAdd(view.Content.displayID, view);
     }
     
     private void UpdateMarker(CharacterState playerState)

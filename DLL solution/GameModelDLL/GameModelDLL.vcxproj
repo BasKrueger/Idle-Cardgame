@@ -174,6 +174,7 @@
     <ClInclude Include="DieInteraction.h" />
     <ClInclude Include="EncounterManager.h" />
     <ClInclude Include="EncounterPool.h" />
+    <ClInclude Include="FastAttackCard.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameModelLib.h" />
@@ -188,6 +189,9 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="InteractionPool.h" />
     <ClInclude Include="PlayInteraction.h" />
+    <ClInclude Include="Reward.h" />
+    <ClInclude Include="RewardStash.h" />
+    <ClInclude Include="SlowAttackCard.h" />
     <ClInclude Include="TestEnemy.h" />
   </ItemGroup>
   <ItemGroup>
@@ -207,6 +211,7 @@
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="EncounterManager.cpp" />
     <ClCompile Include="EncounterPool.cpp" />
+    <ClCompile Include="FastAttackCard.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameModelLib.cpp" />
     <ClCompile Include="IdleEncounter.cpp" />
@@ -224,6 +229,9 @@
     <ClCompile Include="PerformInteraction.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayInteraction.cpp" />
+    <ClCompile Include="Reward.cpp" />
+    <ClCompile Include="RewardStash.cpp" />
+    <ClCompile Include="SlowAttackCard.cpp" />
     <ClCompile Include="TestEnemy.cpp" />
   </ItemGroup>
   <ItemGroup>

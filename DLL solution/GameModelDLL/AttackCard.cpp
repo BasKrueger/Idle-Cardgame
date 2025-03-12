@@ -9,7 +9,7 @@
 void AttackCard::InternalInitialize(int& baseDmg, int& baseCooldown, LocalizedString* cardName, LocalizedString* cardDescription)
 {
     baseCooldown = 6;
-    baseDmg = 1;
+    baseDmg = 2;
 
     cardName->SetKey("Attack_Name");
     cardDescription->SetKey("Attack_Text");
@@ -27,12 +27,3 @@ void AttackCard::ReturnToPool()
 {
     CardPool<AttackCard>().ReturnInstance(this);
 }
-
-
-
-
-
-
-
-
-

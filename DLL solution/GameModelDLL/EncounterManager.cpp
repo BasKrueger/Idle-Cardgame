@@ -4,14 +4,14 @@
 #include "IdleEncounter.h"
 #include "EncounterPool.h"
 #include "Json.hpp"
+#include "Player.h"
 
 EncounterManager::~EncounterManager()
 {
-    std::cout << "Completed Encounters: " << encounterIndex << "\n";
     pCurrentEncounter->ReturnEncounterToPool();
 }
 
-EncounterManager::EncounterManager(std::unique_ptr<Character>* pPlayer)
+EncounterManager::EncounterManager(std::unique_ptr<Player>* pPlayer)
 {
     this->pPlayer = pPlayer;
     BeginNextEncounter();

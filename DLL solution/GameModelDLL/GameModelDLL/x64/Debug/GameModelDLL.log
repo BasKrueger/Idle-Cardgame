@@ -16,12 +16,13 @@
   dllmain.cpp
   EncounterManager.cpp
   EncounterPool.cpp
+  FastAttackCard.cpp
   Game.cpp
   GameModelLib.cpp
   IdleEncounter.cpp
-  InteractionManager.cpp
   Generating Code...
   Compiling...
+  InteractionManager.cpp
   InteractionPool.cpp
   InterActor.cpp
   LocalizedString.cpp
@@ -29,6 +30,9 @@
   PerformInteraction.cpp
   Player.cpp
   PlayInteraction.cpp
+  Reward.cpp
+  RewardStash.cpp
+  SlowAttackCard.cpp
   TestEnemy.cpp
   Generating Code...
      Creating library C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\Unity Project\Assets\Plugins\__GameModelDLL.lib and object C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\Unity Project\Assets\Plugins\__GameModelDLL.exp

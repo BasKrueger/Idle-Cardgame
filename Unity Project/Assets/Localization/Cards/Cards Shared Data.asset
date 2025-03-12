@@ -31,6 +31,16 @@ MonoBehaviour:
     m_Key: FastAttack_Text
     m_Metadata:
       m_Items: []
+  - m_Id: 19875856857755648
+    m_Key: SlowAttack_Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19875859386920960
+    m_Key: 'SlowAttack_Text
+
+'
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

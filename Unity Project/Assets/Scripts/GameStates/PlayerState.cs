@@ -6,4 +6,6 @@ public class PlayerState
 {
     public List<CardState> collection;
     public CharacterState generic;
+    public int xp;
+    public int gold;
 }

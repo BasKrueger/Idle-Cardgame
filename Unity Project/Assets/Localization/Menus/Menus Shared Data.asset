@@ -53,6 +53,24 @@ MonoBehaviour:
     m_Key: Loading_Game
     m_Metadata:
       m_Items: []
+  - m_Id: 19110777329610752
+    m_Key: 'Rewards_Title
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19111989399580672
+    m_Key: Rewards_Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19131497577246720
+    m_Key: Rewards_Button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19470130419134464
+    m_Key: Rewards_Button_Empty
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

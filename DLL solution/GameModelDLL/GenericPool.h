@@ -6,6 +6,7 @@ template <typename T>
 class GenericPool
 {
 public:
+	static void PrePool(int amount);
 	static T* GetInstance();
 	static void ReturnInstance(T* pInstance);
 
@@ -15,6 +16,18 @@ private:
 
 template<typename T>
 std::vector<T*> GenericPool<T>::poolContent;
+
+template<typename T>
+inline void GenericPool<T>::PrePool(int amount)
+{
+	amount -= poolContent.size();
+
+	for(int i = 0;i < amount; i++)
+	{
+		auto content = new T;
+		poolContent.push_back(content);
+	}
+}
 
 template<typename T>
 inline T* GenericPool<T>::GetInstance()

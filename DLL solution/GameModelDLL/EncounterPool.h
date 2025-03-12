@@ -2,14 +2,14 @@
 #include <vector>
 #include <iostream>
 
-class Character;
+class Player;
 class BsaeEncounter;
 
 template <typename T>
 class EncounterPool
 {
 public:
-	static T* GetInstance(std::unique_ptr<Character>* pPlayer);
+	static T* GetInstance(std::unique_ptr<Player>* pPlayer);
 	static void ReturnInstance(T* pInstance);
 
 private:
@@ -20,7 +20,7 @@ template<typename T>
 std::vector<T*> EncounterPool<T>::poolContent;
 
 template<typename T>
-inline T* EncounterPool<T>::GetInstance(std::unique_ptr<Character>* pPlayer)
+inline T* EncounterPool<T>::GetInstance(std::unique_ptr<Player>* pPlayer)
 {
 	T* result = 0;
 

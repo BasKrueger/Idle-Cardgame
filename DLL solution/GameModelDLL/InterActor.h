@@ -1,6 +1,7 @@
 #pragma once
-#define INTERACTION(T)	inline virtual void Before(T* interaction){}\
-						inline virtual void After(T* interaction){}
+#define INTERACT(T)	virtual void Before(T* interaction){}\
+					virtual void After(T* interaction){}
+
 class Character;
 
 class DamageInteraction;
@@ -19,7 +20,7 @@ public:
 	int actorIndex = -1;
 	Character* pOwner = nullptr;
 	
-	INTERACTION(DieInteraction)
-	INTERACTION(PlayInteraction)
-	INTERACTION(DamageInteraction)
+	INTERACT(DieInteraction)
+	INTERACT(PlayInteraction)
+	INTERACT(DamageInteraction)
 };

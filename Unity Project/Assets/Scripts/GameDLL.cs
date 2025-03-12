@@ -102,4 +102,7 @@ public static class GameDLL
 
         Debug.Log("Language set to " + language);
     }
+
+    [DllImport("GameModelDLL")]
+    public static extern void ClaimReward(int rewardID, int cardID);
 }

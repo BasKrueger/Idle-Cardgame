@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class DllTest : MonoBehaviour
 {
-    async void Start()
+    public async void Start()
     {
         GameDLL.Initialize("German (Germany)(de-DE)");
-        GameDLL.Tick();
-
+        await GameDLL.Skip_(1000);
         GameDLL.GenerateGameState();
         await GameDLL.GetGameStates(true);
 
         GameDLL.SetLanguage("English(en)");
+
+        Debug.LogWarning("done");
     }
 }

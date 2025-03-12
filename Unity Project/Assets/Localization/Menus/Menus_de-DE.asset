@@ -52,6 +52,24 @@ MonoBehaviour:
     m_Localized: Lade das Spiel
     m_Metadata:
       m_Items: []
+  - m_Id: 19110777329610752
+    m_Localized: 'SChatztruhe
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19111989399580672
+    m_Localized: "W\xE4hle eine Karte um sie deiner Sammlung hinzuzuf\xFCgen!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19131497577246720
+    m_Localized: '{0} neuen Belohnungen'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19470130419134464
+    m_Localized: keine neuen Belohnungen
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

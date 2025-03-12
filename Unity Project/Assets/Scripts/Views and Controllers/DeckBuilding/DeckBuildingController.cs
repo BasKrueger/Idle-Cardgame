@@ -49,7 +49,7 @@ public class DeckBuildingController : MonoBehaviour
         anim.SetBool(editModeBool, false);
 
         selectedCard.Content.ShowAsMedium();
-        other.Content.ShowAsDefault();
+        other.Content.ShowAsMedium();
         
         await UniTask.WhenAll(
             MoveCardContent(selectedCard, other),
@@ -76,10 +76,10 @@ public class DeckBuildingController : MonoBehaviour
         if (selectedCard == null) return;
 
         anim.SetBool(editModeBool, false);
+        selectedCard.Content.ShowAsMedium();
         
         await selectedCard.Content.SetTarget(selectedCard.transform);
 
-        selectedCard.Content.ShowAsDefault();
         selectedCard.Content.transform.SetParent(selectedCard.transform, true);
         selectedCard.Content.OverrideGlobalPosition(false);
 

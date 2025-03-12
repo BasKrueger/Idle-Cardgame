@@ -5,6 +5,7 @@
 class AttackCard : public BaseCard
 {
 public:
+	static const int rewardID = 0;
 	virtual void ReturnToPool() override;
 
 protected:

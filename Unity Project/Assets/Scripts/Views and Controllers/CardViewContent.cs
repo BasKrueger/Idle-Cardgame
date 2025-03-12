@@ -31,6 +31,12 @@ public class CardViewContent : TargetFollower
     private float targetFill;
     private bool isUpdatingFill;
 
+    public void Show(CardState state)
+    {
+        UpdateFill(state);
+        UpdateTexts(state);
+    }
+
     public async void UpdateFill(CardState cardState, bool allowShaking = true)
     {
         targetFill = cardState.activeCooldown / (float)cardState.cooldown;
@@ -64,16 +70,18 @@ public class CardViewContent : TargetFollower
         nameLabel.text = cardState.cardName;
     }
 
+    public void SetFill(float percent) => fill.fillAmount = 1 - percent;
+
     public void ShowAsMedium() => SetSizeActive(mediumKey);
     public void ShowAsMini() => SetSizeActive(miniKey);
     public void ShowAsMikro() => SetSizeActive(mikroKey);
     public void ShowAsMega() => SetSizeActive(megaKey);
-    public void ShowAsDefault() => SetSizeActive(mediumKey, false);
     
     private void SetSizeActive(int size, bool active = true)
     {
         anim.SetBool(mikroKey, false);
         anim.SetBool(miniKey, false); 
+        anim.SetBool(mediumKey, false);
         anim.SetBool(megaKey, false);
 
         anim.SetBool(size, active);

@@ -3,6 +3,7 @@
 #include "Game.h"
 #include "Localizer.h"
 #include "AdventureLog.h"
+#include "InteractionManager.h"
 
 Game* pGame;
 
@@ -15,6 +16,7 @@ void Initialize()
 	}
 
 	AdventureLog::Reset();
+	InteractionManager::Initialize();
 
 	LocalizedString* log;
 	AdventureLog::AddLog(log, "RunStart");
@@ -73,6 +75,11 @@ void GetSaveState(char* str, int strlen)
 void SetSaveState(char* str, int strlen)
 {
 	
+}
+
+void ClaimReward(int rewardID, int cardID)
+{
+	pGame->ClaimReward(rewardID, cardID);
 }
 
 void Dump() 

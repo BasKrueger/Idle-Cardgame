@@ -7,6 +7,7 @@
 #include "InteractionManager.h"
 #include "Game.h"
 #include "Json.hpp"
+#include "RewardStash.h"
 
 void Character::Initialize()
 {
@@ -104,7 +105,7 @@ void Character::ReturnCharacterToPool()
 void Character::InternalInitialize(int& baseHP, int& baseDamage, LocalizedString* characterName){}
 void Character::InternalReturnToPool(){}
 
-void Character::Die(DieInteraction* interaction) { currentPhase = PHASE::DEAD; }
+void Character::Die(DieInteraction* interaction) { currentPhase = PHASE::DEAD; RewardStash::UnlockReward(0); }
 bool Character::IsAlive() { return currentPhase != PHASE::DEAD; }
 
 json::JSON* Character::GetState()

@@ -27,10 +27,18 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 3129414053888
-    m_Localized: Fast Attack
+    m_Localized: Quick Attack
     m_Metadata:
       m_Items: []
   - m_Id: 3191552667648
+    m_Localized: Deal {0} damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19875856857755648
+    m_Localized: Heavy Attack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19875859386920960
     m_Localized: Deal {0} damage
     m_Metadata:
       m_Items: []

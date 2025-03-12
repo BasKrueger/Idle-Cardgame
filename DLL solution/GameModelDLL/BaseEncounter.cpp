@@ -3,14 +3,15 @@
 #include "InteractionManager.h"
 #include "InteractionPool.h"
 #include "Json.hpp"
+#include "Player.h"
 
 
-void BaseEncounter::BaseInitialize(std::unique_ptr<Character>* pPlayer)
+void BaseEncounter::BaseInitialize(std::unique_ptr<Player>* pPlayer)
 {
 	InternalInitialize(pPlayer);
 }
 
-void BaseEncounter::End(std::unique_ptr<Character>* pPlayer)
+void BaseEncounter::End(std::unique_ptr<Player>* pPlayer)
 {
 	InternalEnd(pPlayer);
 }
@@ -50,7 +51,7 @@ json::JSON* BaseEncounter::GetState()
 	return state.get();
 }
 
-bool BaseEncounter::Tick(std::unique_ptr<Character>* pPlayer)
+bool BaseEncounter::Tick(std::unique_ptr<Player>* pPlayer)
 {
 	pPlayer->get()->Tick();
 	
@@ -82,14 +83,14 @@ bool BaseEncounter::IsStaticEncounter()
 	return true;
 }
 
-void BaseEncounter::InternalInitialize(std::unique_ptr<Character>* pPlayer)
+void BaseEncounter::InternalInitialize(std::unique_ptr<Player>* pPlayer)
 {
 }
 
-void BaseEncounter::InternalEnd(std::unique_ptr<Character>* pPlayer)
+void BaseEncounter::InternalEnd(std::unique_ptr<Player>* pPlayer)
 {
 }
 
-void BaseEncounter::InternalTick(std::unique_ptr<Character>* pPlayer)
+void BaseEncounter::InternalTick(std::unique_ptr<Player>* pPlayer)
 {
 }

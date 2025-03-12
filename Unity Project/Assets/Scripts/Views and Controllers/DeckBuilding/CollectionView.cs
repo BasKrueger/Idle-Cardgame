@@ -9,10 +9,20 @@ public class CollectionView : MonoBehaviour, IGameView
     [SerializeField]
     private Transform content;
     [SerializeField]
-    private CardView viewModel;
+    private CardView cardView;
+    [SerializeField]
+    private CardView emptyCardView;
 
     private Dictionary<int, CardView> activeViews = new();
-    
+
+    private void Awake()
+    {
+        foreach(Transform t in content)
+        {
+            Destroy(t.gameObject);
+        }
+    }
+
     public void OnGameStateUpdate(GameState gameState)
     {
         TrySpawnCards(gameState.player);
@@ -24,10 +34,33 @@ public class CollectionView : MonoBehaviour, IGameView
         
         foreach(var card in playerState.collection)
         {
-            var instance = Instantiate(viewModel, content, false);
+            var instance = Instantiate(cardView, content, false);
             instance.Content.UpdateTexts(card);
+            instance.Content.ShowAsMedium();
+
             instance.Clicked += CardSelected.Invoke;
+            instance.ContentChanged += OnCardContentChanged;
+
             activeViews.Add(card.id, instance);
         }
+    }
+
+    public CardView SpawnEmptyCard()
+    {
+        var instance = Instantiate(emptyCardView, content, false);
+        instance.Clicked += CardSelected.Invoke;
+        instance.ContentChanged += OnCardContentChanged;
+
+        return instance;
+    }
+
+    private void OnCardContentChanged(CardViewContent oldContent, CardView card)
+    {
+        if (oldContent != null && activeViews.ContainsKey(oldContent.displayID))
+        {
+            activeViews.Remove(oldContent.displayID);
+        }
+
+        activeViews.TryAdd(card.Content.displayID, card);
     }
 }

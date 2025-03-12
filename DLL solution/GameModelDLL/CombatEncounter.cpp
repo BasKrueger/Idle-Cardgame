@@ -4,13 +4,14 @@
 #include "EncounterPool.h"
 #include "CharacterPool.h"
 #include "AdventureLog.h"
+#include "Player.h"
 
 bool CombatEncounter::IsOngoing()
 {
     return BaseEncounter::NPCs[0]->IsAlive();
 }
 
-void CombatEncounter::InternalInitialize(std::unique_ptr<Character>* pPlayer)
+void CombatEncounter::InternalInitialize(std::unique_ptr<Player>* pPlayer)
 {
     AdventureLog::BeginNewSection();
 
@@ -22,12 +23,12 @@ void CombatEncounter::InternalInitialize(std::unique_ptr<Character>* pPlayer)
     BaseEncounter::NPCs[0]->EngageInCombat(pPlayer->get());
 }
 
-void CombatEncounter::InternalTick(std::unique_ptr<Character>* pPlayer)
+void CombatEncounter::InternalTick(std::unique_ptr<Player>* pPlayer)
 {
     
 }
 
-void CombatEncounter::InternalEnd(std::unique_ptr<Character>* pPlayer)
+void CombatEncounter::InternalEnd(std::unique_ptr<Player>* pPlayer)
 {
     pPlayer->get()->DisEngageInCombat();
 }

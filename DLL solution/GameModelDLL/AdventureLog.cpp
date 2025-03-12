@@ -44,6 +44,8 @@ void LogEntry::Reset()
 		entry = 0;
 	}
 
+	GenericPool<AdventureLog>().PrePool(200);
+
 	subEntries.clear();
 }
 

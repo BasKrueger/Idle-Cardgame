@@ -4,6 +4,8 @@
 #include "Character.h"
 #include <vector>
 
+class Player;
+
 class Game
 {
 public:
@@ -15,6 +17,7 @@ public:
 
 	bool PopCachedGameState(char* str, int strlen);
 	void ClearCachedStates();
+	void ClaimReward(int rewardID, int cardID);
 
 	void SetSaveState(char* str, int strlen);
 	void GetSaveState(char* str, int strlen);
@@ -26,7 +29,7 @@ private:
 	static bool stateGenerationEnabled;
 
 	static std::unique_ptr<EncounterManager> pEncounters;
-	static std::unique_ptr<Character> pPlayer;
+	static std::unique_ptr<Player> pPlayer;
 	static std::vector<std::string> cachedStates;
 };
 

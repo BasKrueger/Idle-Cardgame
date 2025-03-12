@@ -2,10 +2,10 @@ c:\users\bastian_krueger\desktop\repositories\idle-cardgame\dll solution\gamemod
 c:\users\bastian_krueger\desktop\repositories\idle-cardgame\dll solution\gamemodeldll\gamemodeldll\x64\debug\vc143.pdb
 c:\users\bastian_krueger\desktop\repositories\idle-cardgame\dll solution\gamemodeldll\gamemodeldll\x64\debug\vc143.idb
 c:\users\bastian_krueger\desktop\repositories\idle-cardgame\dll solution\gamemodeldll\gamemodeldll\x64\debug\pch.obj
-c:\users\bastian_krueger\desktop\repositories\idle-cardgame\dll solution\gamemodeldll\gamemodeldll\x64\debug\interactionmanager.obj
 c:\users\bastian_krueger\desktop\repositories\idle-cardgame\dll solution\gamemodeldll\gamemodeldll\x64\debug\idleencounter.obj
 c:\users\bastian_krueger\desktop\repositories\idle-cardgame\dll solution\gamemodeldll\gamemodeldll\x64\debug\gamemodellib.obj
 c:\users\bastian_krueger\desktop\repositories\idle-cardgame\dll solution\gamemodeldll\gamemodeldll\x64\debug\game.obj
+c:\users\bastian_krueger\desktop\repositories\idle-cardgame\dll solution\gamemodeldll\gamemodeldll\x64\debug\fastattackcard.obj
 c:\users\bastian_krueger\desktop\repositories\idle-cardgame\dll solution\gamemodeldll\gamemodeldll\x64\debug\encounterpool.obj
 c:\users\bastian_krueger\desktop\repositories\idle-cardgame\dll solution\gamemodeldll\gamemodeldll\x64\debug\encountermanager.obj
 c:\users\bastian_krueger\desktop\repositories\idle-cardgame\dll solution\gamemodeldll\gamemodeldll\x64\debug\dllmain.obj
@@ -23,6 +23,9 @@ c:\users\bastian_krueger\desktop\repositories\idle-cardgame\dll solution\gamemod
 c:\users\bastian_krueger\desktop\repositories\idle-cardgame\dll solution\gamemodeldll\gamemodeldll\x64\debug\afterinteraction.obj
 c:\users\bastian_krueger\desktop\repositories\idle-cardgame\dll solution\gamemodeldll\gamemodeldll\x64\debug\adventurelog.obj
 c:\users\bastian_krueger\desktop\repositories\idle-cardgame\dll solution\gamemodeldll\gamemodeldll\x64\debug\testenemy.obj
+c:\users\bastian_krueger\desktop\repositories\idle-cardgame\dll solution\gamemodeldll\gamemodeldll\x64\debug\slowattackcard.obj
+c:\users\bastian_krueger\desktop\repositories\idle-cardgame\dll solution\gamemodeldll\gamemodeldll\x64\debug\rewardstash.obj
+c:\users\bastian_krueger\desktop\repositories\idle-cardgame\dll solution\gamemodeldll\gamemodeldll\x64\debug\reward.obj
 c:\users\bastian_krueger\desktop\repositories\idle-cardgame\dll solution\gamemodeldll\gamemodeldll\x64\debug\playinteraction.obj
 c:\users\bastian_krueger\desktop\repositories\idle-cardgame\dll solution\gamemodeldll\gamemodeldll\x64\debug\player.obj
 c:\users\bastian_krueger\desktop\repositories\idle-cardgame\dll solution\gamemodeldll\gamemodeldll\x64\debug\performinteraction.obj
@@ -30,6 +33,7 @@ c:\users\bastian_krueger\desktop\repositories\idle-cardgame\dll solution\gamemod
 c:\users\bastian_krueger\desktop\repositories\idle-cardgame\dll solution\gamemodeldll\gamemodeldll\x64\debug\localizedstring.obj
 c:\users\bastian_krueger\desktop\repositories\idle-cardgame\dll solution\gamemodeldll\gamemodeldll\x64\debug\interactor.obj
 c:\users\bastian_krueger\desktop\repositories\idle-cardgame\dll solution\gamemodeldll\gamemodeldll\x64\debug\interactionpool.obj
+c:\users\bastian_krueger\desktop\repositories\idle-cardgame\dll solution\gamemodeldll\gamemodeldll\x64\debug\interactionmanager.obj
 c:\users\bastian_krueger\desktop\repositories\idle-cardgame\unity project\assets\plugins\__gamemodeldll.dll
 c:\users\bastian_krueger\desktop\repositories\idle-cardgame\unity project\assets\plugins\__gamemodeldll.pdb
 c:\users\bastian_krueger\desktop\repositories\idle-cardgame\unity project\assets\plugins\__gamemodeldll.lib
