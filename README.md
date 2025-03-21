@@ -8,14 +8,14 @@ This project is in active development.
 
 # Gameplay
 <p align="center">
-    <img src="Readme/Gameplay.gif" alt="gameplay"><br>
+    <img src="Readme/combat.gif" width="250"/> <img src="Readme/Reward.gif" width="250"/> <img src="Readme/Deck.gif" width="250"/>
 </p>
 You play as an Adventurer that's constantly on the lookout for new encounters. One of these are combat both sides automatically play their cards until either side reaches 0 hp. Completing encounters rewards you with more cards and ressources, allowing you to improve your deck between fights.
 In addition this project keeps running even if you don't actively play the game. Open the game 1-2 times a day, see what awesome new stuff you got, improve your deck and put the game aside until next day. You don't just get generic rewards based on your AFK time, but every single second you missed will get simulated, making it as if you never closed the game in the first place.
 
 # Higlight: Gameplay Performance:
 <p align="center">
-    <img src="Readme/Performance.PNG" alt="Performance"><br>
+    <img src="Readme/Performance.PNG" alt="Performance" height="400"><br>
 </p>
 
 One major benefit of the MVC pattern is that I can call the Update (or called "Tick" in this game) function of the pure gameplay seperate from the entire rest of the game. Originally the gamemodel was written inside Unity as C# scripts similar to how it worked in ["Not Skystone"](https://github.com/BasKrueger/Not-Skystone-2.0/tree/main).
