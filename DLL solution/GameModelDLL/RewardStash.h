@@ -11,7 +11,9 @@ public:
 	static void Initialize(Player* pPlayer);
 	static void UnlockReward(int tier);
 	static json::JSON* GetState();
-	static void ClaimReward(int rewardID, int cardID, std::unique_ptr<Player>* pPlayer);
+	
+	static void ClaimCardReward(int rewardID, int cardID, std::unique_ptr<Player>* pPlayer);
+	static void ClaimBonusReward(int rewardID, std::unique_ptr<Player>* pPlayer);
 
 private:
 	static void CacheTier(int tier);

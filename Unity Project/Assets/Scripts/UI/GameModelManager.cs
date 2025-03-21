@@ -14,7 +14,7 @@ public class GameModelManager : MonoBehaviour
     public List<IGameView> activeViews = new List<IGameView>();
 
     [SerializeField] private List<MonoBehaviour> views;
-    private Queue<GameState> states = new Queue<GameState>();
+    private Queue<GameState> asyncStates = new Queue<GameState>();
 
     private void Awake()
     {
@@ -37,6 +37,7 @@ public class GameModelManager : MonoBehaviour
     private void Start()
     {
         Application.targetFrameRate = 60;
+        QualitySettings.vSyncCount = 0;
 
         GameDLL.Initialize("English(en)");
 
@@ -46,16 +47,22 @@ public class GameModelManager : MonoBehaviour
 
     private async void ModelTickLoop()
     {
+        List<string> rawStates = new List<string>();
+        GameDLL.GameStateReceived += (states) => rawStates.AddRange(states);
+
         while (true)
         {
             GameDLL.Tick();
+            GameDLL.GetGameStates();
 
-            var rawStates = await GameDLL.GetGameStates();
-            foreach (var state in rawStates)
+            while(rawStates.Count > 0)
             {
-                var gameState = GameState.Parse(state);
+                var gameState = GameState.Parse(rawStates.First());
+                
+                asyncStates.Enqueue(gameState);
                 activeViews.ForEach(view => view.OnGameStateUpdate(gameState));
-                states.Enqueue(gameState);
+
+                rawStates.RemoveAt(0);
             }
 
             await UniTask.WaitForSeconds(TICK_COOLDOWN);
@@ -66,12 +73,10 @@ public class GameModelManager : MonoBehaviour
     {
         while (true)
         {
-            while (states != null && states.Count > 0)
+            while (asyncStates != null && asyncStates.Count > 0)
             {
-                var state = states.Dequeue();
-                var copy = new List<IGameViewAsync>(activeViewsAsync);
-
-                foreach (var view in copy)
+                var state = asyncStates.Dequeue();
+                foreach (var view in activeViewsAsync)
                 {
                     await view.OnGameStateUpdate(state);
                 }

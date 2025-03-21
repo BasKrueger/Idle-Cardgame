@@ -8,9 +8,9 @@ public class DllTest : MonoBehaviour
     {
         GameDLL.Initialize("German (Germany)(de-DE)");
         await GameDLL.Skip_(1000);
-        GameDLL.GenerateGameState();
-        await GameDLL.GetGameStates(true);
-
+        GameDLL.CreateGameState();
+        
+        GameDLL.GetGameStates(true);
         GameDLL.SetLanguage("English(en)");
 
         Debug.LogWarning("done");

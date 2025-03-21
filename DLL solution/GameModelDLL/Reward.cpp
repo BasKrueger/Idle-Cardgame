@@ -12,16 +12,16 @@ void Reward::RandomizeReward(int tier, Player* pPlayer)
 	switch (tier) 
 	{
 		case 0:
-			xp = 1;
-			gold = 2;
+			xp = 10;
+			gold = 20;
 			break;
 		case 1:
-			xp = 2;
-			gold = 2;
+			xp = 15;
+			gold = 30;
 			break;
 		case 2:
-			xp = 5;
-			gold = 10;
+			xp = 30;
+			gold = 50;
 			break;
 	}
 
@@ -32,20 +32,52 @@ void Reward::RandomizeReward(int tier, Player* pPlayer)
 	}
 }
 
-bool Reward::ClaimReward(int cardID, std::unique_ptr<Player>* pPlayer)
+bool Reward::ClaimCardReward(int cardID, std::unique_ptr<Player>* pPlayer)
 {
+	BaseCard* claimedCard = nullptr;
+
 	for (auto& card : cards)
 	{
+		if (card == nullptr) continue;
 		if (card->id != cardID) continue;
 		
 		pPlayer->get()->AddToCollection(card);
-		pPlayer->get()->xp += xp;
-		pPlayer->get()->gold += gold;
+		claimedCard = card;
+	}
 
-		return true;
+	for(int i = 0;i < cards.size(); i++)
+	{
+		if (cards[i] == nullptr) continue;
+		if (cards[i] != claimedCard) cards[i]->ReturnToPool();
+
+		cards[i] = nullptr;
 	}
 
 	return false;
+}
+
+bool Reward::ClaimBonusReward(std::unique_ptr<Player>* pPlayer)
+{
+	pPlayer->get()->xp += xp;
+	pPlayer->get()->gold += gold;
+
+	xp = 0;
+	gold = 0;
+
+	return true;
+}
+
+bool Reward::AllClaimed()
+{
+	if (xp > 0) return false;
+	if (gold > 0) return false;
+
+	for (auto& card : cards) 
+	{
+		if (card != nullptr) return false;
+	}
+
+	return true;
 }
 
 json::JSON* Reward::GetState()
@@ -59,6 +91,7 @@ json::JSON* Reward::GetState()
 
 	for(auto& card : cards)
 	{
+		if (card == nullptr) continue;
 		(*state)["cards"].append(*card->GetState());
 	}
 

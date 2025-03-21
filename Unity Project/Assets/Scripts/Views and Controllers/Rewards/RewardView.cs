@@ -1,94 +1,139 @@
 using Cysharp.Threading.Tasks;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Unity.Collections.LowLevel.Unsafe;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Localization;
+using UnityEngine.UI;
 
-public class RewardView : MonoBehaviour
+public class RewardView : MonoBehaviour, IGameView
 {
-    public event Action<int, CardView> RewardClaimed;
-    public event Action LastRewardClaimed;
-
+    private static int rewardModeBool = Animator.StringToHash("RewardMode");
     private const float boxMoveSpeed = 6;
 
+    [Header("PRefabs")]
     [SerializeField]
     private RewardViewBox boxTemplate;
+
+    [Header("Scene references")]
     [SerializeField]
     private Transform content;
+    [SerializeField]
+    private Animator anim;
+    [SerializeField]
+    private Button rewardButton;
+    [SerializeField]
+    private TextMeshProUGUI rewardButtonLabel;
 
-    private Dictionary<int, RewardViewBox> activeBoxes = new Dictionary<int, RewardViewBox>();
-    private HashSet<int> claimedRewards = new HashSet<int>();
+    [SerializeField]
+    private StatView goldParticleTarget;
+    [SerializeField]
+    private StatView xpParticleTarget;
+    [SerializeField]
+    private CollectionView collection;
+
+    private Dictionary<int, RewardState> unclaimedRewards = new();
+    private HashSet<int> claimedRewards = new();
+
+    private RewardViewBox activeBox;
 
     private void Awake()
     {
-        foreach(Transform t in content)
+        foreach(RewardViewBox t in content.GetComponentsInChildren<RewardViewBox>())
         {
             Destroy(t.gameObject);
         }
+
+        anim.GetComponent<AnimEventForwarder>().rewardFinished += OnOpenAnimationFinished;
     }
 
-    public void Display(RewardStashState rewardState)
+    public async void OnGameStateUpdate(GameState gameState)
     {
-        for(int i = 0;i < rewardState.earnedRewards.Count;i++)
+        for (int i = 0; i < gameState.rewards.earnedRewards.Count; i++)
         {
-            var state = rewardState.earnedRewards[i];
+            var state = gameState.rewards.earnedRewards[i];
+            if (claimedRewards.Contains(state.ID) || unclaimedRewards.ContainsKey(state.ID)) continue;
+            unclaimedRewards.TryAdd(state.ID, state);
 
-            if (activeBoxes.ContainsKey(state.ID) || claimedRewards.Contains(state.ID)) continue;
+            if(activeBox == null)
+            {
+                activeBox = await SpawnBox(state);
+            }
+        }
+       
+        rewardButtonLabel.text = gameState.rewards.earnedRewards.Count == 0
+            ? new LocalizedString("Menus", "Rewards_Button_Empty").GetLocalizedString()
+            : string.Format(new LocalizedString("Menus", "Rewards_Button").GetLocalizedString(), gameState.rewards.earnedRewards.Count);
+    }
 
-            SpawnBox(state);
+    public void OnRewardModeClicked()
+    {
+        rewardButton.interactable = false;
+        anim.SetBool(rewardModeBool, true);
+        this.enabled = true;
+    }
+
+    public void OnCancelClicked()
+    {
+        rewardButton.interactable = true;
+        anim.SetBool(rewardModeBool, false);
+        this.enabled = false;
+    }
+
+    private void OnOpenAnimationFinished()
+    {
+        if (!this.enabled || activeBox == null) return;
+        activeBox.Show();
+    }
+
+    private async UniTask<RewardViewBox> SpawnBox(RewardState state)
+    {
+        var instance = Instantiate(boxTemplate);
+        instance.transform.SetParent(content, false);
+        instance.allClaimed += OnBoxClaimed;
+        instance.SetUp(state, goldParticleTarget, xpParticleTarget, collection);
+
+        await UniTask.WaitForEndOfFrame();
+
+        if(activeBox == null)
+        {
+            content.transform.localPosition = new Vector3();
+            instance.transform.position = content.transform.position;
+        }
+        else
+        {
+            instance.transform.localPosition = activeBox.transform.localPosition + new Vector3(activeBox.GetComponent<RectTransform>().rect.width, 0);
         }
 
-        var values = activeBoxes.Values.ToList();
-        for(int i = 0; i < activeBoxes.Count; i++)
-        {
-            values[activeBoxes.Count - 1 - i].SetRewardsLeftLabel(i);
-        }
+        return instance;
     }
 
-    private void SpawnBox(RewardState state)
+    private async UniTask TryShowNextRewardBox(RewardState state)
     {
-        var posY = content.transform.localPosition.y;
-        var posX = activeBoxes.Count == 0 ? 0 : activeBoxes.Last().Value.transform.localPosition.x + activeBoxes.Last().Value.GetComponent<RectTransform>().rect.width;
+        var nextBox = state != null ? await SpawnBox(state) : null;
 
-        var box = Instantiate(boxTemplate, content);
-        box.Display(state);
-        box.RewardSelected += OnRewardSelected;
-
-        box.transform.SetParent(content, false);
-        box.transform.localPosition = new Vector3(posX, posY);
-
-        activeBoxes.Add(state.ID, box);
-    }
-
-    private async void OnRewardSelected(int rewardID, CardView selectedCard)
-    {
-        RewardClaimed?.Invoke(rewardID, selectedCard);
-        await MoveToNextReward();
-
-        Destroy(activeBoxes[rewardID].gameObject);
-        activeBoxes.Remove(rewardID);
-        claimedRewards.Add(rewardID);
-
-        if(activeBoxes.Count == 0)
-        {
-            content.transform.localPosition -= new Vector3(content.transform.localPosition.x,0);
-            LastRewardClaimed?.Invoke();
-        }
-    }
-
-    private async UniTask MoveToNextReward()
-    {
-        var posY = content.transform.localPosition.y;
-        var posX = content.transform.localPosition.x - activeBoxes.First().Value.GetComponent<RectTransform>().rect.width;
-
-        var targetPos = new Vector3(posX, posY);
+        var moveWidth = activeBox.GetComponent<RectTransform>().rect.width;
+        var targetPos = content.transform.localPosition - new Vector3(moveWidth, 0);
 
         while (content.transform.localPosition != targetPos)
         {
             content.transform.localPosition = Vector3.MoveTowards(content.transform.localPosition, targetPos, boxMoveSpeed * Time.deltaTime * Screen.width);
             await UniTask.WaitForEndOfFrame();
         }
+
+        Destroy(activeBox.gameObject);
+        activeBox = nextBox;
+
+        if (nextBox != null) nextBox.Show(); 
+    }
+
+    private async void OnBoxClaimed()
+    {
+        claimedRewards.Add(unclaimedRewards.First().Key);
+        unclaimedRewards.Remove(unclaimedRewards.First().Key);
+
+        await TryShowNextRewardBox(unclaimedRewards.FirstOrDefault().Value);
+        if (unclaimedRewards.Count == 0) OnCancelClicked();
     }
 }

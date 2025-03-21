@@ -10,7 +10,7 @@ public class CardView : MonoBehaviour, IPoolable
     private readonly static int cooldownKey = Animator.StringToHash("CooldownPercent");
 
     [SerializeField]
-    private Animator anim;
+    protected Animator anim;
     [SerializeField]
     private CardViewContent content;
     

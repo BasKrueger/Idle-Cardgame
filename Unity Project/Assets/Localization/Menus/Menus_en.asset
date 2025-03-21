@@ -66,6 +66,22 @@ MonoBehaviour:
     m_Localized: No new rewards
     m_Metadata:
       m_Items: []
+  - m_Id: 20555052298858496
+    m_Localized: Claim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20555810150871040
+    m_Localized: Bonus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23063100699504640
+    m_Localized: Close
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23075001416347648
+    m_Localized: Get more rewards by defeating enemies
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

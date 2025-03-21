@@ -28,7 +28,9 @@ extern "C"
 
 	GAMEMODEL_API void SetSaveState(char* str, int strlen);
 
-	GAMEMODEL_API void ClaimReward(int rewardID, int cardID);
+	GAMEMODEL_API void ClaimCardReward(int rewardID, int cardID);
+
+	GAMEMODEL_API void ClaimBonusReward(int rewardID);
 
 	GAMEMODEL_API void Dump();
 }

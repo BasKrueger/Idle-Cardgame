@@ -71,6 +71,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 2868705023472340460, guid: b46710f2f9e94b44eb9424afc58cf3ff,
+        type: 3}
+      propertyPath: flipCards
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3349911637282263663, guid: b46710f2f9e94b44eb9424afc58cf3ff,
         type: 3}
       propertyPath: m_Alpha
@@ -175,6 +180,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5701750827454957409, guid: b46710f2f9e94b44eb9424afc58cf3ff,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.8
       objectReference: {fileID: 0}
     - target: {fileID: 8053841916102082739, guid: b46710f2f9e94b44eb9424afc58cf3ff,
         type: 3}
@@ -305,7 +315,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 9151890517532214650}
-  test: 0
 --- !u!4 &5774256047011126878 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2732292737016253978, guid: 355b1e53b000ea14ab2a77ecbd81b028,

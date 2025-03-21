@@ -292,6 +292,41 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &4321460754787883247
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5701750827454957409}
+  m_Layer: 5
+  m_Name: DamageNumberPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5701750827454957409
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4321460754787883247}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2322662528704358438}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 1.125}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4807634241148722476
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,6 +376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0914ace63b262d7449a585ae92b9224f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flipCards: 0
   mikroViewTemplate: {fileID: 4922437227513444094, guid: 0cb14605ca0410c4bbd694dd753d1ac8,
     type: 3}
   content: {fileID: 6477338879851050902}
@@ -532,6 +568,7 @@ RectTransform:
   - {fileID: 2025391794166170335}
   - {fileID: 8590734861802767570}
   - {fileID: 1843337357418269316}
+  - {fileID: 5701750827454957409}
   m_Father: {fileID: 3713585305091576457}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
@@ -592,6 +629,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fill: {fileID: 8053841916102082739}
   label: {fileID: 8647175611381517897}
+  damageNumberPos: {fileID: 5701750827454957409}
+  damageParticleTemplate: {fileID: 6442615356703057680, guid: 964009d601dbdf845b2ef5a262b2c0b9,
+    type: 3}
 --- !u!225 &3349911637282263663
 CanvasGroup:
   m_ObjectHideFlags: 0

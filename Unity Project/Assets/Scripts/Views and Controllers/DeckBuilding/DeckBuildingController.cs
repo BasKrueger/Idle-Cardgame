@@ -44,7 +44,7 @@ public class DeckBuildingController : MonoBehaviour
         if (selectedCard == null) return;
 
         GameDLL.SwapCards(selectedCard.Content.displayID, other.Content.displayID);
-        GameDLL.GenerateGameState();
+        GameDLL.CreateGameState();
 
         anim.SetBool(editModeBool, false);
 

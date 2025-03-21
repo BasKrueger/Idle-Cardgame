@@ -70,20 +70,32 @@ public class CardViewContent : TargetFollower
         nameLabel.text = cardState.cardName;
     }
 
+    public void SetTextsFlipped(bool active)
+    {
+        var degree = active ? 180 : 0;
+
+        descriptionLabel.transform.eulerAngles = new Vector3(0, degree);
+        nameLabel.transform.eulerAngles = new Vector3(0, degree);
+    }
+
     public void SetFill(float percent) => fill.fillAmount = 1 - percent;
 
     public void ShowAsMedium() => SetSizeActive(mediumKey);
     public void ShowAsMini() => SetSizeActive(miniKey);
     public void ShowAsMikro() => SetSizeActive(mikroKey);
     public void ShowAsMega() => SetSizeActive(megaKey);
+
+    public void ShowAsDefault()
+    {
+        anim.SetBool(mikroKey, false);
+        anim.SetBool(miniKey, false);
+        anim.SetBool(mediumKey, false);
+        anim.SetBool(megaKey, false);
+    }
     
     private void SetSizeActive(int size, bool active = true)
     {
-        anim.SetBool(mikroKey, false);
-        anim.SetBool(miniKey, false); 
-        anim.SetBool(mediumKey, false);
-        anim.SetBool(megaKey, false);
-
+        ShowAsDefault();
         anim.SetBool(size, active);
     }
 

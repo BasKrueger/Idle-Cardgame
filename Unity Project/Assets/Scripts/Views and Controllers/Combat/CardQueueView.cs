@@ -8,6 +8,9 @@ using UnityEngine;
 public class CardQueueView : MonoBehaviour
 {
     [SerializeField]
+    private bool flipCards;
+
+    [SerializeField]
     private CardView mikroViewTemplate;
     [SerializeField]
     private Transform content;
@@ -59,6 +62,7 @@ public class CardQueueView : MonoBehaviour
             view.transform.SetParent(content);
             view.transform.localPosition = previewPositions[i];
             view.transform.SetAsLastSibling();
+            view.Content.SetTextsFlipped(flipCards);
 
             activeViews.Add(missingStates[i].Key, view);
         }

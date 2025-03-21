@@ -71,6 +71,28 @@ MonoBehaviour:
     m_Key: Rewards_Button_Empty
     m_Metadata:
       m_Items: []
+  - m_Id: 20555052298858496
+    m_Key: 'Claim_Button
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20555810150871040
+    m_Key: 'Bonus
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23063100699504640
+    m_Key: 'Button_Close
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23075001416347648
+    m_Key: OutOfRewards
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

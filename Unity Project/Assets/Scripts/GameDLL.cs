@@ -3,8 +3,6 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using Cysharp.Threading.Tasks;
-using Newtonsoft.Json;
-using Unity.Android.Gradle.Manifest;
 using UnityEngine;
 
 public static class GameDLL
@@ -16,6 +14,8 @@ public static class GameDLL
 #else
     private const string dllName = "__GameModelDLL";
 #endif
+
+    public static event System.Action<List<string>> GameStateReceived;
 
     [DllImport(dllName)]
     private static extern void Initialize();
@@ -49,11 +49,8 @@ public static class GameDLL
     public static extern int SwapCards(int collection, int deck);
 
     [DllImport(dllName)]
-    public static extern void GenerateGameState();
-
-    [DllImport(dllName)]
     private static extern bool PopCachedGameState(StringBuilder str, int maxLength);
-    public static async UniTask<List<string>> GetGameStates(bool enableLog = false)
+    public static void GetGameStates(bool enableLog = false)
     {
         var result = new List<string>();
         var builder = new StringBuilder(STRING_MAX_LENGTH);
@@ -61,7 +58,6 @@ public static class GameDLL
         while (PopCachedGameState(builder, STRING_MAX_LENGTH))
         {
             result.Add(builder.ToString());
-            //Debug.Log($"Received state: {JsonUtility.ToJson(result.Last(), true)}");
         }
 
         if (enableLog && result.Count > 0)
@@ -69,7 +65,7 @@ public static class GameDLL
             Debug.Log(result.Last());
         }
 
-        return result;
+        GameStateReceived?.Invoke(result);
     }
 
     [DllImport(dllName)]
@@ -104,5 +100,17 @@ public static class GameDLL
     }
 
     [DllImport("GameModelDLL")]
-    public static extern void ClaimReward(int rewardID, int cardID);
+    public static extern void ClaimCardReward(int rewardID, int cardID);
+
+    [DllImport("GameModelDLL")]
+    public static extern void ClaimBonusReward(int rewardID);
+
+    [DllImport("GameModelDLL")]
+    private static extern void GenerateGameState();
+
+    public static void CreateGameState()
+    {
+        GenerateGameState();
+        GetGameStates();
+    }
 }

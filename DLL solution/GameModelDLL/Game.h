@@ -17,7 +17,8 @@ public:
 
 	bool PopCachedGameState(char* str, int strlen);
 	void ClearCachedStates();
-	void ClaimReward(int rewardID, int cardID);
+	void ClaimCardReward(int rewardID, int cardID);
+	void ClaimBonusReward(int rewardID);
 
 	void SetSaveState(char* str, int strlen);
 	void GetSaveState(char* str, int strlen);

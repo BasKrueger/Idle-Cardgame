@@ -11,7 +11,11 @@ public class HealthView : MonoBehaviour
     private Image fill;
     [SerializeField]
     private TextMeshProUGUI label;
-    
+    [SerializeField]
+    private Transform damageNumberPos;
+    [SerializeField]
+    private DamageNumberParticle damageParticleTemplate;
+
     private float targetPercent;
     private bool isUpdatingBar;
 
@@ -19,9 +23,14 @@ public class HealthView : MonoBehaviour
     
     public void OnCharacterStateUpdate(CharacterState characterState)
     {
-        if(lastState != null && lastState.hp == characterState.hp && lastState.baseHP == characterState.baseHP)
+        if (lastState != null && lastState.hp == characterState.hp && lastState.baseHP == characterState.baseHP)
         {
             return;
+        }
+
+        if (lastState != null)
+        {
+            //SpawnDamageParticle(lastState.hp - characterState.hp);
         }
 
         label.text = $"{characterState.hp} / {characterState.baseHP}";
@@ -47,5 +56,13 @@ public class HealthView : MonoBehaviour
         }
         
         isUpdatingBar = false;
+    }
+
+    private void SpawnDamageParticle(int damage)
+    {
+        var instance = Instantiate(damageParticleTemplate);
+        instance.SetUp(damage);
+        instance.transform.SetParent(transform);
+        instance.transform.position = damageNumberPos.transform.position;
     }
 }

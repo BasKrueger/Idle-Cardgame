@@ -105,9 +105,14 @@ void Game::ClearCachedStates()
 	cachedStates.clear();
 }
 
-void Game::ClaimReward(int rewardID, int cardID)
+void Game::ClaimCardReward(int rewardID, int cardID)
 {
-	RewardStash::ClaimReward(rewardID, cardID, &pPlayer);
+	RewardStash::ClaimCardReward(rewardID, cardID, &pPlayer);
+}
+
+void Game::ClaimBonusReward(int rewardID)
+{
+	RewardStash::ClaimBonusReward(rewardID, &pPlayer);
 }
 
 void Game::SetSaveState(char* str, int strlen)

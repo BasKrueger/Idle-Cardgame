@@ -50,7 +50,7 @@ json::JSON* RewardStash::GetState()
 	return state;
 }
 
-void RewardStash::ClaimReward(int rewardID, int cardID, std::unique_ptr<Player>* pPlayer)
+void RewardStash::ClaimCardReward(int rewardID, int cardID, std::unique_ptr<Player>* pPlayer)
 {
 	int rewardIndex = -1;
 	Reward* reward = nullptr;
@@ -63,8 +63,30 @@ void RewardStash::ClaimReward(int rewardID, int cardID, std::unique_ptr<Player>*
 	}
 
 	if (reward == nullptr) return;
+	reward->ClaimCardReward(cardID, pPlayer);
 
-	if(reward->ClaimReward(cardID, pPlayer))
+	if(reward->AllClaimed())
+	{
+		unclaimedRewards.erase(unclaimedRewards.begin() + rewardIndex);
+	}
+}
+
+void RewardStash::ClaimBonusReward(int rewardID, std::unique_ptr<Player>* pPlayer)
+{
+	int rewardIndex = -1;
+	Reward* reward = nullptr;
+	for (int i = 0; i < unclaimedRewards.size(); i++)
+	{
+		if (unclaimedRewards[i]->id != rewardID) continue;
+		reward = unclaimedRewards[i];
+		rewardIndex = i;
+		break;
+	}
+
+	if (reward == nullptr) return;
+	reward->ClaimBonusReward(pPlayer);
+
+	if (reward->AllClaimed())
 	{
 		unclaimedRewards.erase(unclaimedRewards.begin() + rewardIndex);
 	}

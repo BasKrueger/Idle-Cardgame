@@ -1,53 +1,43 @@
+using Cysharp.Threading.Tasks;
 using System;
-using System.Collections.Generic;
-using TMPro;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class RewardViewBox : MonoBehaviour
 {
-    public event Action<int, CardView> RewardSelected;
-
-    [SerializeField] 
-    private Transform content;
+    public event Action allClaimed;
 
     [SerializeField]
-    private CardView cardTemplate;
+    private CardRewardView cards;
     [SerializeField]
-    private TextMeshProUGUI upcomingBoxesLabel;
+    private BonusRewardView bonus;
 
-    private int id;
-
-    public void Display(RewardState reward) 
+    private void Awake()
     {
-        id = reward.ID;
-
-        foreach(CardView t in content.GetComponentsInChildren<CardView>())
-        {
-            Destroy(t.gameObject);
-        }
-
-        foreach(var state in reward.cards)
-        {
-            var instance = Instantiate(cardTemplate);
-            instance.Content.Show(state);
-            instance.Content.ShowAsMedium();
-            instance.Content.SetFill(1);
-            instance.Clicked += OnCardSelected;
-
-            instance.transform.SetParent(content);
-        }
+        cards.claimStarted += OnClaimStarted;
+        cards.claimEnded += OnClaimEnded;
     }
 
-    private void OnCardSelected(CardView view)
+    public void SetUp(RewardState reward, StatView gold, StatView xp, CollectionView collection)
     {
-        RewardSelected(id, view);
-        view.Clicked -= OnCardSelected;
+        bonus.SetUp(reward, gold, xp);
+        cards.SetUp(reward, collection);
     }
 
-    public void SetRewardsLeftLabel(int rewardsLeft)
+    public void Show()
     {
-        upcomingBoxesLabel.gameObject.SetActive(rewardsLeft > 0);
-        upcomingBoxesLabel.text = string.Format(upcomingBoxesLabel.text, rewardsLeft + 1);
-        upcomingBoxesLabel.transform.SetAsLastSibling();
+        cards.Show();
+    }
+
+    private void OnClaimStarted()
+    {
+        bonus.ClaimBonus();
+    }
+
+    private async void OnClaimEnded()
+    {
+        await UniTask.WaitForSeconds(1.2f);
+
+        allClaimed?.Invoke();
     }
 }

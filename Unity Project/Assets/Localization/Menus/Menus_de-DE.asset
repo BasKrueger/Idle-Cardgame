@@ -70,6 +70,22 @@ MonoBehaviour:
     m_Localized: keine neuen Belohnungen
     m_Metadata:
       m_Items: []
+  - m_Id: 20555052298858496
+    m_Localized: Sammeln
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20555810150871040
+    m_Localized: Bonus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23063100699504640
+    m_Localized: Schliesen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23075001416347648
+    m_Localized: Erahlte mehr belohnungen durch das besiegen von Gegnern
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

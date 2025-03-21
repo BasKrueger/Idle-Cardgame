@@ -18,7 +18,9 @@ public:
 	int id = reinterpret_cast<uint32_t>(this);
 	std::array<BaseCard*, 3> cards;
 
-	bool ClaimReward(int cardID, std::unique_ptr<Player>* pPlayer);
+	bool ClaimCardReward(int cardID, std::unique_ptr<Player>* pPlayer);
+	bool ClaimBonusReward(std::unique_ptr<Player>* pPlayer);
+	bool AllClaimed();
 
 	json::JSON* GetState();
 

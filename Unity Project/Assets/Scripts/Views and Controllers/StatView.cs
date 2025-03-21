@@ -1,8 +1,12 @@
+using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StatView : MonoBehaviour
 {
+    private const float updateTime = 0.65f;
+
     [SerializeField]
     private RectTransform minMaxContent;
     [SerializeField]
@@ -15,34 +19,72 @@ public class StatView : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI absoluteValue;
 
-    private int lastDisplayedValue_ = -1;
+    [field: SerializeField]
+    public Image icon { get; private set; }
 
-    public void ShowValue(int value)
+    public bool updatesEnabled = true;
+
+    private UniTaskCompletionSource cancelUpdate;
+
+    public void ShowValue(int value, bool instant = false)
     {
+        if (!updatesEnabled) return;
+
         minMaxContent.gameObject.SetActive(false);
         absoluteContent.gameObject.SetActive(true);
 
-        absoluteValue.text = value.ToString();
-        lastDisplayedValue = value;
+        if (instant)
+        {
+            absoluteValue.text = value.ToString();
+        }
+        else
+        {
+            UpdateValue(absoluteValue, value);
+        }
     }
 
-    public void ShowValue(int value, int baseValue)
+    public void ShowValue(int value, int baseValue, bool instant = false)
     {
+        if (!updatesEnabled) return;
+
         minMaxContent.gameObject.SetActive(true);
         absoluteContent.gameObject.SetActive(false);
 
-        currentValue.text = value.ToString();
-        maxValue.text = baseValue.ToString();
-
-        lastDisplayedValue = value;
+        if (instant)
+        {
+            currentValue.text = value.ToString();
+            maxValue.text = baseValue.ToString();
+        }
+        else
+        {
+            UpdateValue(currentValue, value);
+            UpdateValue(maxValue, baseValue);
+        }
     }
 
-    private int lastDisplayedValue
+    private async void UpdateValue(TextMeshProUGUI label, int targetValue)
     {
-        get => lastDisplayedValue_;
-        set
+        if(!int.TryParse(label.text, out var startValue))
         {
-            lastDisplayedValue_ = value;
+            return;
         }
+
+        cancelUpdate?.TrySetResult();
+        cancelUpdate = new UniTaskCompletionSource();
+
+        float time = 0;
+        while(time < updateTime)
+        {
+            var value = Mathf.Lerp(startValue, targetValue, time / updateTime);
+
+            label.text = Mathf.RoundToInt(value).ToString();
+
+            time += Time.deltaTime;
+            await UniTask.WaitForEndOfFrame();
+        }
+
+        label.text = targetValue.ToString();
+
+        cancelUpdate?.TrySetResult();
     }
 }

@@ -77,9 +77,14 @@ void SetSaveState(char* str, int strlen)
 	
 }
 
-void ClaimReward(int rewardID, int cardID)
+void ClaimCardReward(int rewardID, int cardID)
 {
-	pGame->ClaimReward(rewardID, cardID);
+	pGame->ClaimCardReward(rewardID, cardID);
+}
+
+void ClaimBonusReward(int rewardID)
+{
+	pGame->ClaimBonusReward(rewardID);
 }
 
 void Dump() 
