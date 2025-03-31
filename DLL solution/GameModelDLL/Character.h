@@ -12,41 +12,53 @@ class BaseCard;
 class Character : public InterActor
 {
 public:
+	LocalizedString* characterName = nullptr;
+	int characterID;
+
 	void Initialize();
 	void Tick();
-	void TryPlayNextCard(BaseCard* card);
 	bool IsAlive();
 
 	void EngageInCombat(Character* pNewEnemy);
-	void DisEngageInCombat();
+	void DisengageInCombat();
 	void TakeDamage(DamageInteraction* interaction);
 	void Die(DieInteraction* interaction);
 	void ReturnCharacterToPool();
 
-	json::JSON* GetState();
-	LocalizedString* characterName = 0;
 
 protected:
-	enum PHASE{IDLE, COMBAT,DEAD};
-	enum TRIGGERANIMATION {DAMAGED, PLAYED_CARD, NONE };
-	int id = reinterpret_cast<uint32_t>(this);
-
-	int dmg;
-	int hp;
-	int deckSize = 20;
-	int currentCard;
-
 	std::array<BaseCard*, 20> deck;
-	Character* pEnemy;
-	PHASE currentPhase;
-	TRIGGERANIMATION nextAnimationTrigger;
-
-	virtual void InternalInitialize(int& baseHP, int& baseDamage, LocalizedString* characterName);
-	virtual void InternalReturnToPool();
-
-	std::unique_ptr<json::JSON> state = 0;
+	int hp;
+	
+	virtual void InternalInitialize(int& charID, int& baseHP, int& baseDamage, LocalizedString* characterName);
 
 private:
+	enum PHASE { IDLE, COMBAT, DEAD };
+	enum TRIGGERANIMATION { DAMAGED, PLAYED_CARD, NONE };
+
+	PHASE currentPhase = PHASE::IDLE;
+	TRIGGERANIMATION nextAnimationTrigger = TRIGGERANIMATION::NONE;
+	Character* pEnemy = nullptr;
+
+	int id = reinterpret_cast<uint32_t>(this);
+	int dmg;
+	int baseDamage;
 	int baseHP;
-	int baseDamage;	
+	int currentCardIndex;
+	
+	void TryPlayNextCard(BaseCard* card);
+
+#pragma region State/Save/Load
+public:
+	json::JSON* GetState();
+	json::JSON GetSave();
+	static Character* LoadSave(json::JSON save);
+
+protected:
+	void SetSave(json::JSON save);
+
+private:
+	std::unique_ptr<json::JSON> state = nullptr;
+#pragma endregion
+
 };

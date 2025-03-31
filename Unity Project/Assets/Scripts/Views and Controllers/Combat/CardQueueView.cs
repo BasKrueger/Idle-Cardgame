@@ -27,12 +27,12 @@ public class CardQueueView : MonoBehaviour
     
     public void OnGameStateUpdate(CharacterState characterState)
     {
-        var statesToDisplay = characterState.autoDeck.Take(previewPositions.Count).ToDictionary(card => card.id, card=> card);
+        var statesToDisplay = characterState.autoDeckInPlayOrder.Take(previewPositions.Count).ToDictionary(card => card.id, card=> card);
 
         DestroyRemovedCards(statesToDisplay);
         SpawnNewCards(statesToDisplay);
         MoveExistingCards(statesToDisplay);
-        UpdateCardSize(characterState);
+        UpdateCardSize(statesToDisplay);
         UpdateCardContent(statesToDisplay);
         UpdateSiblingOrder(statesToDisplay);
     }
@@ -78,11 +78,11 @@ public class CardQueueView : MonoBehaviour
         }
     }
     
-    private void UpdateCardSize(CharacterState characterState)
+    private void UpdateCardSize(Dictionary<int, CardState> validStates)
     {
-        activeViews[characterState.autoDeck.First().id].Content.ShowAsMini();
+        activeViews[validStates.Keys.First()].Content.ShowAsMini();
         
-        activeViews.Where(pair => pair.Key != characterState.autoDeck.First().id)
+        activeViews.Where(pair => pair.Key != validStates.Keys.First())
         .ToList().ForEach(pair => pair.Value.Content.ShowAsMikro());
     }
 

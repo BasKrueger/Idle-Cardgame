@@ -5,8 +5,6 @@
 #include "FastAttackCard.h"
 #include "SlowAttackCard.h"
 
-#define Reward(className) case className::rewardID: cards[slot] = CardPool<className>().GetInstance(pPlayer); break;
-
 void Reward::RandomizeReward(int tier, Player* pPlayer)
 {
 	switch (tier) 
@@ -32,6 +30,14 @@ void Reward::RandomizeReward(int tier, Player* pPlayer)
 	}
 }
 
+bool Reward::Claim(int cardID, std::unique_ptr<Player>* pPlayer)
+{
+	if (!ClaimCardReward(cardID, pPlayer)) return false;
+	if (!ClaimBonusReward(pPlayer)) return false;
+
+	return true;
+}
+
 bool Reward::ClaimCardReward(int cardID, std::unique_ptr<Player>* pPlayer)
 {
 	BaseCard* claimedCard = nullptr;
@@ -43,7 +49,10 @@ bool Reward::ClaimCardReward(int cardID, std::unique_ptr<Player>* pPlayer)
 		
 		pPlayer->get()->AddToCollection(card);
 		claimedCard = card;
+		break;
 	}
+	
+	if (claimedCard == nullptr) return false;
 
 	for(int i = 0;i < cards.size(); i++)
 	{
@@ -53,7 +62,7 @@ bool Reward::ClaimCardReward(int cardID, std::unique_ptr<Player>* pPlayer)
 		cards[i] = nullptr;
 	}
 
-	return false;
+	return true;
 }
 
 bool Reward::ClaimBonusReward(std::unique_ptr<Player>* pPlayer)
@@ -65,37 +74,6 @@ bool Reward::ClaimBonusReward(std::unique_ptr<Player>* pPlayer)
 	gold = 0;
 
 	return true;
-}
-
-bool Reward::AllClaimed()
-{
-	if (xp > 0) return false;
-	if (gold > 0) return false;
-
-	for (auto& card : cards) 
-	{
-		if (card != nullptr) return false;
-	}
-
-	return true;
-}
-
-json::JSON* Reward::GetState()
-{
-	if (state == nullptr) state = new json::JSON;
-
-	(*state)["gold"] = gold;
-	(*state)["xp"] = xp;
-	(*state)["cards"] = json::Array();
-	(*state)["ID"] = id;
-
-	for(auto& card : cards)
-	{
-		if (card == nullptr) continue;
-		(*state)["cards"].append(*card->GetState());
-	}
-
-	return state;
 }
 
 void Reward::SetRandomCardReward(int tier, int slot, Player* pPlayer, std::array<int, MAX_REWARD_ID>* excludeIDs)
@@ -118,16 +96,67 @@ void Reward::SetRandomCardReward(int tier, int slot, Player* pPlayer, std::array
 	
 	bool rerun = true;
 
-	switch(rng)
-	{
-		Reward(AttackCard);
-		Reward(FastAttackCard);
-		Reward(SlowAttackCard);
-
-	default:
-		std::cout << "ERROR: REWARD ID MISSING!\n";
-		break;
-	}
-	
+	cards[slot] = CardPool().GetInstance(pPlayer, rng);
 	cards[slot]->UnRegister();
 }
+
+#pragma region state/save/load
+json::JSON* Reward::GetState()
+{
+	if (state == nullptr) state = new json::JSON;
+
+	(*state)["gold"] = gold;
+	(*state)["xp"] = xp;
+	(*state)["cards"] = json::Array();
+	(*state)["ID"] = id;
+
+	for (auto& card : cards)
+	{
+		if (card == nullptr) continue;
+		(*state)["cards"].append(*card->GetState());
+	}
+
+	return state;
+}
+
+json::JSON Reward::GetSave()
+{
+	json::JSON save;
+
+	(save)["gold"] = gold;
+	(save)["xp"] = xp;
+	(save)["cards"] = json::Array();
+	for (auto& card : cards)
+	{
+		if (card == nullptr) continue;
+		(save)["cards"].append(card->GetSave());
+	}
+
+	return save;
+}
+
+Reward* Reward::LoadSave(Character* owner, json::JSON save)
+{
+	auto reward = new Reward();
+
+	reward->gold = save["gold"].ToInt();
+	reward->xp = save["xp"].ToInt();
+
+	for (int i = 0; i < reward->cards.size(); i++)
+	{
+		if (reward->cards[i] == nullptr) continue;
+		reward->cards[i]->ReturnToPool();
+		reward->cards[i] = nullptr;
+	}
+
+	int iterator = -1;
+	for (auto& card : save["cards"].ArrayRange())
+	{
+		iterator++;
+		reward->cards[iterator] = BaseCard::LoadSave(owner, card);
+	}
+
+	return reward;
+}
+
+#pragma endregion

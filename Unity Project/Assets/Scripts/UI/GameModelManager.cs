@@ -8,7 +8,7 @@ using UnityEngine.Localization.Settings;
 
 public class GameModelManager : MonoBehaviour
 {
-    const float TICK_COOLDOWN = 1;
+    public const float TICK_COOLDOWN = 1;
 
     public List<IGameViewAsync> activeViewsAsync = new List<IGameViewAsync>();
     public List<IGameView> activeViews = new List<IGameView>();
@@ -34,12 +34,16 @@ public class GameModelManager : MonoBehaviour
         }
     }
 
-    private void Start()
+    private async void Start()
     {
         Application.targetFrameRate = 60;
         QualitySettings.vSyncCount = 0;
 
-        GameDLL.Initialize("English(en)");
+        while (LoadManager.loading) await UniTask.WaitForEndOfFrame();
+        if (!LoadManager.simulated)
+        {
+            GameDLL.Initialize("English(en)");
+        }
 
         ModelTickLoop();
         AsyncViewUpdateLoop();
@@ -83,6 +87,13 @@ public class GameModelManager : MonoBehaviour
             }
             
             await UniTask.WaitForEndOfFrame();
+        }
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SaveManager.Save();
         }
     }
 }

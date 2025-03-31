@@ -69,22 +69,17 @@ void SetLanguage(char* language, char* cardTable, char* logTable, char* characte
 
 void GetSaveState(char* str, int strlen)
 {
-	
+	return pGame->GetSaveState(str, strlen);
 }
 
-void SetSaveState(char* str, int strlen)
+void SetSaveState(char* str)
 {
-	
+	pGame->SetSaveState(str);
 }
 
-void ClaimCardReward(int rewardID, int cardID)
+void ClaimReward(int rewardID, int cardID)
 {
-	pGame->ClaimCardReward(rewardID, cardID);
-}
-
-void ClaimBonusReward(int rewardID)
-{
-	pGame->ClaimBonusReward(rewardID);
+	pGame->ClaimReward(rewardID, cardID);
 }
 
 void Dump() 

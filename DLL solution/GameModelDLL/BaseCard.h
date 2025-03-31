@@ -11,7 +11,9 @@ class PlayInteraction;
 class BaseCard : public InterActor
 {
 public:
+	LocalizedString* cardName;
 	int id = reinterpret_cast<uint32_t>(this);
+	int cardID = -1;
 
 	void Initialize();
 	void Reset();
@@ -19,25 +21,30 @@ public:
 	void Tick();
 	bool IsCharged();
 	bool TryPlay(InterActor* pTarget);
+	void ReturnToPool();
+
 	virtual void Play(PlayInteraction* pTarget);
-
-	virtual void ReturnToPool();
-
-	json::JSON* GetState();
-	LocalizedString* cardName;
 
 protected:
 	int cooldown;
 	int dmg;
 
-	virtual void InternalInitialize(int& baseDmg, int& baseCooldown, LocalizedString* cardName, LocalizedString* cardDescription);
+	virtual void InternalInitialize(int& cID, int& baseDmg, int& baseCooldown, LocalizedString* cardName, LocalizedString* cardDescription);
 
 private:
 	int baseDmg;
 	int baseCooldown;
 
+	LocalizedString* cardDescription;
 	std::array<int, 3> variables;
 
-	LocalizedString* cardDescription;
-	std::unique_ptr<json::JSON> state = 0;
+#pragma region State/Save/Load
+public:
+	json::JSON* GetState();
+	json::JSON GetSave();
+	static BaseCard* LoadSave(Character* owner, json::JSON json);
+
+private:
+	std::unique_ptr<json::JSON> state = nullptr;
+#pragma endregion
 };

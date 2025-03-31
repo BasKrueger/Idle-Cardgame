@@ -34,9 +34,8 @@ public class RewardView : MonoBehaviour, IGameView
     private CollectionView collection;
 
     private Dictionary<int, RewardState> unclaimedRewards = new();
-    private HashSet<int> claimedRewards = new();
-
-    private RewardViewBox activeBox;
+    private (int id, RewardViewBox box) active;
+    private bool moving = false;
 
     private void Awake()
     {
@@ -48,62 +47,37 @@ public class RewardView : MonoBehaviour, IGameView
         anim.GetComponent<AnimEventForwarder>().rewardFinished += OnOpenAnimationFinished;
     }
 
-    public async void OnGameStateUpdate(GameState gameState)
+    public void OnGameStateUpdate(GameState gameState)
     {
-        for (int i = 0; i < gameState.rewards.earnedRewards.Count; i++)
+        gameState.rewards.earnedRewards.ForEach(reward => unclaimedRewards.TryAdd(reward.ID, reward));
+        
+        UpdateLabels(gameState.rewards);
+    }
+
+    private void TrySpawnBox(RewardState state)
+    {
+        if (active.box == null)
         {
-            var state = gameState.rewards.earnedRewards[i];
-            if (claimedRewards.Contains(state.ID) || unclaimedRewards.ContainsKey(state.ID)) continue;
-            unclaimedRewards.TryAdd(state.ID, state);
-
-            if(activeBox == null)
-            {
-                activeBox = await SpawnBox(state);
-            }
+            active.box = SpawnBox(state);
+            active.id = state.ID;
         }
-       
-        rewardButtonLabel.text = gameState.rewards.earnedRewards.Count == 0
-            ? new LocalizedString("Menus", "Rewards_Button_Empty").GetLocalizedString()
-            : string.Format(new LocalizedString("Menus", "Rewards_Button").GetLocalizedString(), gameState.rewards.earnedRewards.Count);
     }
 
-    public void OnRewardModeClicked()
-    {
-        rewardButton.interactable = false;
-        anim.SetBool(rewardModeBool, true);
-        this.enabled = true;
-    }
-
-    public void OnCancelClicked()
-    {
-        rewardButton.interactable = true;
-        anim.SetBool(rewardModeBool, false);
-        this.enabled = false;
-    }
-
-    private void OnOpenAnimationFinished()
-    {
-        if (!this.enabled || activeBox == null) return;
-        activeBox.Show();
-    }
-
-    private async UniTask<RewardViewBox> SpawnBox(RewardState state)
+    private RewardViewBox SpawnBox(RewardState state)
     {
         var instance = Instantiate(boxTemplate);
         instance.transform.SetParent(content, false);
         instance.allClaimed += OnBoxClaimed;
         instance.SetUp(state, goldParticleTarget, xpParticleTarget, collection);
 
-        await UniTask.WaitForEndOfFrame();
-
-        if(activeBox == null)
+        if(active.box == null)
         {
             content.transform.localPosition = new Vector3();
             instance.transform.position = content.transform.position;
         }
         else
         {
-            instance.transform.localPosition = activeBox.transform.localPosition + new Vector3(activeBox.GetComponent<RectTransform>().rect.width, 0);
+            instance.transform.localPosition = active.box.transform.localPosition + new Vector3(active.box.GetComponent<RectTransform>().rect.width, 0);
         }
 
         return instance;
@@ -111,9 +85,11 @@ public class RewardView : MonoBehaviour, IGameView
 
     private async UniTask TryShowNextRewardBox(RewardState state)
     {
-        var nextBox = state != null ? await SpawnBox(state) : null;
+        if (moving) return;
+        moving = true;
 
-        var moveWidth = activeBox.GetComponent<RectTransform>().rect.width;
+        var nextBox = SpawnBox(state);
+        var moveWidth = boxTemplate.GetComponent<RectTransform>().rect.width;
         var targetPos = content.transform.localPosition - new Vector3(moveWidth, 0);
 
         while (content.transform.localPosition != targetPos)
@@ -122,18 +98,57 @@ public class RewardView : MonoBehaviour, IGameView
             await UniTask.WaitForEndOfFrame();
         }
 
-        Destroy(activeBox.gameObject);
-        activeBox = nextBox;
+        Destroy(active.box.gameObject);
+        active.box = nextBox;
+        active.id = state.ID;
 
-        if (nextBox != null) nextBox.Show(); 
+        if (nextBox != null) nextBox.Show();
+        moving = false;
     }
 
     private async void OnBoxClaimed()
     {
-        claimedRewards.Add(unclaimedRewards.First().Key);
-        unclaimedRewards.Remove(unclaimedRewards.First().Key);
+        unclaimedRewards.Remove(active.id);
 
-        await TryShowNextRewardBox(unclaimedRewards.FirstOrDefault().Value);
-        if (unclaimedRewards.Count == 0) OnCancelClicked();
+        if(unclaimedRewards.Count == 0)
+        {
+            OnCancelClicked();
+            return;
+        }
+
+        await TryShowNextRewardBox(unclaimedRewards.First().Value);
+    }
+
+    public void OnRewardModeClicked()
+    {
+        rewardButton.interactable = false;
+        anim.SetBool(rewardModeBool, true);
+        this.enabled = true;
+
+        if (active.box != null) Destroy(active.box.gameObject);
+        active.box = null;
+        active.id = -1;
+
+        TrySpawnBox(unclaimedRewards.First().Value);
+    }
+
+    public void OnCancelClicked()
+    {
+        rewardButton.interactable = true;
+        anim.SetBool(rewardModeBool, false);
+        this.enabled = false;
+    }
+    
+    private void UpdateLabels(RewardStashState state)
+    {
+        rewardButtonLabel.text = state.rewardCount == 0
+           ? new LocalizedString("Menus", "Rewards_Button_Empty").GetLocalizedString()
+           : string.Format(new LocalizedString("Menus", "Rewards_Button").GetLocalizedString(), state.rewardCount);
+    }
+
+    private void OnOpenAnimationFinished()
+    {
+        if (!this.enabled || active.box == null) return;
+        active.box.Show();
     }
 }

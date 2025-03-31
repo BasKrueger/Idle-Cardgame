@@ -93,6 +93,22 @@ MonoBehaviour:
     m_Key: OutOfRewards
     m_Metadata:
       m_Items: []
+  - m_Id: 26004876448034816
+    m_Key: GameLoad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26004932580405248
+    m_Key: SaveLoad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26005062788378624
+    m_Key: SimulateTime
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26017992502210560
+    m_Key: AlmostDone
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

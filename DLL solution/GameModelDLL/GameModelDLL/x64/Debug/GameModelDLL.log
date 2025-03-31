@@ -27,6 +27,8 @@
   InterActor.cpp
   LocalizedString.cpp
   Localizer.cpp
+  LogEntry.cpp
+  LogSubEntry.cpp
   PerformInteraction.cpp
   Player.cpp
   PlayInteraction.cpp

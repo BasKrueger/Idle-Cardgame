@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class CardRewardView : MonoBehaviour
 {
-    public event Action claimStarted;
+    public event Action<int> claimStarted;
     public event Action claimEnded;
 
     [SerializeField]
@@ -59,12 +59,10 @@ public class CardRewardView : MonoBehaviour
 
     private async void OnCardSelected(CardView clickedCard)
     {
-        GameDLL.ClaimCardReward(reward.ID, clickedCard.Content.displayID);
-
         activeCards.ForEach(card => card.Clicked -= OnCardSelected);
         activeCards.Where(card => card != clickedCard).ToList().ForEach(card => card.HideCard());
 
-        claimStarted?.Invoke();
+        claimStarted?.Invoke(clickedCard.Content.displayID);
 
         await AnimateClaim(clickedCard);
 

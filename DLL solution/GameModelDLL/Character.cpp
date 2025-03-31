@@ -8,42 +8,34 @@
 #include "Game.h"
 #include "Json.hpp"
 #include "RewardStash.h"
+#include "CharacterPool.h"
 
 void Character::Initialize()
 {
 	if (characterName == 0) characterName = new LocalizedString(LocalizedString::TABLE::CHARACTERS, "Missing Name");
 
-	InternalInitialize(baseHP, baseDamage, characterName);
+	InternalInitialize(characterID, baseHP, baseDamage, characterName);
 
 	hp = baseHP;
 	dmg = baseDamage;
-
-	deckSize = 0;
-	for(int i = 0;i < deck.size() && deck[i] != 0;i++)
-	{
-		deckSize++;
-	}
-
-	currentPhase = PHASE::IDLE;
-	nextAnimationTrigger = TRIGGERANIMATION::NONE;
+	
 	InterActor::pOwner = this;
 }
 
 void Character::Tick()
 {
-	if (pEnemy == 0)
-	{
-		return;
-	}
+	if (pEnemy == nullptr) return;
+	if (pEnemy->hp <= 0) return;
 
 	if(!pEnemy->IsAlive())
 	{
-		DisEngageInCombat();
+		DisengageInCombat();
 		return;
 	}
 
-	deck[currentCard]->Tick();
-	TryPlayNextCard(deck[currentCard]);
+	deck[currentCardIndex]->Tick();
+	TryPlayNextCard(deck[currentCardIndex]);
+
 }
 
 void Character::TryPlayNextCard(BaseCard* card)
@@ -55,10 +47,10 @@ void Character::TryPlayNextCard(BaseCard* card)
 
 		card->TryPlay(pEnemy);
 
-		currentCard += 1;
-		if (currentCard >= deckSize) 
+		currentCardIndex += 1;
+		if (currentCardIndex > deck.size() - 1 || deck[currentCardIndex] == nullptr)
 		{
-			currentCard = 0;
+			currentCardIndex = 0;
 		}
 	}
 }
@@ -70,9 +62,9 @@ void Character::EngageInCombat(Character* pNewEnemy)
 	Game::CaptureGameState();
 }
 
-void Character::DisEngageInCombat()
+void Character::DisengageInCombat()
 {
-	pEnemy = 0;
+	pEnemy = nullptr;
 	currentPhase = PHASE::IDLE;
 	Game::CaptureGameState();
 }
@@ -95,18 +87,18 @@ void Character::ReturnCharacterToPool()
 { 
 	for (auto card : deck)
 	{
-		if (card == 0) continue;
+		if (card == nullptr) continue;
 		card->ReturnToPool();
 	}
 
-	InternalReturnToPool();
+	CharacterPool::ReturnInstance(this);
 }
 
-void Character::InternalInitialize(int& baseHP, int& baseDamage, LocalizedString* characterName){}
-void Character::InternalReturnToPool(){}
-
+void Character::InternalInitialize(int& charID, int& baseHP, int& baseDamage, LocalizedString* characterName){}
 void Character::Die(DieInteraction* interaction) { currentPhase = PHASE::DEAD; RewardStash::UnlockReward(0); }
 bool Character::IsAlive() { return currentPhase != PHASE::DEAD; }
+
+#pragma region State/Save/Load
 
 json::JSON* Character::GetState()
 {
@@ -118,21 +110,68 @@ json::JSON* Character::GetState()
 	(*state)["dmg"] = dmg;
 	(*state)["phase"] = (int)currentPhase;
 	(*state)["animationTrigger"] = (int)nextAnimationTrigger;
-	
-	(*state)["autoDeck"] = json::Array();
-	auto index = currentCard;
-	for (int i = 0; i < deckSize; i++)
-	{
-		if (index >= deckSize)
-		{
-			index = 0;
-		}
+	(*state)["currentCard"] = currentCardIndex;
 
-		(*state)["autoDeck"].append(*deck[index]->GetState());
-		index++;
+	(*state)["autoDeck"] = json::Array();
+	for (auto& card : deck)
+	{
+		if (card == nullptr) continue;
+		(*state)["autoDeck"].append(*card->GetState());
 	}
 
 	nextAnimationTrigger = TRIGGERANIMATION::NONE;
 
 	return state.get();
 }
+
+json::JSON Character::GetSave()
+{
+	json::JSON save;
+
+	save["characterID"] = characterID;
+	save["hp"] = hp;
+	save["dmg"] = dmg;
+	save["phase"] = (int)currentPhase;
+	save["currentCard"] = currentCardIndex;
+
+	save["autoDeck"] = json::Array();
+	for (auto& card : deck)
+	{
+		if (card == nullptr) continue;
+		save["autoDeck"].append(card->GetSave());
+	}
+
+	return save;
+}
+
+void Character::SetSave(json::JSON save)
+{
+	nextAnimationTrigger = TRIGGERANIMATION::NONE;
+	hp = save["hp"].ToInt();
+	dmg = save["dmg"].ToInt();
+	currentCardIndex = save["currentCard"].ToInt();
+	currentPhase = static_cast<PHASE>(save["phase"].ToInt());
+
+	for (int i = 0; i < deck.size(); i++)
+	{
+		if (deck[i] == nullptr) continue;
+		deck[i]->ReturnToPool();
+		deck[i] = nullptr;
+	}
+
+	int iterator = -1;
+	for (auto& card : (save)["autoDeck"].ArrayRange())
+	{
+		iterator++;
+		deck[iterator] = BaseCard::LoadSave(this, card);
+	}
+}
+
+Character* Character::LoadSave(json::JSON save)
+{
+	Character* character = CharacterPool::GetInstance(save["characterID"].ToInt());
+	character->SetSave(save);
+	return character;
+}
+
+#pragma endregion

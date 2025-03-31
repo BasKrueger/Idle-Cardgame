@@ -86,6 +86,22 @@ MonoBehaviour:
     m_Localized: Erahlte mehr belohnungen durch das besiegen von Gegnern
     m_Metadata:
       m_Items: []
+  - m_Id: 26004876448034816
+    m_Localized: Lade Spiel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26004932580405248
+    m_Localized: Lade Speicherstand
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26005062788378624
+    m_Localized: Simuliere AFK Zeit ({0})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26017992502210560
+    m_Localized: Fast Fertig
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

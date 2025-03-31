@@ -1,14 +1,12 @@
 #include "pch.h"
 #include "EncounterManager.h"
-#include "CombatEncounter.h"
-#include "IdleEncounter.h"
 #include "EncounterPool.h"
 #include "Json.hpp"
 #include "Player.h"
 
 EncounterManager::~EncounterManager()
 {
-    pCurrentEncounter->ReturnEncounterToPool();
+    pCurrentEncounter->ReturnToPool();
 }
 
 EncounterManager::EncounterManager(std::unique_ptr<Player>* pPlayer)
@@ -30,17 +28,12 @@ void EncounterManager::Tick()
     }
 }
 
-json::JSON* EncounterManager::GetState()
-{
-    return pCurrentEncounter->GetState();
-}
-
 void EncounterManager::BeginNextEncounter()
 {
     if (pCurrentEncounter != 0) 
     {
         pCurrentEncounter->End(pPlayer);
-        pCurrentEncounter->ReturnEncounterToPool();
+        pCurrentEncounter->ReturnToPool();
     }
 
     pCurrentEncounter = GenerateNextEncounter();
@@ -52,8 +45,35 @@ BaseEncounter* EncounterManager::GenerateNextEncounter()
 
     if (encounterIndex % 2 == 0)
     {
-        return EncounterPool<IdleEncounter>().GetInstance(pPlayer);
+        return EncounterPool::GetInstance(pPlayer, 0);
     }
 
-    return EncounterPool<CombatEncounter>().GetInstance(pPlayer);
+    return EncounterPool::GetInstance(pPlayer, 1);
 }
+
+
+#pragma region State/Save/Load
+json::JSON* EncounterManager::GetState()
+{
+    return pCurrentEncounter->GetState();
+}
+
+json::JSON EncounterManager::GetSave()
+{
+    json::JSON save;
+    save["encounterIndex"] = encounterIndex;
+    save["encounter"] = pCurrentEncounter->GetSave();
+
+    return save;
+}
+
+void EncounterManager::SetSave(std::unique_ptr<Player>* pPlayer, json::JSON save)
+{
+    pCurrentEncounter->End(pPlayer);
+    pCurrentEncounter->ReturnToPool();
+
+    encounterIndex = save["encounterIndex"].ToInt();
+    pCurrentEncounter = BaseEncounter::LoadSave(pPlayer, save["encounter"]);
+}
+
+#pragma endregion

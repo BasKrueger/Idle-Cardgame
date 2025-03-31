@@ -18,14 +18,20 @@ public:
 	int id = reinterpret_cast<uint32_t>(this);
 	std::array<BaseCard*, 3> cards;
 
-	bool ClaimCardReward(int cardID, std::unique_ptr<Player>* pPlayer);
-	bool ClaimBonusReward(std::unique_ptr<Player>* pPlayer);
-	bool AllClaimed();
-
-	json::JSON* GetState();
+	bool Claim(int cardID, std::unique_ptr<Player>* pPlayer);
 
 private:
+	bool ClaimCardReward(int cardID, std::unique_ptr<Player>* pPlayer);
+	bool ClaimBonusReward(std::unique_ptr<Player>* pPlayer);
 	void SetRandomCardReward(int tier, int slot, Player* pPLayer, std::array<int, MAX_REWARD_ID>* excludeIDs);
+
+#pragma region state/save/load
 	json::JSON* state;
+
+public:
+	json::JSON* GetState();
+	json::JSON GetSave();
+	static Reward* LoadSave(Character* owner, json::JSON save);
+#pragma endregion
 };
 

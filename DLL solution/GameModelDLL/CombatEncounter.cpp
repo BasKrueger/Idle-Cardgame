@@ -11,14 +11,16 @@ bool CombatEncounter::IsOngoing()
     return BaseEncounter::NPCs[0]->IsAlive();
 }
 
-void CombatEncounter::InternalInitialize(std::unique_ptr<Player>* pPlayer)
+void CombatEncounter::InternalInitialize(std::unique_ptr<Player>* pPlayer, bool& hasStaticBackground, int& eID)
 {
-    AdventureLog::BeginNewSection();
+    eID = encounterID;
+    hasStaticBackground = true;
 
+    AdventureLog::BeginNewSection();
     LocalizedString* log;
     AdventureLog::AddLog(log, "CombatEncounter");
 
-    BaseEncounter::NPCs[0] = CharacterPool<TestEnemy>().GetInstance();
+    BaseEncounter::NPCs[0] = CharacterPool::GetInstance(TestEnemy::characterID);
     pPlayer->get()->EngageInCombat(BaseEncounter::NPCs[0]);
     BaseEncounter::NPCs[0]->EngageInCombat(pPlayer->get());
 }
@@ -30,10 +32,5 @@ void CombatEncounter::InternalTick(std::unique_ptr<Player>* pPlayer)
 
 void CombatEncounter::InternalEnd(std::unique_ptr<Player>* pPlayer)
 {
-    pPlayer->get()->DisEngageInCombat();
-}
-
-void CombatEncounter::InternalReturnToPool()
-{
-    EncounterPool<CombatEncounter>().ReturnInstance(this);
+    pPlayer->get()->DisengageInCombat();
 }

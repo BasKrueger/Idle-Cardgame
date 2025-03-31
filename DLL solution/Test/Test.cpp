@@ -36,7 +36,7 @@ void Skip()
     double anArray[loopCount];
     auto totalStart = std::chrono::system_clock::now();
 
-    std::cout << "Simulating a whole day " << loopCount << " times...\n";
+    std::cout << "Simulating a whole day " << loopCount << " times...\n\n";
 
     for (int loop = 0; loop < loopCount; loop++)
     {
@@ -50,7 +50,14 @@ void Skip()
         std::chrono::duration<double> elapsed_seconds = end - start;
         anArray[loop] = elapsed_seconds.count();
 
-        std::cout << loop + 1 << ". Loop | Elapsed time: " << anArray[loop] << " | seconds left: " << restSeconds << "\n";
+        if (loop < 9) 
+        {
+            std::cout << loop + 1 << ".  Day | Elapsed time: " << anArray[loop] << "\n";
+        }
+        else 
+        {
+            std::cout << loop + 1 << ". Day | Elapsed time: " << anArray[loop] << "\n";
+        }
     }
 
     std::cout << "\n";
@@ -60,7 +67,7 @@ void Skip()
         sum += anArray[i];
     }
 
-    std::cout << "Average simulation duration: " << sum / loopCount << "\n";
+    std::cout << "Average simulation duration: " << sum / (loopCount - 1) << "\n";
 
     auto totalEnd = std::chrono::system_clock::now();
     std::chrono::duration<double> elapsed_seconds = totalEnd - totalStart;
@@ -73,9 +80,37 @@ void Skip()
 
 int main()
 {
-    Skip();
     //Dump();
     //Skip();
+
+    //Initialize();
+    //for(int i = 0;i < 30;i++)
+    //{
+        //Tick();
+    //}
+    //GetSaveState(0,0);
+
+    Skip();
+
+    Initialize();
+    SetSaveState(&ReadFile("C:/Users/Bastian_Krueger/AppData/LocalLow/DefaultCompany/Idle Roguelike/Savestate.sv")[0]);
+    Skip(8000);
+
+    //std::cout << "\n\n\n\n--------\n";
+
+    //auto sa = json::JSON::Load(s);
+    //std::cout << sa;
+
+    
+
+    //Skip();
+    //Initialize();
+    
+    //Initialize();
+    //Tick();
+
+    //Dump();
+    //GetSaveState(0, 0);
 
     /*
 

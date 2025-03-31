@@ -12,6 +12,8 @@ public class RewardViewBox : MonoBehaviour
     [SerializeField]
     private BonusRewardView bonus;
 
+    private RewardState reward;
+
     private void Awake()
     {
         cards.claimStarted += OnClaimStarted;
@@ -20,6 +22,8 @@ public class RewardViewBox : MonoBehaviour
 
     public void SetUp(RewardState reward, StatView gold, StatView xp, CollectionView collection)
     {
+        this.reward = reward;
+
         bonus.SetUp(reward, gold, xp);
         cards.SetUp(reward, collection);
     }
@@ -29,9 +33,11 @@ public class RewardViewBox : MonoBehaviour
         cards.Show();
     }
 
-    private void OnClaimStarted()
+    private void OnClaimStarted(int cardID)
     {
         bonus.ClaimBonus();
+        GameDLL.ClaimReward(reward.ID, cardID);
+        SaveManager.Save();
     }
 
     private async void OnClaimEnded()

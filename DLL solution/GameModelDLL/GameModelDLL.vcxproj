@@ -184,6 +184,8 @@
     <ClInclude Include="InterActor.h" />
     <ClInclude Include="LocalizedString.h" />
     <ClInclude Include="Localizer.h" />
+    <ClInclude Include="LogEntry.h" />
+    <ClInclude Include="LogSubEntry.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PerformInteraction.h" />
     <ClInclude Include="Player.h" />
@@ -220,6 +222,8 @@
     <ClCompile Include="InterActor.cpp" />
     <ClCompile Include="LocalizedString.cpp" />
     <ClCompile Include="Localizer.cpp" />
+    <ClCompile Include="LogEntry.cpp" />
+    <ClCompile Include="LogSubEntry.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

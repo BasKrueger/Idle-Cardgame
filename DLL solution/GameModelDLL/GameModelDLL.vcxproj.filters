@@ -156,6 +156,12 @@
     <ClInclude Include="SlowAttackCard.h">
       <Filter>Headerfiles\Cards</Filter>
     </ClInclude>
+    <ClInclude Include="LogSubEntry.h">
+      <Filter>Headerfiles\General</Filter>
+    </ClInclude>
+    <ClInclude Include="LogEntry.h">
+      <Filter>Headerfiles\General</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EncounterManager.cpp">
@@ -224,9 +230,6 @@
     <ClCompile Include="AdventureLog.cpp">
       <Filter>SourceFiles\General</Filter>
     </ClCompile>
-    <ClCompile Include="CharacterPool.cpp">
-      <Filter>SourceFiles\General</Filter>
-    </ClCompile>
     <ClCompile Include="dllmain.cpp">
       <Filter>SourceFiles\General</Filter>
     </ClCompile>
@@ -256,6 +259,15 @@
     </ClCompile>
     <ClCompile Include="SlowAttackCard.cpp">
       <Filter>SourceFiles\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterPool.cpp">
+      <Filter>SourceFiles\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="LogSubEntry.cpp">
+      <Filter>SourceFiles\General</Filter>
+    </ClCompile>
+    <ClCompile Include="LogEntry.cpp">
+      <Filter>SourceFiles\General</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

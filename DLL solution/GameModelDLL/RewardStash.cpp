@@ -2,24 +2,28 @@
 #include "RewardStash.h"
 #include "GenericPool.h"
 
-std::vector<Reward*> RewardStash::unclaimedRewards;
-std::vector<std::vector<Reward*>> RewardStash::cachedRewards;
+std::array<Reward*, 99> RewardStash::unclaimedRewards;
+std::array<std::array<Reward*, 30>, 3> RewardStash::cachedRewards;
 Player* RewardStash::pPlayer;
-json::JSON* RewardStash::state;
-
 
 void RewardStash::Initialize(Player* player)
 {
-	unclaimedRewards.clear();
 	pPlayer = player;
 
-	for(int i = 0;i < 3;i++)
+	for(int i = 0;i < unclaimedRewards.size();i++)
 	{
-		std::vector<Reward*> v;
-		cachedRewards.push_back(v);
-		CacheTier(i);
+		if (unclaimedRewards[i] == nullptr) continue;
+		GenericPool<Reward>().ReturnInstance(unclaimedRewards[i]);
+		unclaimedRewards[i] = nullptr;
 	}
 
+	GenericPool<Reward*>().PrePool(100);
+	
+	RefillCacheTier(0);
+	RefillCacheTier(1);
+	RefillCacheTier(2);
+
+	//Testing only
 	UnlockReward(0);
 	UnlockReward(0);
 	UnlockReward(0);
@@ -28,79 +32,130 @@ void RewardStash::Initialize(Player* player)
 
 void RewardStash::UnlockReward(int tier)
 {
-	if(cachedRewards[tier].size() == 0)
+	int emptyRewardSlot = -1;
+
+	for (int i = 0; i < unclaimedRewards.size(); i++) 
 	{
-		CacheTier(tier);
+		if (unclaimedRewards[i] != nullptr) continue;
+		emptyRewardSlot = i;
+		break;
 	}
 
-	unclaimedRewards.push_back(cachedRewards[tier].back());
-	cachedRewards[tier].pop_back();
+	if (emptyRewardSlot == -1) return;
+
+	Reward* reward = nullptr;
+	for (int i = 0; i < cachedRewards[tier].size(); i++) 
+	{
+		if (cachedRewards[tier][i] == nullptr) continue;
+		reward = cachedRewards[tier][i];
+		cachedRewards[tier][i] = nullptr;
+		break;
+	}
+
+	if(reward == nullptr)
+	{
+		RefillCacheTier(tier);
+		UnlockReward(tier);
+	}
+
+	unclaimedRewards[emptyRewardSlot] = reward;
 }
+
+void RewardStash::ClaimReward(int rewardID, int cardID, std::unique_ptr<Player>* pPlayer)
+{
+	Reward* reward = nullptr;
+	int rewardIndex = -1;
+	for (int i = 0; i < unclaimedRewards.size(); i++)
+	{
+		if (unclaimedRewards[i] == nullptr) continue;
+		if (unclaimedRewards[i]->id != rewardID) continue;
+
+		reward = unclaimedRewards[i];
+		rewardIndex = i;
+		break;
+	}
+
+	if (reward == nullptr) return;
+	if (reward->Claim(cardID, pPlayer)) 
+	{
+		GenericPool<Reward>().ReturnInstance(reward);
+		unclaimedRewards[rewardIndex] = nullptr;
+	}
+}
+
+void RewardStash::RefillCacheTier(int tier)
+{
+	for (int i = 0; i < cachedRewards[tier].size(); i++)
+	{
+		if (cachedRewards[tier][i] != nullptr) continue;
+
+		auto reward = GenericPool<Reward>().GetInstance();
+		reward->RandomizeReward(tier, pPlayer);
+
+		cachedRewards[tier][i] = reward;
+	}
+} 
+
+#pragma region state/save/load
+json::JSON* RewardStash::state;
 
 json::JSON* RewardStash::GetState()
 {
 	if (state == nullptr) state = new json::JSON();
 
+	int rewardCount = 0;
 	(*state)["earnedRewards"] = json::Array();
-	for(auto& reward : unclaimedRewards)
+	for (auto& reward : unclaimedRewards)
 	{
+		if (reward == nullptr) continue;
+		rewardCount++;
+
+		if ((*state)["earnedRewards"].size() > 5) continue;
 		(*state)["earnedRewards"].append(*reward->GetState());
 	}
+
+	(*state)["rewardCount"] = rewardCount;
 
 	return state;
 }
 
-void RewardStash::ClaimCardReward(int rewardID, int cardID, std::unique_ptr<Player>* pPlayer)
+json::JSON RewardStash::GetSave()
 {
-	int rewardIndex = -1;
-	Reward* reward = nullptr;
-	for(int i = 0;i < unclaimedRewards.size();i++)
+	json::JSON save;
+
+	save["earnedRewards"] = json::Array();
+	for (auto& reward : unclaimedRewards)
 	{
-		if (unclaimedRewards[i]->id != rewardID) continue;
-		reward = unclaimedRewards[i];
-		rewardIndex = i;
-		break;
+		if (reward == nullptr) continue;
+		save["earnedRewards"].append(reward->GetSave());
 	}
 
-	if (reward == nullptr) return;
-	reward->ClaimCardReward(cardID, pPlayer);
-
-	if(reward->AllClaimed())
-	{
-		unclaimedRewards.erase(unclaimedRewards.begin() + rewardIndex);
-	}
+	return save;
 }
 
-void RewardStash::ClaimBonusReward(int rewardID, std::unique_ptr<Player>* pPlayer)
+void RewardStash::SetSave(Character* owner, json::JSON save)
 {
-	int rewardIndex = -1;
-	Reward* reward = nullptr;
 	for (int i = 0; i < unclaimedRewards.size(); i++)
 	{
-		if (unclaimedRewards[i]->id != rewardID) continue;
-		reward = unclaimedRewards[i];
-		rewardIndex = i;
-		break;
+		if (unclaimedRewards[i] == nullptr) continue;
+		delete unclaimedRewards[i];
 	}
 
-	if (reward == nullptr) return;
-	reward->ClaimBonusReward(pPlayer);
-
-	if (reward->AllClaimed())
+	for (int i = 0; i < unclaimedRewards.size(); i++)
 	{
-		unclaimedRewards.erase(unclaimedRewards.begin() + rewardIndex);
+		if (unclaimedRewards[i] == nullptr) continue;
+		GenericPool<Reward>().ReturnInstance(unclaimedRewards[i]);
+		unclaimedRewards[i] = nullptr;
 	}
+
+	int iterator = 0;
+	for (auto& reward : save["earnedRewards"].ArrayRange())
+	{
+		unclaimedRewards[iterator] = Reward::LoadSave(owner, reward);
+		iterator++;
+	}
+
+	GenericPool<Reward>().PrePool(100);
 }
 
-void RewardStash::CacheTier(int tier)
-{
-	for (int i = 0; i < 100; i++)
-	{
-		if (cachedRewards[tier].size() > 0) continue;
-
-		auto reward = GenericPool<Reward>().GetInstance();
-		reward->RandomizeReward(tier, pPlayer);
-
-		cachedRewards[tier].push_back(reward);
-	}
-}
+#pragma endregion

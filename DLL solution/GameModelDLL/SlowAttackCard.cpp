@@ -4,10 +4,10 @@
 #include "InteractionManager.h"
 #include "InteractionPool.h"
 #include "PlayInteraction.h"
-#include "CardPool.h"
 
-void SlowAttackCard::InternalInitialize(int& baseDmg, int& baseCooldown, LocalizedString* cardName, LocalizedString* cardDescription)
+void SlowAttackCard::InternalInitialize(int& cID, int& baseDmg, int& baseCooldown, LocalizedString* cardName, LocalizedString* cardDescription)
 {
+    cID = cardID;
     baseCooldown = 8;
     baseDmg = 3;
 
@@ -21,9 +21,4 @@ void SlowAttackCard::Play(PlayInteraction* play)
     auto interaction = InteractionPool<DamageInteraction>().GetInstance(this, play->pTarget);
     interaction->Initialize(BaseCard::dmg);
     InteractionManager::AddNext(interaction);
-}
-
-void SlowAttackCard::ReturnToPool()
-{
-    CardPool<SlowAttackCard>().ReturnInstance(this);
 }

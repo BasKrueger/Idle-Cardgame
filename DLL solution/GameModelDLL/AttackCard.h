@@ -5,11 +5,10 @@
 class AttackCard : public BaseCard
 {
 public:
-	static const int rewardID = 0;
-	virtual void ReturnToPool() override;
+	static const int cardID = 0;
 
 protected:
-	void InternalInitialize(int& baseDmg, int& baseCooldown, LocalizedString* cardName, LocalizedString* cardDescription) override;
+	void InternalInitialize(int& cID, int& baseDmg, int& baseCooldown, LocalizedString* cardName, LocalizedString* cardDescription) override;
 
 private:
 	virtual void Play(PlayInteraction* pTarget) override;

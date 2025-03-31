@@ -1,6 +1,7 @@
 #pragma once
 #include "Reward.h"
 #include <Vector>
+#include <Array>
 #include "Json.hpp"
 
 class Player;
@@ -10,18 +11,24 @@ class RewardStash
 public:
 	static void Initialize(Player* pPlayer);
 	static void UnlockReward(int tier);
-	static json::JSON* GetState();
-	
-	static void ClaimCardReward(int rewardID, int cardID, std::unique_ptr<Player>* pPlayer);
-	static void ClaimBonusReward(int rewardID, std::unique_ptr<Player>* pPlayer);
+
+	static void ClaimReward(int rewardID, int cardID, std::unique_ptr<Player>* pPlayer);
 
 private:
-	static void CacheTier(int tier);
-
-	static std::vector<Reward*> unclaimedRewards;
-	static std::vector<std::vector<Reward*>> cachedRewards;
 	static Player* pPlayer;
+	static std::array<Reward*, 99> unclaimedRewards;
+	static std::array<std::array<Reward*, 30>, 3> cachedRewards;
 
+	static void RefillCacheTier(int tier);
+
+#pragma region state/save/load
+public:
+	static json::JSON* GetState();
+	static json::JSON GetSave();
+	static void SetSave(Character* owner, json::JSON);
+
+private:
 	static json::JSON* state;
+#pragma endregion
 };
 

@@ -47,9 +47,6 @@ public class BonusRewardView : MonoBehaviour
     {
         claimButton.interactable = false;
 
-        GameDLL.ClaimBonusReward(reward.ID);
-        GameDLL.CreateGameState();
-
         await AnimateClaim();
 
         claimed?.Invoke();

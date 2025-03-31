@@ -9,15 +9,12 @@ bool IdleEncounter::IsOngoing()
 	return BaseEncounter::variables[0] > 0;
 }
 
-bool IdleEncounter::IsStaticEncounter()
+void IdleEncounter::InternalInitialize(std::unique_ptr<Player>* pPlayer, bool& hasStaticBackground, int& eID)
 {
-	return false;
-}
+	eID = encounterID;
+	hasStaticBackground = false;
 
-void IdleEncounter::InternalInitialize(std::unique_ptr<Player>* pPlayer)
-{
 	AdventureLog::BeginNewSection();
-
 	LocalizedString* log;
 	if (AdventureLog::AddLog(log, "IdleEncounter"))
 	{
@@ -30,11 +27,6 @@ void IdleEncounter::InternalInitialize(std::unique_ptr<Player>* pPlayer)
 void IdleEncounter::InternalEnd(std::unique_ptr<Player>* pPlayer)
 {
 	
-}
-
-void IdleEncounter::InternalReturnToPool()
-{
-	EncounterPool<IdleEncounter>().ReturnInstance(this);
 }
 
 void IdleEncounter::InternalTick(std::unique_ptr<Player>* pPlayer)

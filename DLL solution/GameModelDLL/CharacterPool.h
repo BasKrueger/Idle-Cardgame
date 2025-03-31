@@ -1,53 +1,22 @@
 #pragma once
 #include <vector>
 #include <iostream>
+#include <map>
 #include "Character.h"
+
+#define RegCharacter(CharacterClassName) case CharacterClassName::encounterID: \
+poolContent[CharacterClassName::encounterID].push_back(new CharacterClassName()); \
+break; \
 
 class Character;
 
-template <typename T>
 class CharacterPool
 {
 public:
-	static T* GetInstance();
-	static void ReturnInstance(T* pInstance);
+	static Character* GetInstance(int characterID);
+	static void ReturnInstance(Character* pInstance);
 
 private:
-	static std::vector<T*> poolContent;
+	static std::map<int, std::vector<Character*>> poolContent;
+	static void CreateInstance(int encounterID);
 };
-
-template<typename T>
-std::vector<T*> CharacterPool<T>::poolContent;
-
-template<typename T>
-inline T* CharacterPool<T>::GetInstance()
-{
-	T* result = 0;
-
-	if (poolContent.size() > 0)
-	{
-		result = poolContent.back();
-		poolContent.pop_back();
-	}
-	else
-	{
-		result = new T();
-	}
-
-	if (result == 0)
-	{
-		std::cout << "Error while getting a pooled object instance\n";
-	}
-
-	result->Register();
-	result->Initialize();
-
-	return result;
-}
-
-template<typename T>
-inline void CharacterPool<T>::ReturnInstance(T* pInstance)
-{
-	pInstance->UnRegister();
-	poolContent.push_back(pInstance);
-}

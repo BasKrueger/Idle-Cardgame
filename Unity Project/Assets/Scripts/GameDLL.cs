@@ -7,7 +7,7 @@ using UnityEngine;
 
 public static class GameDLL
 {
-    private const int STRING_MAX_LENGTH = 2048 * 8;
+    private const int STRING_MAX_LENGTH = 2048 * 500;
 
 #if UNITY_EDITOR
     private const string dllName = "GameModelDLL";
@@ -29,21 +29,7 @@ public static class GameDLL
     public static extern void Tick();
 
     [DllImport(dllName)]
-    private static extern float Skip(float seconds);
-    public static async UniTask Skip_(float seconds)
-    {
-        while (seconds >= 1)
-        {
-            var startTime = System.DateTime.Now;
-            seconds = Skip(seconds);
-            var endTime = System.DateTime.Now;
-            seconds += (float)endTime.Subtract(startTime).TotalSeconds;
-
-            Debug.LogError("rest seconds: " + seconds);
-        }
-
-        await UniTask.WaitForSeconds(seconds);
-    }
+    public static extern float Skip(float seconds);
 
     [DllImport(dllName)]
     public static extern int SwapCards(int collection, int deck);
@@ -100,10 +86,7 @@ public static class GameDLL
     }
 
     [DllImport("GameModelDLL")]
-    public static extern void ClaimCardReward(int rewardID, int cardID);
-
-    [DllImport("GameModelDLL")]
-    public static extern void ClaimBonusReward(int rewardID);
+    public static extern void ClaimReward(int rewardID, int cardID);
 
     [DllImport("GameModelDLL")]
     private static extern void GenerateGameState();

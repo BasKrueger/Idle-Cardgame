@@ -8,28 +8,30 @@
 #include "InteractionPool.h"
 #include "Json.hpp"
 
-void Player::InternalInitialize(int& baseHP, int& baseDamage, LocalizedString* characterName)
+void Player::Before(DamageInteraction* interaction)
 {
+	//testing only
+	if (interaction->pTarget != this || hp > 98) return;
+	interaction->attackDamage = 0;
+}
+
+void Player::AddToCollection(BaseCard* card)
+{
+	collection.push_back(card);
+}
+
+void Player::InternalInitialize(int& charID, int& baseHP, int& baseDamage, LocalizedString* characterName)
+{
+	charID = characterID;
 	baseHP = 100;
 	baseDamage = 0;
 	characterName->SetKey("Player");
 
 	for (int i = 0; i < 20; i++)
 	{
-		deck[i] = CardPool<AttackCard>().GetInstance(this);
+		deck[i] = CardPool::GetInstance(this, AttackCard::cardID);
 	}
-
-	for (int i = 0; i < 3; i++)
-	{
-		auto card = CardPool<AttackCard>().GetInstance(this);
-		card->UnRegister();
-		collection.push_back(card);
-	}
-}
-
-void Player::InternalReturnToPool()
-{
-	CharacterPool<Player>().ReturnInstance(this);
+	CardPool::ReFillPool(AttackCard::cardID);
 }
 
 int Player::SwitchCards(int collectionID, int deckID)
@@ -73,14 +75,14 @@ int Player::SwitchCards(int collectionID, int deckID)
 	deckCard->UnRegister();
 	deckCard->Reset();
 
-	std::cout << "\n\n\n\n\nSucesfully swapped " << collectionID << " with " << deckID << "\n\n\n\n\n";
-
 	return 0;
 }
 
+#pragma region State/Save/Load
+
 json::JSON* Player::GetState()
 {
-	if (state == 0) state = std::make_unique<json::JSON>();
+	if (state == nullptr) state = std::make_unique<json::JSON>();
 	
 	(*state)["generic"] = *Character::GetState();
 	(*state)["xp"] = xp;
@@ -95,13 +97,42 @@ json::JSON* Player::GetState()
 	return state.get();
 }
 
-void Player::Before(DamageInteraction* interaction)
+json::JSON Player::GetSave()
 {
-	if (interaction->pTarget != this || hp > 98) return;
-	interaction->attackDamage = 0;
+	json::JSON save;
+
+	(save)["generic"] = Character::GetSave();
+	(save)["xp"] = xp;
+	(save)["gold"] = gold;
+
+	(save)["collection"] = json::Array();
+	for (auto& card : collection)
+	{
+		(save)["collection"].append(card->GetSave());
+	}
+
+	return save;
 }
 
-void Player::AddToCollection(BaseCard* card)
+void Player::SetSave(json::JSON save)
 {
-	collection.push_back(card);
+	Character::SetSave(save["generic"]);
+	
+	xp = save["xp"].ToInt();
+	gold = save["gold"].ToInt();
+
+	for (auto& card : collection) 
+	{
+		if (card == nullptr) continue;
+		card->ReturnToPool();
+	}
+
+	collection.clear();
+
+	for (auto& card : save["collection"].ArrayRange()) 
+	{
+		collection.push_back(BaseCard::LoadSave(this, card));
+	}
 }
+
+#pragma endregion

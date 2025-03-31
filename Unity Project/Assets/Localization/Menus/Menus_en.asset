@@ -82,6 +82,22 @@ MonoBehaviour:
     m_Localized: Get more rewards by defeating enemies
     m_Metadata:
       m_Items: []
+  - m_Id: 26004876448034816
+    m_Localized: Loading Game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26004932580405248
+    m_Localized: Loading Savestate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26005062788378624
+    m_Localized: Simulate AFK time ({0})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26017992502210560
+    m_Localized: Almost Done...
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

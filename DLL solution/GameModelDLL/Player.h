@@ -8,22 +8,30 @@
 class Player : public Character
 {
 public:
+	static const int characterID = 0;
+
 	void Before(DamageInteraction* interaction) override;
 	void AddToCollection(BaseCard* card);
-
 	int SwitchCards(int collection, int deck);
-	json::JSON* GetState();
 
 	int xp = 1;
 	int gold = 1;
 
 private:
-	std::unique_ptr<json::JSON> state;
 	std::vector<BaseCard*> collection;
 
 protected:
-	void InternalInitialize(int& baseHP, int& baseDamage, LocalizedString* characterName) override;
-	void InternalReturnToPool() override;
+	void InternalInitialize(int& charID, int& baseHP, int& baseDamage, LocalizedString* characterName) override;
 
+#pragma region State/Save/Load
+public:
+	json::JSON* GetState();
+	json::JSON GetSave();
+
+	void SetSave(json::JSON save);
+private:
+	std::unique_ptr<json::JSON> state;
+
+#pragma endregion
 };
 

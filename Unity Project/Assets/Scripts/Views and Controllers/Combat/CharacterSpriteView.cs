@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
 
 public class CharacterSpriteView : MonoBehaviour
@@ -18,6 +19,8 @@ public class CharacterSpriteView : MonoBehaviour
     {
         anim.SetBool(COMBAT_BOOL, characterState.phase == CharacterPhase.Combat);
         anim.SetBool(DEAD_BOOL, characterState.phase == CharacterPhase.Dead);
+
+        if (characterState.phase == CharacterPhase.Idle) return;
 
         switch (characterState.animationTrigger)
         {

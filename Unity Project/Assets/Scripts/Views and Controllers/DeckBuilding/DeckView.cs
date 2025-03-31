@@ -39,6 +39,7 @@ public class DeckView : MonoBehaviour, IGameView
         {
             var instance = Instantiate(viewModel, content, false);
             instance.Content.UpdateTexts(card);
+            instance.transform.gameObject.name = card.cardDescription;
             
             instance.Clicked += CardSelected.Invoke;
             instance.ContentChanged += OnCardContentChanged;
@@ -62,6 +63,6 @@ public class DeckView : MonoBehaviour, IGameView
     
     private void UpdateMarker(CharacterState playerState)
     {
-        marker.SetTarget(activeViews[playerState.autoDeck.First().id].transform);
+        marker.SetTarget(activeViews[playerState.autoDeckInPlayOrder.First().id].transform);
     }
 }
