@@ -1,0 +1,40 @@
+﻿  ANDROID_HOME=C:\Program Files (x86)\Android\android-sdk
+  ANDROID_SDK_ROOT=C:\Program Files (x86)\Android\android-sdk
+  ANT_HOME=
+  JAVA_HOME=C:\Program Files\Android\jdk\jdk-8.0.302.8-hotspot\jdk8u302-b08
+  NDK_ROOT=C:\Program Files (x86)\Android\AndroidNDK\android-ndk-r23c
+  Game.cpp
+  AttackCard.cpp
+  BaseCard.cpp
+  CardPool.cpp
+  FastAttackCard.cpp
+  SlowAttackCard.cpp
+  Character.cpp
+  CharacterPool.cpp
+  Player.cpp
+  TestEnemy.cpp
+  BaseEncounter.cpp
+  CombatEncounter.cpp
+  EncounterManager.cpp
+  EncounterPool.cpp
+  IdleEncounter.cpp
+  IDManager.cpp
+  AfterInteraction.cpp
+  BaseInteraction.cpp
+  BeforeInteraction.cpp
+  DamageInteraction.cpp
+  DieInteraction.cpp
+  InteractionManager.cpp
+  InteractionPool.cpp
+  InterActor.cpp
+  PerformInteraction.cpp
+  PlayInteraction.cpp
+  AdventureLog.cpp
+  LocalizedString.cpp
+  Localizer.cpp
+  LogEntry.cpp
+  LogSubEntry.cpp
+  Reward.cpp
+  RewardStash.cpp
+  GameModelSo.cpp
+  GameModelSo.vcxproj -> C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\ARM64\Debug\libGameModelSo.so

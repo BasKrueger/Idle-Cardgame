@@ -1,0 +1,39 @@
+﻿  pch.cpp
+  Game.cpp
+  AttackCard.cpp
+  BaseCard.cpp
+  CardPool.cpp
+  FastAttackCard.cpp
+  SlowAttackCard.cpp
+  Character.cpp
+  CharacterPool.cpp
+  Player.cpp
+  TestEnemy.cpp
+  BaseEncounter.cpp
+  CombatEncounter.cpp
+  EncounterManager.cpp
+  EncounterPool.cpp
+  IdleEncounter.cpp
+  IDManager.cpp
+  AfterInteraction.cpp
+  BaseInteraction.cpp
+  BeforeInteraction.cpp
+  DamageInteraction.cpp
+  Generating Code...
+  Compiling...
+  DieInteraction.cpp
+  InteractionManager.cpp
+  InteractionPool.cpp
+  InterActor.cpp
+  PerformInteraction.cpp
+  PlayInteraction.cpp
+  AdventureLog.cpp
+  LocalizedString.cpp
+  Localizer.cpp
+  LogEntry.cpp
+  LogSubEntry.cpp
+  Reward.cpp
+  RewardStash.cpp
+  dllmain.cpp
+  Generating Code...
+  GameModelDLL.vcxproj -> C:\Users\Bastian_Krueger\Desktop\Repositories\GameModel solution\GameModel\x64\Debug\GameModelDLL.dll
