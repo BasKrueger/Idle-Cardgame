@@ -37,6 +37,39 @@ bool AdventureLog::AddLog(LocalizedString*& log, std::string key, LocalizedStrin
 	return true;
 }
 
+bool AdventureLog::AddLog(std::string key, LocalizedString::TABLE table)
+{
+	if (!enabled) return false;
+
+	LogEntry* entry = 0;
+
+	if (entries[0] == nullptr)
+	{
+		entries[0] = GenericPool<LogEntry>().GetInstance();
+		entry = entries[0];
+	}
+	else
+	{
+		for (int i = entries.size() - 1; i >= 0; i--)
+		{
+			if (entries[i] != nullptr)
+			{
+				entry = entries[i];
+				break;
+			}
+		}
+	}
+
+	if (entry == 0)
+	{
+		std::cout << "this shouldnt happen";
+		return false;
+	}
+
+	entry->AddLog(key, table);
+	return true;
+}
+
 void AdventureLog::BeginNewSection()
 {
 	if (!enabled) return;

@@ -1,0 +1,10 @@
+# ninja log v5
+24	1900	7658153435192288	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	77e7ea0dbb249fcc
+87	2016	7658153436106648	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	cacf109b5a16aee9
+0	2397	7658153441097655	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	68d41d61afe1d9bc
+35	2504	7658153441062113	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	200b0d6f80c8ba5a
+51	2587	7658153443214369	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	870acdbcf2adc730
+9	2602	7658153443400639	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	3c553579c1a3a148
+68	3005	7658153447142785	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	524681a38e065962
+17	3179	7658153449288607	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	bfe9bc5a9e5ef504
+3179	3446	7658153451818436	C:/Users/Bastian_Krueger/Desktop/Repositories/Idle-Cardgame/Unity Project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/1it1o366/obj/arm64-v8a/libgame.so	5edc5d442af62f55

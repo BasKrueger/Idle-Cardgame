@@ -1,0 +1,30 @@
+﻿Key,Id,Shared Comments,English(en),English(en) Comments,German (Germany)(de-DE),German (Germany)(de-DE) Comments
+"Adventure_Button",5626458112,"","Adventure","","Abenteuer",""
+"EditDeck_Button",235860193280,"","Deck","","Deck",""
+"Close_Button",3549829848166400,"","Close","","Schliesen",""
+"Deck_Title
+",4256632395329536,"","Current Deck","","Aktuelles Deck
+",""
+"Deck_Collection
+",4256711457959936,"","Collection","","Sammlung",""
+"Cancel_Button
+",5315425422077952,"","Cancel","","Abbrechen",""
+"Simulate_Ticks",6436468618489856,"","Simulation AFK time","","Simuliere AFK Zeit",""
+"Loading_Game",6436640450736128,"","Loading the Game","","Lade das Spiel",""
+"Rewards_Title
+",19110777329610752,"","Treasure Chest","","SChatztruhe
+",""
+"Rewards_Description",19111989399580672,"","Pick a card to add to your collection!","","Wähle eine Karte um sie deiner Sammlung hinzuzufügen!",""
+"Rewards_Button",19131497577246720,"","{0} new rewards","","{0} neuen Belohnungen",""
+"Rewards_Button_Empty",19470130419134464,"","No new rewards","","keine neuen Belohnungen",""
+"Claim_Button
+",20555052298858496,"","Claim","","Sammeln",""
+"Bonus
+",20555810150871040,"","Bonus","","Bonus",""
+"Button_Close
+",23063100699504640,"","Close","","Schliesen",""
+"OutOfRewards",23075001416347648,"","Get more rewards by defeating enemies","","Erahlte mehr belohnungen durch das besiegen von Gegnern",""
+"GameLoad",26004876448034816,"","Loading Game","","Lade Spiel",""
+"SaveLoad",26004932580405248,"","Loading Savestate","","Lade Speicherstand",""
+"SimulateTime",26005062788378624,"","Simulate AFK time ({0})","","Simuliere AFK Zeit ({0})",""
+"AlmostDone",26017992502210560,"","Almost Done...","","Fast Fertig",""

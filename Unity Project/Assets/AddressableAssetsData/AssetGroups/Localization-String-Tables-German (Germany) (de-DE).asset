@@ -14,34 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: Localization-String-Tables-German (Germany) (de-DE)
   m_GUID: 4deb62792e08bfc4b8a9c29b3e2f6ef5
-  m_SerializeEntries:
-  - m_GUID: 358000d1b8f1843488177206dc7956fa
-    m_Address: Cards_de-DE
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-de-DE
-    - Preload
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 40c764f66dcdb4f4ab47bbfd90d4b4ca
-    m_Address: Menus_de-DE
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-de-DE
-    - Preload
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 7edbe1b7061aa6d48a1eb7454f3467d7
-    m_Address: Characters_de-DE
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-de-DE
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d51c944672c556e449c993e808266b22
-    m_Address: AdventureLog_de-DE
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-de-DE
-    - Preload
-    FlaggedDuringContentUpdateRestriction: 0
+  m_SerializeEntries: []
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 2c4e05cdc715d8a42ba22f217e118210, type: 2}
   m_SchemaSet:

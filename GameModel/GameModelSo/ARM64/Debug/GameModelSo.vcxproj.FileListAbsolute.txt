@@ -1,2 +1,2 @@
 C:\Users\Bastian_Krueger\Desktop\Repositories\GameModel solution\GameModel\GameModelSo\ARM64\Debug\libGameModelSo.so
-C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelSo\ARM64\Debug\libGameModelSo.so
+C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelSo\ARM64\Debug\lib__GameModelSo.so

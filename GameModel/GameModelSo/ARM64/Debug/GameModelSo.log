@@ -3,6 +3,7 @@
   ANT_HOME=
   JAVA_HOME=C:\Program Files\Android\jdk\jdk-8.0.302.8-hotspot\jdk8u302-b08
   NDK_ROOT=C:\Program Files (x86)\Android\AndroidNDK\android-ndk-r23c
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(520,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
   Game.cpp
   AttackCard.cpp
   BaseCard.cpp
@@ -37,4 +38,4 @@
   Reward.cpp
   RewardStash.cpp
   GameModelSo.cpp
-  GameModelSo.vcxproj -> C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\ARM64\Debug\libGameModelSo.so
+  GameModelSo.vcxproj -> C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\Unity Project\Assets\Plugins\Android\ARM64\lib__GameModelSo.so

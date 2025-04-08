@@ -16,13 +16,13 @@ MonoBehaviour:
   m_GUID: d0668807d897a204d8284d3d21bba94c
   m_SerializeEntries:
   - m_GUID: 13c3b98bc53c3d546a445d0ea453f13f
-    m_Address: German (Germany) (de-DE)
+    m_Address: German (Germany)(de-DE)
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c6880ebf52c53914c8ee6ccc048ea339
-    m_Address: English (en)
+    m_Address: English(en)
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale

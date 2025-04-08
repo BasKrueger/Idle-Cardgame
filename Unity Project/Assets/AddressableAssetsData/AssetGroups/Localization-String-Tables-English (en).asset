@@ -14,34 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: Localization-String-Tables-English (en)
   m_GUID: 00175fe717dca3f4599339f4f915f2c0
-  m_SerializeEntries:
-  - m_GUID: 32e89ccbd0165c3488519bd5422a291e
-    m_Address: Cards_en
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-en
-    - Preload
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6249f3dd4e673e043892cd6538e5ee1a
-    m_Address: Menus_en
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-en
-    - Preload
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6da195f136c4ab6469a51eed8afb238b
-    m_Address: Characters_en
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-en
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: f0b1608e9b7f12944a9c1f12f8f23e37
-    m_Address: AdventureLog_en
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-en
-    - Preload
-    FlaggedDuringContentUpdateRestriction: 0
+  m_SerializeEntries: []
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 2c4e05cdc715d8a42ba22f217e118210, type: 2}
   m_SchemaSet:

@@ -12,7 +12,7 @@ const int Player::characterID;
 void Player::Before(DamageInteraction* interaction)
 {
 	//testing only
-	if (interaction->pTarget != this || hp > 98) return;
+	if (interaction->pTarget != this || hp >= 10) return;
 	interaction->attackDamage = 0;
 }
 

@@ -24,7 +24,6 @@ void Character::Initialize()
 void Character::Tick()
 {
 	if (pEnemy == nullptr) return;
-	if (pEnemy->hp <= 0) return;
 
 	if(!pEnemy->IsAlive())
 	{
@@ -34,7 +33,6 @@ void Character::Tick()
 
 	deck[currentCardIndex]->Tick();
 	TryPlayNextCard(deck[currentCardIndex]);
-
 }
 
 void Character::TryPlayNextCard(BaseCard* card)

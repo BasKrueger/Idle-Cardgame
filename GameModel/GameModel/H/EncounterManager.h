@@ -10,16 +10,15 @@ class EncounterManager
 public:
 	~EncounterManager();
 	EncounterManager(Player* pPlayer);
-	void Tick();
+	void Tick(Player* pPlayer);
 
 private:
 	int encounterIndex;
 
 	BaseEncounter* pCurrentEncounter;
-	Player* pPlayer;
 
-	void BeginNextEncounter();
-	BaseEncounter* GenerateNextEncounter();
+	void BeginNextEncounter(Player* pPlayer);
+	BaseEncounter* GenerateNextEncounter(Player* pPlayer);
 
 #pragma region State/Save/Load
 public:

@@ -4,6 +4,7 @@ using System.Linq;
 using Cysharp.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class CardQueueView : MonoBehaviour
 {
@@ -27,6 +28,12 @@ public class CardQueueView : MonoBehaviour
     
     public void OnGameStateUpdate(CharacterState characterState)
     {
+        if (characterState.autoDeckInPlayOrder.Count == 0)
+        {
+            Debug.LogError("Error: deck is empty");
+            return;
+        }
+
         var statesToDisplay = characterState.autoDeckInPlayOrder.Take(previewPositions.Count).ToDictionary(card => card.id, card=> card);
 
         DestroyRemovedCards(statesToDisplay);

@@ -1,5 +1,4 @@
 using Cysharp.Threading.Tasks;
-using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
 
 public class CharacterSpriteView : MonoBehaviour

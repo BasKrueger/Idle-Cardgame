@@ -9,10 +9,12 @@ public static class GameDLL
 {
     private const int STRING_MAX_LENGTH = 2048 * 500;
 
-#if UNITY_EDITOR
+#if UNITY_EDITOR_WIN
     private const string dllName = "GameModelDLL";
-#else
+#elif UNITY_STANDALONE_WIN
     private const string dllName = "__GameModelDLL";
+#elif UNITY_ANDROID
+    private const string dllName = "__GameModelSo";
 #endif
 
     public static event System.Action<List<string>> GameStateReceived;
@@ -29,7 +31,7 @@ public static class GameDLL
     public static extern void Tick();
 
     [DllImport(dllName)]
-    public static extern float Skip(float seconds);
+    public static extern void Skip(float seconds);
 
     [DllImport(dllName)]
     public static extern int SwapCards(int collection, int deck);
@@ -63,7 +65,7 @@ public static class GameDLL
         return builder.ToString();
     }
 
-    [DllImport("GameModelDLL")]
+    [DllImport(dllName)]
     private static extern void SetSaveState(StringBuilder str, int maxLength);
     public static void SetSaveState(string save)
     {
@@ -72,7 +74,7 @@ public static class GameDLL
         SetSaveState(builder, STRING_MAX_LENGTH);
     }
 
-    [DllImport("GameModelDLL")]
+    [DllImport(dllName)]
     private static extern void SetLanguage(string language, string cardTablePath, string logLabelPath, string characterTablePath);
     public static void SetLanguage(string language)
     {
@@ -85,10 +87,10 @@ public static class GameDLL
         Debug.Log("Language set to " + language);
     }
 
-    [DllImport("GameModelDLL")]
+    [DllImport(dllName)]
     public static extern void ClaimReward(int rewardID, int cardID);
 
-    [DllImport("GameModelDLL")]
+    [DllImport(dllName)]
     private static extern void GenerateGameState();
 
     public static void CreateGameState()

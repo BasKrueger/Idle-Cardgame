@@ -63,6 +63,12 @@ public class DeckView : MonoBehaviour, IGameView
     
     private void UpdateMarker(CharacterState playerState)
     {
+        if(playerState.autoDeckInPlayOrder.Count == 0)
+        {
+            Debug.LogError("Error: deck is empty");
+            return;
+        }
+
         marker.SetTarget(activeViews[playerState.autoDeckInPlayOrder.First().id].transform);
     }
 }

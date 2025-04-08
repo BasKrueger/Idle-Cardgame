@@ -27,14 +27,14 @@ public:
 	virtual void Play(PlayInteraction* pTarget);
 
 protected:
-	int cooldown;
-	int dmg;
+	int cooldown = 0;
+	int dmg = 0;
 
 	virtual void InternalInitialize(int& cID, int& baseDmg, int& baseCooldown, LocalizedString* cardName, LocalizedString* cardDescription);
 
 private:
-	int baseDmg;
-	int baseCooldown;
+	int baseDmg = 0;
+	int baseCooldown = 0;
 
 	LocalizedString* cardDescription;
 	std::array<int, 3> variables;

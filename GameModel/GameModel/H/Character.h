@@ -14,7 +14,7 @@ class Character : public InterActor
 {
 public:
 	LocalizedString* characterName = nullptr;
-	int characterID;
+	int characterID = -1;
 
 	void Initialize();
 	void Tick();
@@ -28,7 +28,7 @@ public:
 
 protected:
 	std::array<BaseCard*, 20> deck;
-	int hp;
+	int hp = 0;
 	
 	virtual void InternalInitialize(int& charID, int& baseHP, int& baseDamage, LocalizedString* characterName);
 
@@ -41,10 +41,10 @@ private:
 	Character* pEnemy = nullptr;
 
 	int id = IDManager::NewID();
-	int dmg;
-	int baseDamage;
-	int baseHP;
-	int currentCardIndex;
+	int dmg = 0;
+	int baseDamage = 0;
+	int baseHP = 0;
+	int currentCardIndex = 0;
 	
 	void TryPlayNextCard(BaseCard* card);
 

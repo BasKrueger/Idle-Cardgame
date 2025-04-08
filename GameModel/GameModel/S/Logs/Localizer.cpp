@@ -1,23 +1,27 @@
 #include "H/Localizer.h"
 
-rapidcsv::Document* Localizer::cardDoc = 0;
-rapidcsv::Document* Localizer::logDoc = 0;
-rapidcsv::Document* Localizer::characterDoc = 0;
-std::string Localizer::currentLanguage;
+rapidcsv::Document* Localizer::cardDoc = nullptr;
+rapidcsv::Document* Localizer::logDoc = nullptr;
+rapidcsv::Document* Localizer::characterDoc = nullptr;
+std::string Localizer::currentLanguage = "undefined";
 
 std::string Localizer::Localize(std::string key, LocalizedString::TABLE table)
 {
-    switch(table)
+    if(currentLanguage != "undefined")
     {
+        switch (table)
+        {
         case LocalizedString::TABLE::CARDS:
-            if (cardDoc != 0) return cardDoc->GetCell<std::string>(currentLanguage, key);
+            std::cout << currentLanguage << "\n";
+            if (cardDoc != nullptr) return cardDoc->GetCell<std::string>(currentLanguage, key);
         case LocalizedString::TABLE::ADVENTURE_LOG:
-            if (logDoc != 0) return logDoc->GetCell<std::string>(currentLanguage, key);
+            if (logDoc != nullptr) return logDoc->GetCell<std::string>(currentLanguage, key);
         case LocalizedString::TABLE::CHARACTERS:
-            if (characterDoc != 0) return characterDoc->GetCell<std::string>(currentLanguage, key);
+            if (characterDoc != nullptr) return characterDoc->GetCell<std::string>(currentLanguage, key);
+        }
     }
 
-    return "Localization " + key + " not found!";
+    return "Localization " + key + " --- " + currentLanguage + " not found!";
 }
 
 void Localizer::SetLanguage(std::string language, std::string cardTable, std::string logTable, std::string characterTable)

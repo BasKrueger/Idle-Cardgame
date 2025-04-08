@@ -23,7 +23,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 192826634240
-    m_Localized: Verursache {0} schaden an einem Gegner
+    m_Localized: Verursache {0} schaden
     m_Metadata:
       m_Items: []
   - m_Id: 3129414053888
@@ -31,11 +31,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 3191552667648
-    m_Localized: Verursache {0} schade an einem Gegner
+    m_Localized: Verursache {0} schaden
     m_Metadata:
       m_Items: []
   - m_Id: 19875859386920960
-    m_Localized: Deal {0} damage
+    m_Localized: Verursache {0} schaden
     m_Metadata:
       m_Items: []
   - m_Id: 19875856857755648

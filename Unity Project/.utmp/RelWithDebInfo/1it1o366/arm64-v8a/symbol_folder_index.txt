@@ -1,0 +1,1 @@
+C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\Unity Project\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\cxx\RelWithDebInfo\1it1o366\obj\arm64-v8a

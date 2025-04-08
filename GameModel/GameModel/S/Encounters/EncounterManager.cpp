@@ -10,11 +10,10 @@ EncounterManager::~EncounterManager()
 
 EncounterManager::EncounterManager(Player* pPlayer)
 {
-    this->pPlayer = pPlayer;
-    BeginNextEncounter();
+    BeginNextEncounter(pPlayer);
 }
 
-void EncounterManager::Tick()
+void EncounterManager::Tick(Player* pPlayer)
 {
     if (!pPlayer->IsAlive()) 
     {
@@ -23,11 +22,11 @@ void EncounterManager::Tick()
 
     if (!pCurrentEncounter->Tick(pPlayer)) 
     {
-        BeginNextEncounter();
+        BeginNextEncounter(pPlayer);
     }
 }
 
-void EncounterManager::BeginNextEncounter()
+void EncounterManager::BeginNextEncounter(Player* pPlayer)
 {
     if (pCurrentEncounter != 0) 
     {
@@ -35,10 +34,10 @@ void EncounterManager::BeginNextEncounter()
         pCurrentEncounter->ReturnToPool();
     }
 
-    pCurrentEncounter = GenerateNextEncounter();
+    pCurrentEncounter = GenerateNextEncounter(pPlayer);
 }
 
-BaseEncounter* EncounterManager::GenerateNextEncounter()
+BaseEncounter* EncounterManager::GenerateNextEncounter(Player* pPlayer)
 {
     encounterIndex += 1;
 

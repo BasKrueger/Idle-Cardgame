@@ -1,3 +1,4 @@
+#pragma once
 #include "LocalizedString.h"
 #include "Json.hpp"
 #include "LogSubEntry.h"
@@ -10,6 +11,8 @@ class AdventureLog
 {
 public:
 	static bool AddLog(LocalizedString*& log, std::string key, LocalizedString::TABLE table = LocalizedString::TABLE::ADVENTURE_LOG);
+	static bool AddLog(std::string key, LocalizedString::TABLE table = LocalizedString::TABLE::ADVENTURE_LOG);
+
 	static void BeginNewSection();
 	static void Reset();
 	static void SetLogRecordingActive(bool isEnabled);

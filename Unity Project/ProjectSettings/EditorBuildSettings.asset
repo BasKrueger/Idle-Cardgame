@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Run_LoadingScreen.unity
     guid: 2da0cb642bdd65646bad51e64fc6a099
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/DlllTest.unity
     guid: 99f26ddcc0ae5d9439743b9d27dd7ad4
   m_configObjects:

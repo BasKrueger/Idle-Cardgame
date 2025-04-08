@@ -1,0 +1,2 @@
+C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\Unity Project\Library\PramData\AndroidApplicationController\Cache\com.DefaultCompany.IdleRoguelike\gradle-project\unityLibrary\src\main\cpp\CMakeLists.txt
+C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\Unity Project\Library\PramData\AndroidApplicationController\Cache\com.DefaultCompany.IdleRoguelike\gradle-project\unityLibrary\src\main\cpp\GameActivity\CMakeLists.txt

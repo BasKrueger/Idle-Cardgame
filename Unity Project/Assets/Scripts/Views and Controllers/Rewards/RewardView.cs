@@ -121,6 +121,8 @@ public class RewardView : MonoBehaviour, IGameView
 
     public void OnRewardModeClicked()
     {
+        if (unclaimedRewards.Count == 0) return;
+
         rewardButton.interactable = false;
         anim.SetBool(rewardModeBool, true);
         this.enabled = true;
@@ -144,6 +146,8 @@ public class RewardView : MonoBehaviour, IGameView
         rewardButtonLabel.text = state.rewardCount == 0
            ? new LocalizedString("Menus", "Rewards_Button_Empty").GetLocalizedString()
            : string.Format(new LocalizedString("Menus", "Rewards_Button").GetLocalizedString(), state.rewardCount);
+
+        rewardButton.interactable = state.rewardCount > 0;
     }
 
     private void OnOpenAnimationFinished()

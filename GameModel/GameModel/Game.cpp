@@ -7,12 +7,16 @@
 
 #define min(a, b) ((a) < (b) ? (a) : (b));
 
-bool Game::stateGenerationEnabled = true;
+bool Game::stateGenerationEnabled = false;
 EncounterManager* Game::pEncounters = nullptr;
 Player* Game::pPlayer = nullptr;
 
 void Game::Initialize()
 {
+	AdventureLog::Reset();
+	InteractionManager::Initialize();
+	AdventureLog::AddLog("RunStart");
+
 	stateGenerationEnabled = false;
 
 	if (pEncounters != nullptr) {
@@ -35,18 +39,24 @@ void Game::Initialize()
 
 void Game::Tick()
 {
-	pEncounters->Tick();
+	pEncounters->Tick(pPlayer);
 	CaptureGameState();
 }
 
 void Game::Skip(float seconds)
 {
+	AdventureLog::Reset();
+
+	AdventureLog::SetLogRecordingActive(false);
 	stateGenerationEnabled = false;
+
 	for(int i =0; i < seconds; i++)
 	{
 		Tick();
 	}
+
 	stateGenerationEnabled = true;
+	AdventureLog::SetLogRecordingActive(true);
 }
 
 int Game::SwapCards(int collectionID, int deckID)
@@ -148,9 +158,6 @@ void Game::SetSaveState(char* str)
 
 	RewardStash::Initialize(pPlayer);
 	RewardStash::SetSave(pPlayer, save["rewards"]);
-
-	stateGenerationEnabled = true;
-	CaptureGameState();
 }
 
 #pragma endregion

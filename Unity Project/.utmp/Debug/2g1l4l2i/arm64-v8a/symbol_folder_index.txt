@@ -1,0 +1,1 @@
+C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\Unity Project\Library\PramData\AndroidApplicationController\Cache\com.DefaultCompany.IdleRoguelike\gradle-project\unityLibrary\build\intermediates\cxx\Debug\2g1l4l2i\obj\arm64-v8a

@@ -20,6 +20,11 @@ public class CharacterState
     {
         get
         {
+            if(autoDeck == null) 
+            {
+                return new List<CardState>();
+            }
+
             if (deckInPlayOrder_ == null)
             {
                 deckInPlayOrder_ = new List<CardState>();

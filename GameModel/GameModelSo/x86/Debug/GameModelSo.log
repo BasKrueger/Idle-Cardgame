@@ -1,0 +1,108 @@
+﻿  ANDROID_HOME=C:\Program Files (x86)\Android\android-sdk
+  ANDROID_SDK_ROOT=C:\Program Files (x86)\Android\android-sdk
+  ANT_HOME=
+  JAVA_HOME=C:\Program Files\Android\jdk\jdk-8.0.302.8-hotspot\jdk8u302-b08
+  NDK_ROOT=C:\Program Files (x86)\Android\AndroidNDK\android-ndk-r23c
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(520,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+  Game.cpp
+  AttackCard.cpp
+  BaseCard.cpp
+  CardPool.cpp
+  FastAttackCard.cpp
+  SlowAttackCard.cpp
+  Character.cpp
+  CharacterPool.cpp
+  Player.cpp
+  TestEnemy.cpp
+  BaseEncounter.cpp
+  CombatEncounter.cpp
+  EncounterManager.cpp
+  EncounterPool.cpp
+  IdleEncounter.cpp
+  IDManager.cpp
+  AfterInteraction.cpp
+  BaseInteraction.cpp
+  BeforeInteraction.cpp
+  DamageInteraction.cpp
+  DieInteraction.cpp
+  InteractionManager.cpp
+  InteractionPool.cpp
+  InterActor.cpp
+  PerformInteraction.cpp
+  PlayInteraction.cpp
+  AdventureLog.cpp
+  LocalizedString.cpp
+  Localizer.cpp
+  LogEntry.cpp
+  LogSubEntry.cpp
+  Reward.cpp
+  RewardStash.cpp
+  GameModelSo.cpp
+  ld: error: undefined symbol: newlocale
+  >>> referenced by locale.cpp:72 (/buildbot/src/android/ndk-release-r23\toolchain/llvm-project/libcxx/src/locale.cpp:72)
+  >>>               locale.o:(std::__ndk1::num_get<char, std::__ndk1::istreambuf_iterator<char, std::__ndk1::char_traits<char> > >::do_get(std::__ndk1::istreambuf_iterator<char, std::__ndk1::char_traits<char> >, std::__ndk1::istreambuf_iterator<char, std::__ndk1::char_traits<char> >, std::__ndk1::ios_base&, unsigned int&, void*&) const) in archive C:\Program Files (x86)\Android\AndroidNDK\android-ndk-r23c\toolchains\llvm\prebuilt\windows-x86_64\sysroot/usr/lib/i686-linux-android\libc++_static.a
+  >>> referenced by locale.cpp:72 (/buildbot/src/android/ndk-release-r23\toolchain/llvm-project/libcxx/src/locale.cpp:72)
+  >>>               locale.o:(std::__ndk1::__cloc()) in archive C:\Program Files (x86)\Android\AndroidNDK\android-ndk-r23c\toolchains\llvm\prebuilt\windows-x86_64\sysroot/usr/lib/i686-linux-android\libc++_static.a
+  >>> referenced by locale.cpp:72 (/buildbot/src/android/ndk-release-r23\toolchain/llvm-project/libcxx/src/locale.cpp:72)
+  >>>               locale.o:(std::__ndk1::num_get<wchar_t, std::__ndk1::istreambuf_iterator<wchar_t, std::__ndk1::char_traits<wchar_t> > >::do_get(std::__ndk1::istreambuf_iterator<wchar_t, std::__ndk1::char_traits<wchar_t> >, std::__ndk1::istreambuf_iterator<wchar_t, std::__ndk1::char_traits<wchar_t> >, std::__ndk1::ios_base&, unsigned int&, void*&) const) in archive C:\Program Files (x86)\Android\AndroidNDK\android-ndk-r23c\toolchains\llvm\prebuilt\windows-x86_64\sysroot/usr/lib/i686-linux-android\libc++_static.a
+  >>> referenced 78 more times
+  ld: error: undefined symbol: uselocale
+  >>> referenced by __locale:54 (/buildbot/src/android/ndk-release-r23\toolchain/llvm-project/libcxx/include/__locale:54)
+  >>>               locale.o:(std::__ndk1::__libcpp_sscanf_l(char const*, __locale_t*, char const*, ...)) in archive C:\Program Files (x86)\Android\AndroidNDK\android-ndk-r23c\toolchains\llvm\prebuilt\windows-x86_64\sysroot/usr/lib/i686-linux-android\libc++_static.a
+  >>> referenced by __locale:59 (/buildbot/src/android/ndk-release-r23\toolchain/llvm-project/libcxx/include/__locale:59)
+  >>>               locale.o:(std::__ndk1::__libcpp_sscanf_l(char const*, __locale_t*, char const*, ...)) in archive C:\Program Files (x86)\Android\AndroidNDK\android-ndk-r23c\toolchains\llvm\prebuilt\windows-x86_64\sysroot/usr/lib/i686-linux-android\libc++_static.a
+  >>> referenced by __locale:54 (/buildbot/src/android/ndk-release-r23\toolchain/llvm-project/libcxx/include/__locale:54)
+  >>>               locale.o:(std::__ndk1::__libcpp_snprintf_l(char*, unsigned int, __locale_t*, char const*, ...)) in archive C:\Program Files (x86)\Android\AndroidNDK\android-ndk-r23c\toolchains\llvm\prebuilt\windows-x86_64\sysroot/usr/lib/i686-linux-android\libc++_static.a
+  >>> referenced 161 more times
+  ld: error: undefined symbol: freelocale
+  >>> referenced by locale.cpp:685 (/buildbot/src/android/ndk-release-r23\toolchain/llvm-project/libcxx/src/locale.cpp:685)
+  >>>               locale.o:(std::__ndk1::collate_byname<char>::~collate_byname()) in archive C:\Program Files (x86)\Android\AndroidNDK\android-ndk-r23c\toolchains\llvm\prebuilt\windows-x86_64\sysroot/usr/lib/i686-linux-android\libc++_static.a
+  >>> referenced by locale.cpp:685 (/buildbot/src/android/ndk-release-r23\toolchain/llvm-project/libcxx/src/locale.cpp:685)
+  >>>               locale.o:(std::__ndk1::collate_byname<char>::~collate_byname()) in archive C:\Program Files (x86)\Android\AndroidNDK\android-ndk-r23c\toolchains\llvm\prebuilt\windows-x86_64\sysroot/usr/lib/i686-linux-android\libc++_static.a
+  >>> referenced by locale.cpp:733 (/buildbot/src/android/ndk-release-r23\toolchain/llvm-project/libcxx/src/locale.cpp:733)
+  >>>               locale.o:(std::__ndk1::collate_byname<wchar_t>::~collate_byname()) in archive C:\Program Files (x86)\Android\AndroidNDK\android-ndk-r23c\toolchains\llvm\prebuilt\windows-x86_64\sysroot/usr/lib/i686-linux-android\libc++_static.a
+  >>> referenced 36 more times
+  ld: error: undefined symbol: wcsnrtombs
+  >>> referenced by __bsd_locale_fallbacks.h:52 (/buildbot/src/android/ndk-release-r23\toolchain/llvm-project/libcxx/include/__bsd_locale_fallbacks.h:52)
+  >>>               locale.o:(std::__ndk1::codecvt<wchar_t, char, mbstate_t>::do_out(mbstate_t&, wchar_t const*, wchar_t const*, wchar_t const*&, char*, char*, char*&) const) in archive C:\Program Files (x86)\Android\AndroidNDK\android-ndk-r23c\toolchains\llvm\prebuilt\windows-x86_64\sysroot/usr/lib/i686-linux-android\libc++_static.a
+  ld: error: undefined symbol: mbsnrtowcs
+  >>> referenced by __bsd_locale_fallbacks.h:67 (/buildbot/src/android/ndk-release-r23\toolchain/llvm-project/libcxx/include/__bsd_locale_fallbacks.h:67)
+  >>>               locale.o:(std::__ndk1::codecvt<wchar_t, char, mbstate_t>::do_in(mbstate_t&, char const*, char const*, char const*&, wchar_t*, wchar_t*, wchar_t*&) const) in archive C:\Program Files (x86)\Android\AndroidNDK\android-ndk-r23c\toolchains\llvm\prebuilt\windows-x86_64\sysroot/usr/lib/i686-linux-android\libc++_static.a
+  ld: error: undefined symbol: mbtowc
+  >>> referenced by __bsd_locale_fallbacks.h:82 (/buildbot/src/android/ndk-release-r23\toolchain/llvm-project/libcxx/include/__bsd_locale_fallbacks.h:82)
+  >>>               locale.o:(std::__ndk1::codecvt<wchar_t, char, mbstate_t>::do_encoding() const) in archive C:\Program Files (x86)\Android\AndroidNDK\android-ndk-r23c\toolchains\llvm\prebuilt\windows-x86_64\sysroot/usr/lib/i686-linux-android\libc++_static.a
+  ld: error: undefined symbol: localeconv
+  >>> referenced by __bsd_locale_fallbacks.h:96 (/buildbot/src/android/ndk-release-r23\toolchain/llvm-project/libcxx/include/__bsd_locale_fallbacks.h:96)
+  >>>               locale.o:(std::__ndk1::numpunct_byname<char>::__init(char const*)) in archive C:\Program Files (x86)\Android\AndroidNDK\android-ndk-r23c\toolchains\llvm\prebuilt\windows-x86_64\sysroot/usr/lib/i686-linux-android\libc++_static.a
+  >>> referenced by __bsd_locale_fallbacks.h:96 (/buildbot/src/android/ndk-release-r23\toolchain/llvm-project/libcxx/include/__bsd_locale_fallbacks.h:96)
+  >>>               locale.o:(std::__ndk1::numpunct_byname<wchar_t>::__init(char const*)) in archive C:\Program Files (x86)\Android\AndroidNDK\android-ndk-r23c\toolchains\llvm\prebuilt\windows-x86_64\sysroot/usr/lib/i686-linux-android\libc++_static.a
+  >>> referenced by __bsd_locale_fallbacks.h:96 (/buildbot/src/android/ndk-release-r23\toolchain/llvm-project/libcxx/include/__bsd_locale_fallbacks.h:96)
+  >>>               locale.o:(std::__ndk1::moneypunct_byname<char, false>::init(char const*)) in archive C:\Program Files (x86)\Android\AndroidNDK\android-ndk-r23c\toolchains\llvm\prebuilt\windows-x86_64\sysroot/usr/lib/i686-linux-android\libc++_static.a
+  >>> referenced 3 more times
+  ld: error: undefined symbol: strtoll_l
+  >>> referenced by locale:739 (/buildbot/src/android/ndk-release-r23\toolchain/llvm-project/libcxx/include/locale:739)
+  >>>               locale.o:(long std::__ndk1::__num_get_signed_integral<long>(char const*, char const*, unsigned int&, int)) in archive C:\Program Files (x86)\Android\AndroidNDK\android-ndk-r23c\toolchains\llvm\prebuilt\windows-x86_64\sysroot/usr/lib/i686-linux-android\libc++_static.a
+  >>> referenced by locale:739 (/buildbot/src/android/ndk-release-r23\toolchain/llvm-project/libcxx/include/locale:739)
+  >>>               locale.o:(long long std::__ndk1::__num_get_signed_integral<long long>(char const*, char const*, unsigned int&, int)) in archive C:\Program Files (x86)\Android\AndroidNDK\android-ndk-r23c\toolchains\llvm\prebuilt\windows-x86_64\sysroot/usr/lib/i686-linux-android\libc++_static.a
+  ld: error: undefined symbol: strtoull_l
+  >>> referenced by locale:779 (/buildbot/src/android/ndk-release-r23\toolchain/llvm-project/libcxx/include/locale:779)
+  >>>               locale.o:(unsigned short std::__ndk1::__num_get_unsigned_integral<unsigned short>(char const*, char const*, unsigned int&, int)) in archive C:\Program Files (x86)\Android\AndroidNDK\android-ndk-r23c\toolchains\llvm\prebuilt\windows-x86_64\sysroot/usr/lib/i686-linux-android\libc++_static.a
+  >>> referenced by locale:779 (/buildbot/src/android/ndk-release-r23\toolchain/llvm-project/libcxx/include/locale:779)
+  >>>               locale.o:(unsigned int std::__ndk1::__num_get_unsigned_integral<unsigned int>(char const*, char const*, unsigned int&, int)) in archive C:\Program Files (x86)\Android\AndroidNDK\android-ndk-r23c\toolchains\llvm\prebuilt\windows-x86_64\sysroot/usr/lib/i686-linux-android\libc++_static.a
+  >>> referenced by locale:779 (/buildbot/src/android/ndk-release-r23\toolchain/llvm-project/libcxx/include/locale:779)
+  >>>               locale.o:(unsigned long std::__ndk1::__num_get_unsigned_integral<unsigned long>(char const*, char const*, unsigned int&, int)) in archive C:\Program Files (x86)\Android\AndroidNDK\android-ndk-r23c\toolchains\llvm\prebuilt\windows-x86_64\sysroot/usr/lib/i686-linux-android\libc++_static.a
+  >>> referenced 1 more times
+  ld: error: undefined symbol: strtold_l
+  >>> referenced by locale:820 (/buildbot/src/android/ndk-release-r23\toolchain/llvm-project/libcxx/include/locale:820)
+  >>>               locale.o:(long double std::__ndk1::__num_get_float<long double>(char const*, char const*, unsigned int&)) in archive C:\Program Files (x86)\Android\AndroidNDK\android-ndk-r23c\toolchains\llvm\prebuilt\windows-x86_64\sysroot/usr/lib/i686-linux-android\libc++_static.a
+  ld: error: undefined symbol: wcstoll
+  >>> referenced by string.cpp:73 (/buildbot/src/android/ndk-release-r23\toolchain/llvm-project/libcxx/src/string.cpp:73)
+  >>>               string.o:(std::__ndk1::stoll(std::__ndk1::basic_string<wchar_t, std::__ndk1::char_traits<wchar_t>, std::__ndk1::allocator<wchar_t> > const&, unsigned int*, int)) in archive C:\Program Files (x86)\Android\AndroidNDK\android-ndk-r23c\toolchains\llvm\prebuilt\windows-x86_64\sysroot/usr/lib/i686-linux-android\libc++_static.a
+  ld: error: undefined symbol: wcstoull
+  >>> referenced by string.cpp:73 (/buildbot/src/android/ndk-release-r23\toolchain/llvm-project/libcxx/src/string.cpp:73)
+  >>>               string.o:(std::__ndk1::stoull(std::__ndk1::basic_string<wchar_t, std::__ndk1::char_traits<wchar_t>, std::__ndk1::allocator<wchar_t> > const&, unsigned int*, int)) in archive C:\Program Files (x86)\Android\AndroidNDK\android-ndk-r23c\toolchains\llvm\prebuilt\windows-x86_64\sysroot/usr/lib/i686-linux-android\libc++_static.a
+  ld: error: undefined symbol: wcstof
+  >>> referenced by string.cpp:190 (/buildbot/src/android/ndk-release-r23\toolchain/llvm-project/libcxx/src/string.cpp:190)
+  >>>               string.o:(std::__ndk1::stof(std::__ndk1::basic_string<wchar_t, std::__ndk1::char_traits<wchar_t>, std::__ndk1::allocator<wchar_t> > const&, unsigned int*)) in archive C:\Program Files (x86)\Android\AndroidNDK\android-ndk-r23c\toolchains\llvm\prebuilt\windows-x86_64\sysroot/usr/lib/i686-linux-android\libc++_static.a
+  clang: error: linker command failed with exit code 1 (use -v to see invocation)
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Application Type\Android\3.0\Android.Common.targets(125,5): error MSB6006: "clang.exe" exited with code 1.

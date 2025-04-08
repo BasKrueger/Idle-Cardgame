@@ -38,11 +38,12 @@ public class GameModelManager : MonoBehaviour
     {
         Application.targetFrameRate = 60;
         QualitySettings.vSyncCount = 0;
+        LocalizationSettings.SelectedLocaleChanged += (locale) => GameDLL.SetLanguage(locale.LocaleName);
 
         while (LoadManager.loading) await UniTask.WaitForEndOfFrame();
         if (!LoadManager.simulated)
         {
-            GameDLL.Initialize("English(en)");
+            GameDLL.Initialize(LocalizationSettings.SelectedLocale.LocaleName);
         }
 
         ModelTickLoop();
@@ -57,6 +58,7 @@ public class GameModelManager : MonoBehaviour
         while (true)
         {
             GameDLL.Tick();
+            await UniTask.WaitForEndOfFrame();
             GameDLL.GetGameStates();
 
             while(rawStates.Count > 0)
