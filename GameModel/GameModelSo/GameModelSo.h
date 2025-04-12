@@ -8,7 +8,7 @@ extern "C"
 
 	void Skip(float seconds);
 
-	int SwapCards(int collectionID, int deckID);
+	void SwapCards(int collectionID, int deckID);
 
 	void GenerateGameState();
 

@@ -1,4 +1,14 @@
+C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModel\FileLog.cpp;C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelSo\ARM64\Debug\FileLog.o
+C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModel\S\Characters\Deck.cpp;C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelSo\ARM64\Debug\Deck.o
+C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModel\S\Cards\HealingShieldCard.cpp;C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelSo\ARM64\Debug\HealingShieldCard.o
+C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModel\S\Cards\SpikeShieldCard.cpp;C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelSo\ARM64\Debug\SpikeShieldCard.o
+C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModel\S\Cards\ChargedStrikeCard.cpp;C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelSo\ARM64\Debug\ChargedStrikeCard.o
+C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModel\S\Cards\CrazyPotionCard.cpp;C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelSo\ARM64\Debug\CrazyPotionCard.o
+C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModel\S\Cards\DoubleStrikeCard.cpp;C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelSo\ARM64\Debug\DoubleStrikeCard.o
 C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModel\Game.cpp;C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelSo\ARM64\Debug\Game.o
+C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModel\S\Interactions\HealInteraction.cpp;C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelSo\ARM64\Debug\HealInteraction.o
+C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModel\S\Cards\PowerPotionCard.cpp;C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelSo\ARM64\Debug\PowerPotionCard.o
+C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModel\S\Cards\HealPotionCard.cpp;C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelSo\ARM64\Debug\HealPotionCard.o
 C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModel\S\Cards\AttackCard.cpp;C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelSo\ARM64\Debug\AttackCard.o
 C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModel\S\Cards\BaseCard.cpp;C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelSo\ARM64\Debug\BaseCard.o
 C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModel\S\Cards\CardPool.cpp;C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelSo\ARM64\Debug\CardPool.o
@@ -31,4 +41,5 @@ C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModel\
 C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModel\S\Logs\LogSubEntry.cpp;C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelSo\ARM64\Debug\LogSubEntry.o
 C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModel\S\Rewards\Reward.cpp;C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelSo\ARM64\Debug\Reward.o
 C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModel\S\Rewards\RewardStash.cpp;C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelSo\ARM64\Debug\RewardStash.o
+C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModel\S\Cards\TieUpCard.cpp;C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelSo\ARM64\Debug\TieUpCard.o
 C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelSo\GameModelSo.cpp;C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelSo\ARM64\Debug\GameModelSo.o

@@ -13,31 +13,36 @@ class BaseCard : public InterActor
 {
 public:
 	LocalizedString* cardName;
+
 	int id = IDManager::NewID();
 	int cardID = -1;
+	int dmg = 0;
+	int healing = 0;
+	int cooldown = 0;
+	std::array<int, 3> variables;
 
 	void Initialize();
 	void Reset();
 
 	void Tick();
 	bool IsCharged();
-	bool TryPlay(InterActor* pTarget);
 	void ReturnToPool();
 
 	virtual void Play(PlayInteraction* pTarget);
 
 protected:
-	int cooldown = 0;
-	int dmg = 0;
-
-	virtual void InternalInitialize(int& cID, int& baseDmg, int& baseCooldown, LocalizedString* cardName, LocalizedString* cardDescription);
+	virtual void InternalInitialize(int& cID, int& baseDmg, int& baseHealing, int& baseCooldown, 
+		std::array<int, 3>& baseVariables, LocalizedString* cardName, LocalizedString* cardDescription, std::string& iconName);
 
 private:
 	int baseDmg = 0;
 	int baseCooldown = 0;
+	int baseHealing = 0;
+	
+	std::array<int, 3> baseVariables;
+	std::string iconName = "undefined";
 
 	LocalizedString* cardDescription;
-	std::array<int, 3> variables;
 
 #pragma region State/Save/Load
 public:

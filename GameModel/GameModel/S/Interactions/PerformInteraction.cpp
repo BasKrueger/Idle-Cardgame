@@ -14,6 +14,5 @@ void PerformInteraction::ReturnToPool()
 void PerformInteraction::InternalPerform()
 {
 	if (pInteraction == 0) return;
-
 	pInteraction->Perform();
 }

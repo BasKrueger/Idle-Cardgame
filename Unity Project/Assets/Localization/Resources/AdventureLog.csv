@@ -7,3 +7,4 @@
 "IdleEncounter",2819677329616896,"","{0} is looking for new Encounters","","{0} sucht nach neuen Begegnungen",""
 "Details",3548525511897088,"","Details","","Details",""
 "Death",4237513935613952,"","{0} got defeated","","{0} wurde besiegt",""
+"Heal",29955423567933440,"","{0} restored {1} health to {2}","","{0} hat {1} leben bei {2} geheilt",""

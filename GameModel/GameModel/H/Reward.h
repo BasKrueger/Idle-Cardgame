@@ -6,8 +6,6 @@
 #include "Json.hpp"
 #include "H/IDManager.h"
 
-#define MAX_REWARD_ID 3
-
 class Reward
 {
 public:
@@ -23,7 +21,7 @@ public:
 private:
 	bool ClaimCardReward(int cardID, Player* pPlayer);
 	bool ClaimBonusReward(Player* pPlayer);
-	void SetRandomCardReward(int tier, int slot, Player* pPLayer, std::array<int, MAX_REWARD_ID>* excludeIDs);
+	void SetRandomCardReward(int tier, int slot, Player* pPLayer, std::vector<bool>* excludeIDs);
 
 #pragma region state/save/load
 	json::JSON* state;

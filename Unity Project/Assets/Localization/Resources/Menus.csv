@@ -28,3 +28,8 @@
 "SaveLoad",26004932580405248,"","Loading Savestate","","Lade Speicherstand",""
 "SimulateTime",26005062788378624,"","Simulate AFK time ({0})","","Simuliere AFK Zeit ({0})",""
 "AlmostDone",26017992502210560,"","Almost Done...","","Fast Fertig",""
+"Done",29914237813714944,"","Done","","Fertig",""
+"Initializing",29914999952306176,"","Initializing Game","","Initialisiere Spiel",""
+"MissingSaveFile",29915485082284032,"","No savefile found","","Keinen Speicherstand gefunden",""
+"MissingMetaFile",29915634697302016,"","No meta savefile found","","Keinen Meta-Speicherstand gefunden",""
+"Saving",29916373410705408,"","Saving...","","Speichern...",""

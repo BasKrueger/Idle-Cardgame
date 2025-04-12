@@ -4,6 +4,8 @@
 #include "H/Json.hpp"
 #include "H/AdventureLog.h"
 #include "H/RewardStash.h"
+#include "H/CardPool.h"
+#include "H/ChargedStrikeCard.h"
 
 #define min(a, b) ((a) < (b) ? (a) : (b));
 
@@ -13,6 +15,7 @@ Player* Game::pPlayer = nullptr;
 
 void Game::Initialize()
 {
+	CardPool::Initialize();
 	AdventureLog::Reset();
 	InteractionManager::Initialize();
 	AdventureLog::AddLog("RunStart");
@@ -30,6 +33,7 @@ void Game::Initialize()
 
 	pPlayer = new Player;
 	pPlayer->Initialize();
+	pPlayer->Register();
 	pEncounters = new EncounterManager(pPlayer);
 	
 	RewardStash::Initialize(pPlayer);
@@ -59,9 +63,9 @@ void Game::Skip(float seconds)
 	AdventureLog::SetLogRecordingActive(true);
 }
 
-int Game::SwapCards(int collectionID, int deckID)
+void Game::SwapCards(int ID1, int ID2)
 {
-	return pPlayer->SwitchCards(collectionID, deckID);
+	pPlayer->SwitchCards(ID1, ID2);
 }
 
 void Game::ClaimReward(int rewardID, int cardID)
@@ -139,25 +143,13 @@ void Game::SetSaveState(char* str)
 	auto save = json::JSON::Load(str);
 
 	stateGenerationEnabled = false;
-
-	if (pEncounters != nullptr) {
-		delete pEncounters;
-		pEncounters = nullptr;
-	}
-	if (pPlayer != nullptr) {
-		delete pPlayer;
-		pPlayer = nullptr;
-	}
-
-	pPlayer = new Player;
-	pPlayer->Initialize();
+	
+	pEncounters->SetSave(pPlayer, save["encounters"]);
+	RewardStash::SetSave(pPlayer, save["rewards"]);
 	pPlayer->SetSave(save["player"]);
 
-	pEncounters = new EncounterManager(pPlayer);
-	pEncounters->SetSave(pPlayer, save["encounters"]);
-
-	RewardStash::Initialize(pPlayer);
-	RewardStash::SetSave(pPlayer, save["rewards"]);
+	stateGenerationEnabled = true;
+	CaptureGameState();
 }
 
 #pragma endregion

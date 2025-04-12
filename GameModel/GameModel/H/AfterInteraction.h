@@ -7,7 +7,7 @@
 template <typename T>
 class AfterInteraction : public BaseInteraction
 {
-	T* pInteraction = 0;
+	T* pInteraction = nullptr;
 	std::vector<InterActor*> actors;;
 
 public:
@@ -30,8 +30,7 @@ inline void AfterInteraction<T>::InternalPerform()
 {
 	for (auto actor : actors)
 	{
-		if (actor == 0) continue;
-
+		if (actor == nullptr) continue;
 		actor->After(pInteraction);
 	}
 }

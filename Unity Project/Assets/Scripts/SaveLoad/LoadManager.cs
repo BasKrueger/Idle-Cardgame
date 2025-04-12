@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using System;
 using System.IO;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -30,13 +31,13 @@ public class LoadManager : MonoBehaviour
         loading = true;
         simulated = false;
 
-        bar.DisplayPercent(0);
-        bar.DisplayText("GameLoad");
+        await bar.DisplayPercent(0);
+        await bar.DisplayText("GameLoad");
         await LoadScene();
 
-        bar.DisplayPercent(0.5f);
-        bar.DisplayText("SaveLoad");
-        LoadProgress();
+        await bar.DisplayPercent(0.5f);
+        await bar.DisplayText("SaveLoad");
+        await LoadProgress();
 
         if (meta != null)
         {
@@ -45,24 +46,28 @@ public class LoadManager : MonoBehaviour
             var saveDelta = System.DateTime.Now.Subtract(saveTime);
 
             var totalDelta = loadDelta.Add(saveDelta);
-
-            bar.DisplayPercent(0.9f);
-            bar.DisplayText("SimulateTime", Mathf.RoundToInt((float)totalDelta.TotalSeconds));
+             
+            await bar.DisplayText("SimulateTime", Mathf.RoundToInt((float)totalDelta.TotalSeconds));
+            await bar.DisplayPercent(0.9f);
             await SimulateAFKProgress(totalDelta);
+            
             simulated = true;
         }
 
-        bar.DisplayText("AlmostDone");
-        bar.DisplayPercent(1f);
-
-        while (bar.updatingFill) await UniTask.WaitForEndOfFrame();
+        await bar.DisplayText("AlmostDone");
+        await bar.DisplayPercent(1f);
+        SaveManager.Save();
+        
         Destroy(this.gameObject);
         await SceneManager.UnloadSceneAsync("RunLoading");
+        await bar.DisplayText("Done");
+
         loading = false;
     }
 
-    private void LoadProgress()
+    private async UniTask LoadProgress()
     {
+        await bar.DisplayText("Initializing");
         GameDLL.Initialize(LocalizationSettings.SelectedLocale.LocaleName);
 
         if (File.Exists(SaveManager.gameSavePath))
@@ -72,6 +77,7 @@ public class LoadManager : MonoBehaviour
         }
         else 
         {
+            await bar.DisplayText("MissingSaveFile");
             Debug.LogWarning($"No gameSave found at {SaveManager.gameSavePath}");
         }
 
@@ -82,6 +88,7 @@ public class LoadManager : MonoBehaviour
         }
         else
         {
+            await bar.DisplayText("MissingMetaFile");
             Debug.LogWarning($"Missing meta savefile at {SaveManager.metaSavePath}");
         }
     }
@@ -99,9 +106,12 @@ public class LoadManager : MonoBehaviour
             timeDelta = timeDelta.Subtract(System.TimeSpan.FromSeconds(skipTicks * GameModelManager.TICK_COOLDOWN));
             timeDelta = timeDelta.Add(simulationTime);
 
+            await bar.DisplayText("SimulateTime", timeDelta.TotalSeconds);
+
             Debug.Log($"Simulated {skipTicks} seconds of gameplay in {System.DateTime.Now.Subtract(startingTime).TotalSeconds} seconds");
         }
 
+        await bar.DisplayText("Saving");
         SaveManager.Save();
         await UniTask.WaitForSeconds((float)timeDelta.TotalSeconds);
     }

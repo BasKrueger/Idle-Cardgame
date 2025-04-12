@@ -26,9 +26,9 @@ void Skip(float seconds)
 	pGame->Skip(seconds);
 }
 
-int SwapCards(int collectionID, int deckID)
+void SwapCards(int ID1, int ID2)
 {
-	return pGame->SwapCards(collectionID, deckID);
+	return pGame->SwapCards(ID1, ID2);
 }
 
 void GenerateGameState()

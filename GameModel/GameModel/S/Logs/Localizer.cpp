@@ -12,7 +12,6 @@ std::string Localizer::Localize(std::string key, LocalizedString::TABLE table)
         switch (table)
         {
         case LocalizedString::TABLE::CARDS:
-            std::cout << currentLanguage << "\n";
             if (cardDoc != nullptr) return cardDoc->GetCell<std::string>(currentLanguage, key);
         case LocalizedString::TABLE::ADVENTURE_LOG:
             if (logDoc != nullptr) return logDoc->GetCell<std::string>(currentLanguage, key);

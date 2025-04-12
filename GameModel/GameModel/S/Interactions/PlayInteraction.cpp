@@ -11,7 +11,7 @@ void PlayInteraction::Initialize(BaseCard* card)
 
 void PlayInteraction::InternalPerform()
 {
-	if (cardToPlay == 0) return;
+	if (cardToPlay == nullptr) return;
 
 	LocalizedString* log;
 	if (AdventureLog::AddLog(log, "CardPlayed"))

@@ -119,6 +119,62 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &230200550
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 230200552}
+  - component: {fileID: 230200551}
+  m_Layer: 0
+  m_Name: DLLManipulator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &230200551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230200550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de05c130c77e69a408c0f25cd6b50d1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Options:
+    dllPathPattern: '{assets}/Plugins/__{name}.dll'
+    assemblyNames: []
+    loadingMode: 0
+    posixDlopenFlags: 1
+    threadSafe: 0
+    enableCrashLogs: 0
+    crashLogsDir: '{assets}/'
+    crashLogsStackTrace: 0
+    mockAllNativeFunctions: 1
+    onlyInEditor: 1
+    enableInEditMode: 0
+--- !u!4 &230200552
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230200550}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 665.1732, y: 916.6565, z: -9.223578}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &415877733
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,7 +525,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1498313885}
   - component: {fileID: 1498313884}
-  - component: {fileID: 1498313886}
   m_Layer: 0
   m_Name: LoadingManager
   m_TagString: Untagged
@@ -505,30 +560,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1498313886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1498313883}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de05c130c77e69a408c0f25cd6b50d1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Options:
-    dllPathPattern: '{assets}/Plugins/__{name}.dll'
-    assemblyNames: []
-    loadingMode: 0
-    posixDlopenFlags: 1
-    threadSafe: 0
-    enableCrashLogs: 0
-    crashLogsDir: '{assets}/'
-    crashLogsStackTrace: 0
-    mockAllNativeFunctions: 1
-    onlyInEditor: 1
-    enableInEditMode: 0
 --- !u!1 &1506461162
 GameObject:
   m_ObjectHideFlags: 0
@@ -714,3 +745,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 1506461167}
   - {fileID: 1498313885}
+  - {fileID: 230200552}

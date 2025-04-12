@@ -27,7 +27,7 @@ void BaseEncounter::ReturnToPool()
 		if (NPCs[i] == nullptr) continue;
 
 		NPCs[i]-> ReturnCharacterToPool();
-		NPCs[i] = 0;
+		NPCs[i] = nullptr;
 	}
 
 	EncounterPool::ReturnInstance(this);
@@ -51,6 +51,18 @@ bool BaseEncounter::Tick(Player* pPlayer)
 }
 
 bool BaseEncounter::IsOngoing(){ return false; }
+
+void BaseEncounter::SetNPC(int slot, Character* pCharacter)
+{
+	NPCs[slot] = pCharacter;
+	pCharacter->Register();
+}
+
+Character* BaseEncounter::GetNPC(int slot)
+{
+	return NPCs[slot];
+}
+
 void BaseEncounter::InternalInitialize(Player* pPlayer, bool& hasStaticBackground, int& encounterID){}
 void BaseEncounter::InternalEnd(Player* pPlayer){}
 void BaseEncounter::InternalTick(Player* pPlayer){}
@@ -107,11 +119,9 @@ BaseEncounter* BaseEncounter::LoadSave(Player* pPlayer, json::JSON save)
 		encounter->NPCs[i] = nullptr;
 	}
 
-	int iterator = -1;
-	for (auto& npc : save["NPCs"].ArrayRange())
+	for (auto i = 0; i < save["NPCs"].size(); i++)
 	{
-		iterator++;
-		encounter->NPCs[iterator] = Character::LoadSave(npc);
+		encounter->SetNPC(i, Character::LoadSave(save["NPCs"][i]));
 	}
 
 	for (int i = 0; i < encounter->variables.size(); i++)
@@ -119,11 +129,9 @@ BaseEncounter* BaseEncounter::LoadSave(Player* pPlayer, json::JSON save)
 		encounter->variables[i] = 0;
 	}
 
-	iterator = -1;
-	for (auto& var : save["variables"].ArrayRange())
+	for (auto i = 0 ; i < save["variables"].size();i++)
 	{
-		iterator++;
-		encounter->variables[iterator] = var.ToInt();
+		encounter->variables[i] = save["variables"][i].ToInt();
 	}
 
 	return encounter;

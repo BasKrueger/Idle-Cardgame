@@ -109,6 +109,26 @@ MonoBehaviour:
     m_Key: AlmostDone
     m_Metadata:
       m_Items: []
+  - m_Id: 29914237813714944
+    m_Key: Done
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29914999952306176
+    m_Key: Initializing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29915485082284032
+    m_Key: MissingSaveFile
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29915634697302016
+    m_Key: MissingMetaFile
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29916373410705408
+    m_Key: Saving
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

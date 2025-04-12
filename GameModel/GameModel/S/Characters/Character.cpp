@@ -8,12 +8,16 @@
 #include "H/Json.hpp"
 #include "H/RewardStash.h"
 #include "H/CharacterPool.h"
+#include "H/HealInteraction.h"
 
 void Character::Initialize()
 {
 	if (characterName == 0) characterName = new LocalizedString(LocalizedString::TABLE::CHARACTERS, "Missing Name");
 
-	InternalInitialize(characterID, baseHP, baseDamage, characterName);
+	if (deck != nullptr) delete deck;
+	deck = new Deck;
+
+	InternalInitialize(characterID, baseHP, baseDamage, characterName, deck);
 
 	hp = baseHP;
 	dmg = baseDamage;
@@ -31,25 +35,29 @@ void Character::Tick()
 		return;
 	}
 
-	deck[currentCardIndex]->Tick();
-	TryPlayNextCard(deck[currentCardIndex]);
+	deck->GetCurrentCard()->Tick();
+	TryPlayNextCard(pEnemy);
 }
 
-void Character::TryPlayNextCard(BaseCard* card)
+void Character::TryPlayNextCard(InterActor* target)
 {
-	if (card->IsCharged())
+	if (deck->GetCurrentCard()->IsCharged())
 	{
-		nextAnimationTrigger = TRIGGERANIMATION::PLAYED_CARD;
-		Game::CaptureGameState();
-
-		card->TryPlay(pEnemy);
-
-		currentCardIndex += 1;
-		if (currentCardIndex > deck.size() - 1 || deck[currentCardIndex] == nullptr)
-		{
-			currentCardIndex = 0;
-		}
+		PlayCard(deck->GetCurrentCard(), target);
+		deck->AdvanceToNextCard();
 	}
+}
+
+void Character::PlayCard(BaseCard* pCard, InterActor* pTarget)
+{
+	nextAnimationTrigger = TRIGGERANIMATION::PLAYED_CARD;
+	Game::CaptureGameState();
+
+	auto interaction = InteractionPool<PlayInteraction>().GetInstance(this, pTarget);
+	interaction->Initialize(pCard);
+	InteractionManager::AddNext(interaction);
+
+	pCard->Reset();
 }
 
 void Character::EngageInCombat(Character* pNewEnemy)
@@ -80,18 +88,25 @@ void Character::TakeDamage(DamageInteraction* interaction)
 	}
 }
 
-void Character::ReturnCharacterToPool()
-{ 
-	for (auto card : deck)
+void Character::Heal(HealInteraction* interaction)
+{
+	hp += interaction->healing;
+	if (hp > baseHP) 
 	{
-		if (card == nullptr) continue;
-		card->ReturnToPool();
+		hp = baseHP;
 	}
 
+	nextAnimationTrigger = TRIGGERANIMATION::DAMAGED;
+	Game::CaptureGameState();
+}
+
+void Character::ReturnCharacterToPool()
+{ 
+	deck->ReturnContentToPool();
 	CharacterPool::ReturnInstance(this);
 }
 
-void Character::InternalInitialize(int& charID, int& baseHP, int& baseDamage, LocalizedString* characterName){}
+void Character::InternalInitialize(int& charID, int& baseHP, int& baseDamage, LocalizedString* characterName, Deck* deck){}
 void Character::Die(DieInteraction* interaction) { currentPhase = PHASE::DEAD; RewardStash::UnlockReward(0); }
 bool Character::IsAlive() { return currentPhase != PHASE::DEAD; }
 
@@ -99,7 +114,7 @@ bool Character::IsAlive() { return currentPhase != PHASE::DEAD; }
 
 json::JSON* Character::GetState()
 {
-	if (state == 0) state = new json::JSON;
+	if (state == nullptr) state = new json::JSON;
 
 	(*state)["id"] = id;
 	(*state)["baseHP"] = baseHP;
@@ -107,14 +122,7 @@ json::JSON* Character::GetState()
 	(*state)["dmg"] = dmg;
 	(*state)["phase"] = (int)currentPhase;
 	(*state)["animationTrigger"] = (int)nextAnimationTrigger;
-	(*state)["currentCard"] = currentCardIndex;
-
-	(*state)["autoDeck"] = json::Array();
-	for (auto& card : deck)
-	{
-		if (card == nullptr) continue;
-		(*state)["autoDeck"].append(*card->GetState());
-	}
+	(*state)["autoDeck"] = *deck->GetState();
 
 	nextAnimationTrigger = TRIGGERANIMATION::NONE;
 
@@ -129,14 +137,7 @@ json::JSON Character::GetSave()
 	save["hp"] = hp;
 	save["dmg"] = dmg;
 	save["phase"] = (int)currentPhase;
-	save["currentCard"] = currentCardIndex;
-
-	save["autoDeck"] = json::Array();
-	for (auto& card : deck)
-	{
-		if (card == nullptr) continue;
-		save["autoDeck"].append(card->GetSave());
-	}
+	save["autoDeck"] = deck->GetSave();
 
 	return save;
 }
@@ -146,28 +147,17 @@ void Character::SetSave(json::JSON save)
 	nextAnimationTrigger = TRIGGERANIMATION::NONE;
 	hp = save["hp"].ToInt();
 	dmg = save["dmg"].ToInt();
-	currentCardIndex = save["currentCard"].ToInt();
 	currentPhase = static_cast<PHASE>(save["phase"].ToInt());
 
-	for (int i = 0; i < deck.size(); i++)
-	{
-		if (deck[i] == nullptr) continue;
-		deck[i]->ReturnToPool();
-		deck[i] = nullptr;
-	}
-
-	int iterator = -1;
-	for (auto& card : (save)["autoDeck"].ArrayRange())
-	{
-		iterator++;
-		deck[iterator] = BaseCard::LoadSave(this, card);
-	}
+	deck->SetSave(save["autoDeck"], this);
+	deck->SetCardsRegistered(true);
 }
 
 Character* Character::LoadSave(json::JSON save)
 {
 	Character* character = CharacterPool::GetInstance(save["characterID"].ToInt());
 	character->SetSave(save);
+	character->Register();
 	return character;
 }
 

@@ -14,7 +14,7 @@ extern "C"
 
 	GAMEMODEL_API void Skip(float seconds);
 
-	GAMEMODEL_API int SwapCards(int collectionID, int deckID);
+	GAMEMODEL_API void SwapCards(int ID1, int ID2);
 
 	GAMEMODEL_API void GenerateGameState();
 

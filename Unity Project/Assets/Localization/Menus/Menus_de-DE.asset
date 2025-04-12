@@ -102,6 +102,26 @@ MonoBehaviour:
     m_Localized: Fast Fertig
     m_Metadata:
       m_Items: []
+  - m_Id: 29914237813714944
+    m_Localized: Fertig
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29914999952306176
+    m_Localized: Initialisiere Spiel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29915485082284032
+    m_Localized: Keinen Speicherstand gefunden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29915634697302016
+    m_Localized: Keinen Meta-Speicherstand gefunden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29916373410705408
+    m_Localized: Speichern...
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

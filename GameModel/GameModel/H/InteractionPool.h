@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <iostream>
+#include "PlayInteraction.h"
 
 class InterActor;
 
@@ -9,6 +10,7 @@ class InteractionPool
 {
 public:
 	static T* GetInstance(InterActor* interactionSource, InterActor* interactionTarget);
+	static T* GetInstance(BaseInteraction* pPlay);
 	static void ReturnInstance(T* pInstance);
 
 private:
@@ -41,6 +43,12 @@ inline T* InteractionPool<T>::GetInstance(InterActor* interactionSource, InterAc
 	result->BaseInitialization(interactionSource, interactionTarget);
 	
 	return result;
+}
+
+template<typename T>
+inline T* InteractionPool<T>::GetInstance(BaseInteraction* pPlay)
+{
+	return GetInstance(pPlay->pSource, pPlay->pTarget);
 }
 
 template<typename T>

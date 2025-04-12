@@ -28,13 +28,7 @@ public class CardQueueView : MonoBehaviour
     
     public void OnGameStateUpdate(CharacterState characterState)
     {
-        if (characterState.autoDeckInPlayOrder.Count == 0)
-        {
-            Debug.LogError("Error: deck is empty");
-            return;
-        }
-
-        var statesToDisplay = characterState.autoDeckInPlayOrder.Take(previewPositions.Count).ToDictionary(card => card.id, card=> card);
+        var statesToDisplay = characterState.autoDeck.InPlayOrder.Take(previewPositions.Count).ToDictionary(card => card.id, card=> card);
 
         DestroyRemovedCards(statesToDisplay);
         SpawnNewCards(statesToDisplay);
@@ -97,8 +91,7 @@ public class CardQueueView : MonoBehaviour
     {
         foreach (var pair in validStates)
         {
-            activeViews[pair.Key].Content.UpdateFill(pair.Value);
-            activeViews[pair.Key].Content.UpdateTexts(pair.Value);
+            activeViews[pair.Key].Content.Show(pair.Value);
         }
     }
     

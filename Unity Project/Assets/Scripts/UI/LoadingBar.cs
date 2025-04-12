@@ -16,16 +16,20 @@ public class LoadingBar : MonoBehaviour
     private float targetFill;
     public bool updatingFill { get; private set; }
 
-    public void DisplayPercent(float percent)
+    public async UniTask DisplayPercent(float percent)
     {
         targetFill = percent;
         UpdateTargetFill();
+
+        await UniTask.WaitUntil(() => !updatingFill);
     }
 
-    public void DisplayText(string key, params object[] formatValues)
+    public async UniTask DisplayText(string key, params object[] formatValues)
     {
         var locString = new LocalizedString("Menus", key);
         label.text = string.Format(locString.GetLocalizedString(), formatValues);
+
+        await UniTask.WaitForEndOfFrame();
     }
 
     private async void UpdateTargetFill()

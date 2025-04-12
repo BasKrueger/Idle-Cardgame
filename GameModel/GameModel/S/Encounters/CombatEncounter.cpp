@@ -9,7 +9,7 @@ const int CombatEncounter::encounterID;
 
 bool CombatEncounter::IsOngoing()
 {
-    return BaseEncounter::NPCs[0]->IsAlive();
+    return GetNPC(0)->IsAlive();
 }
 
 void CombatEncounter::InternalInitialize(Player* pPlayer, bool& hasStaticBackground, int& eID)
@@ -21,9 +21,9 @@ void CombatEncounter::InternalInitialize(Player* pPlayer, bool& hasStaticBackgro
     LocalizedString* log;
     AdventureLog::AddLog(log, "CombatEncounter");
 
-    BaseEncounter::NPCs[0] = CharacterPool::GetInstance(TestEnemy::characterID);
-    pPlayer->EngageInCombat(BaseEncounter::NPCs[0]);
-    BaseEncounter::NPCs[0]->EngageInCombat(pPlayer);
+    SetNPC(0, CharacterPool::GetInstance(TestEnemy::characterID));
+    pPlayer->EngageInCombat(GetNPC(0));
+    GetNPC(0)->EngageInCombat(pPlayer);
 }
 
 void CombatEncounter::InternalTick(Player* pPlayer)

@@ -4,6 +4,7 @@
 #include <memory>
 #include "Json.hpp"
 #include <vector>
+#include "Deck.h"
 
 class Player : public Character
 {
@@ -11,17 +12,19 @@ public:
 	static const int characterID = 0;
 
 	void Before(DamageInteraction* interaction) override;
+	void After(DieInteraction* interaction) override;
+
 	void AddToCollection(BaseCard* card);
-	int SwitchCards(int collection, int deck);
+	void SwitchCards(int ID1, int ID2);
 
 	int xp = 1;
 	int gold = 1;
 
 private:
-	std::vector<BaseCard*> collection;
+	Deck collection;
 
 protected:
-	void InternalInitialize(int& charID, int& baseHP, int& baseDamage, LocalizedString* characterName) override;
+	void InternalInitialize(int& charID, int& baseHP, int& baseDamage, LocalizedString* characterName, Deck* deck) override;
 
 #pragma region State/Save/Load
 public:

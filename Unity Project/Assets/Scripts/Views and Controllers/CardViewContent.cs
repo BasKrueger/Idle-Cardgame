@@ -25,6 +25,8 @@ public class CardViewContent : TargetFollower
     private TextMeshProUGUI nameLabel;
     [SerializeField]
     private Animator anim;
+    [SerializeField]
+    private Image icon;
     
     public int displayID { get; private set; }
 
@@ -35,9 +37,28 @@ public class CardViewContent : TargetFollower
     {
         UpdateFill(state);
         UpdateTexts(state);
+        UpdateIcon(state);
+    }
+    
+    public void ShowAsMedium() => SetSizeActive(mediumKey);
+    public void ShowAsMini() => SetSizeActive(miniKey);
+    public void ShowAsMikro() => SetSizeActive(mikroKey);
+    public void ShowAsMega() => SetSizeActive(megaKey);
+
+    public void ShowAsDefault()
+    {
+        anim.SetBool(mikroKey, false);
+        anim.SetBool(miniKey, false);
+        anim.SetBool(mediumKey, false);
+        anim.SetBool(megaKey, false);
+    }
+    public void SetFill(float percent)
+    {
+        fill.fillAmount = 1 - percent;
+        targetFill = fill.fillAmount;
     }
 
-    public async void UpdateFill(CardState cardState, bool allowShaking = true)
+    private async void UpdateFill(CardState cardState, bool allowShaking = true)
     {
         targetFill = cardState.activeCooldown / (float)cardState.cooldown;
         if (allowShaking) ChargeUpdated?.Invoke(targetFill);
@@ -62,7 +83,7 @@ public class CardViewContent : TargetFollower
         isUpdatingFill = false;
     }
 
-    public void UpdateTexts(CardState cardState)
+    private void UpdateTexts(CardState cardState)
     {
         displayID = cardState.id;
 
@@ -78,19 +99,9 @@ public class CardViewContent : TargetFollower
         nameLabel.transform.eulerAngles = new Vector3(0, degree);
     }
 
-    public void SetFill(float percent) => fill.fillAmount = 1 - percent;
-
-    public void ShowAsMedium() => SetSizeActive(mediumKey);
-    public void ShowAsMini() => SetSizeActive(miniKey);
-    public void ShowAsMikro() => SetSizeActive(mikroKey);
-    public void ShowAsMega() => SetSizeActive(megaKey);
-
-    public void ShowAsDefault()
+    private void UpdateIcon(CardState cardState)
     {
-        anim.SetBool(mikroKey, false);
-        anim.SetBool(miniKey, false);
-        anim.SetBool(mediumKey, false);
-        anim.SetBool(megaKey, false);
+        icon.sprite = ResourceSpriteCache.Get($"CardArts/{cardState.cardIcon}"); ;
     }
     
     private void SetSizeActive(int size, bool active = true)

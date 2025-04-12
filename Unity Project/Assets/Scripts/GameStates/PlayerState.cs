@@ -4,7 +4,7 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerState
 {
-    public List<CardState> collection;
+    public DeckState collection;
     public CharacterState generic;
     public int xp;
     public int gold;

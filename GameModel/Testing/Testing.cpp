@@ -77,20 +77,16 @@ void Skip()
 
 int main()
 {
+    Skip();
+    std::cout << "Test with logs... \n";
     Initialize();
-    std::string t1 = "sdadsa";
-    SetSaveState(&t1[0]);
+    Localize("English(en)");
+    for (int i = 0; i < 100; i++) 
+    {
+        Tick();
+    }
 
-    /*
-     Skip();
-    Initialize();
-    SetSaveState(&ReadFile("C:/Users/Bastian_Krueger/AppData/LocalLow/DefaultCompany/Idle Roguelike/Savestate.sv")[0]);
-    Skip(8000);
-    Dump();
-    */
-
-
-   
-
+    std::cout << "Success";
+    
     return 0;
 }

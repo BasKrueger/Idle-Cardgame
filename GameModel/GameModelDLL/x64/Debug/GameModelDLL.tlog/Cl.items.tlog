@@ -1,4 +1,14 @@
+C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModel\FileLog.cpp;C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelDLL\x64\Debug\FileLog.obj
+C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModel\S\Characters\Deck.cpp;C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelDLL\x64\Debug\Deck.obj
+C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModel\S\Cards\HealingShieldCard.cpp;C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelDLL\x64\Debug\HealingShieldCard.obj
+C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModel\S\Cards\SpikeShieldCard.cpp;C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelDLL\x64\Debug\SpikeShieldCard.obj
+C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModel\S\Cards\ChargedStrikeCard.cpp;C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelDLL\x64\Debug\ChargedStrikeCard.obj
+C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModel\S\Cards\CrazyPotionCard.cpp;C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelDLL\x64\Debug\CrazyPotionCard.obj
+C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModel\S\Cards\DoubleStrikeCard.cpp;C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelDLL\x64\Debug\DoubleStrikeCard.obj
 C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModel\Game.cpp;C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelDLL\x64\Debug\Game.obj
+C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModel\S\Interactions\HealInteraction.cpp;C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelDLL\x64\Debug\HealInteraction.obj
+C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModel\S\Cards\PowerPotionCard.cpp;C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelDLL\x64\Debug\PowerPotionCard.obj
+C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModel\S\Cards\HealPotionCard.cpp;C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelDLL\x64\Debug\HealPotionCard.obj
 C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModel\S\Cards\AttackCard.cpp;C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelDLL\x64\Debug\AttackCard.obj
 C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModel\S\Cards\BaseCard.cpp;C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelDLL\x64\Debug\BaseCard.obj
 C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModel\S\Cards\CardPool.cpp;C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelDLL\x64\Debug\CardPool.obj
@@ -31,6 +41,7 @@ C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModel\
 C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModel\S\Logs\LogSubEntry.cpp;C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelDLL\x64\Debug\LogSubEntry.obj
 C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModel\S\Rewards\Reward.cpp;C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelDLL\x64\Debug\Reward.obj
 C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModel\S\Rewards\RewardStash.cpp;C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelDLL\x64\Debug\RewardStash.obj
+C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModel\S\Cards\TieUpCard.cpp;C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelDLL\x64\Debug\TieUpCard.obj
 C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelDLL\dllmain.cpp;C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelDLL\x64\Debug\dllmain.obj
 C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelDLL\GameModelLib.cpp;C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelDLL\x64\Debug\GameModelLib.obj
 C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelDLL\pch.cpp;C:\Users\Bastian_Krueger\Desktop\Repositories\Idle-Cardgame\GameModel\GameModelDLL\x64\Debug\pch.obj

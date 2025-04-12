@@ -22,7 +22,11 @@ void Reward::RandomizeReward(int tier, Player* pPlayer)
 			break;
 	}
 
-	std::array<int, MAX_REWARD_ID> possibleCards;
+	std::vector<bool> possibleCards;
+	for(int i =0; i < CardPool::maxCardID; i++)
+	{
+		possibleCards.push_back(false);
+	}
 	for(int i = 0;i < cards.size();i++)
 	{
 		SetRandomCardReward(tier, i, pPlayer, &possibleCards);
@@ -75,7 +79,7 @@ bool Reward::ClaimBonusReward(Player* pPlayer)
 	return true;
 }
 
-void Reward::SetRandomCardReward(int tier, int slot, Player* pPlayer, std::array<int, MAX_REWARD_ID>* excludeIDs)
+void Reward::SetRandomCardReward(int tier, int slot, Player* pPlayer, std::vector<bool>* excludeIDs)
 {
 	if (cards[slot] != nullptr)
 	{
@@ -88,10 +92,11 @@ void Reward::SetRandomCardReward(int tier, int slot, Player* pPlayer, std::array
 
 	do
 	{
-		rng = rand() % MAX_REWARD_ID;
-	} while ((*excludeIDs)[rng] == -1);
+		rng = rand() % CardPool::maxCardID;
+	} 
+	while ((*excludeIDs)[rng] == true);
 		
-	(*excludeIDs)[rng] = -1;
+	(*excludeIDs)[rng] = true;
 	
 	bool rerun = true;
 
@@ -153,6 +158,7 @@ Reward* Reward::LoadSave(Character* owner, json::JSON save)
 	{
 		iterator++;
 		reward->cards[iterator] = BaseCard::LoadSave(owner, card);
+		reward->cards[iterator]->UnRegister();
 	}
 
 	return reward;

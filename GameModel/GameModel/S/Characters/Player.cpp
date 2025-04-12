@@ -1,5 +1,4 @@
 #include "H/Player.h"
-#include "H/AttackCard.h"
 #include "H/InteractionManager.h"
 #include "H/CardPool.h"
 #include "H/CharacterPool.h"
@@ -7,76 +6,89 @@
 #include "H/InteractionPool.h"
 #include "H/Json.hpp"
 
+#include "H/AttackCard.h"
+#include "H/FastAttackCard.h"
+#include "H/SlowAttackCard.h"
+#include "H/HealPotionCard.h"
+#include "H/PowerPotionCard.h"
+#include "H/DoubleStrikeCard.h"
+#include "H/CrazyPotionCard.h"
+#include "H/ChargedStrikeCard.h"
+#include "H/SpikeShieldCard.h"
+#include "H/HealingShieldCard.h"
+#include "H/TieUpCard.h"
+
 const int Player::characterID;
 
 void Player::Before(DamageInteraction* interaction)
 {
-	//testing only
-	if (interaction->pTarget != this || hp >= 10) return;
-	interaction->attackDamage = 0;
+	INITCHECK
+
+	if (interaction->pTarget != this) return;
+	if(interaction->attackDamage >= hp) interaction->attackDamage = 0;
+}
+
+void Player::After(DieInteraction* interaction)
+{
+	INITCHECK
+
+	if (interaction->pTarget != this) return;
+	std::cout << "Player died\n";
 }
 
 void Player::AddToCollection(BaseCard* card)
 {
-	collection.push_back(card);
+	collection.Add(card);
 }
 
-void Player::InternalInitialize(int& charID, int& baseHP, int& baseDamage, LocalizedString* characterName)
+void Player::InternalInitialize(int& charID, int& baseHP, int& baseDamage, LocalizedString* characterName, Deck* deck)
 {
 	charID = characterID;
 	baseHP = 100;
 	baseDamage = 0;
 	characterName->SetKey("Player");
 
-	for (int i = 0; i < 20; i++)
-	{
-		deck[i] = CardPool::GetInstance(this, AttackCard::cardID);
-	}
-	CardPool::ReFillPool(AttackCard::cardID);
+	deck->Add(CardPool::GetInstance(this, AttackCard::cardID));
+	deck->Add(CardPool::GetInstance(this, FastAttackCard::cardID));
+	deck->Add(CardPool::GetInstance(this, SlowAttackCard::cardID));
+	deck->Add(CardPool::GetInstance(this, HealPotionCard::cardID));
+	deck->Add(CardPool::GetInstance(this, PowerPotionCard::cardID));
+	deck->Add(CardPool::GetInstance(this, DoubleStrikeCard::cardID));
+	deck->Add(CardPool::GetInstance(this, CrazyPotionCard::cardID));
+	deck->Add(CardPool::GetInstance(this, FastAttackCard::cardID));
+	deck->Add(CardPool::GetInstance(this, ChargedStrikeCard::cardID));
+	deck->Add(CardPool::GetInstance(this, SpikeShieldCard::cardID));
+	deck->Add(CardPool::GetInstance(this, HealingShieldCard::cardID));
+	deck->Add(CardPool::GetInstance(this, TieUpCard::cardID));
+	deck->Add(CardPool::GetInstance(this, AttackCard::cardID));
+	deck->Add(CardPool::GetInstance(this, AttackCard::cardID));
+	deck->Add(CardPool::GetInstance(this, AttackCard::cardID));
+	deck->Add(CardPool::GetInstance(this, AttackCard::cardID));
+	deck->Add(CardPool::GetInstance(this, AttackCard::cardID));
+	deck->Add(CardPool::GetInstance(this, AttackCard::cardID));
+	deck->Add(CardPool::GetInstance(this, AttackCard::cardID));
+	deck->Add(CardPool::GetInstance(this, AttackCard::cardID));
 }
 
-int Player::SwitchCards(int collectionID, int deckID)
+void Player::SwitchCards(int ID1, int ID2)
 {
-	int collectionIndex = -1;
-	for(int i = 0;i < collection.size(); i++)
-	{
-		if(collection[i]->id == collectionID)
-		{
-			collectionIndex = i;
-			break;
-		}
-	}
-	if (collectionIndex == -1) {
-		std::cout << "Error: card not found in collection\n";
-		return collectionID;
-	}
+	auto card1 = deck->GetCardByID(ID1);
+	if (card1 == nullptr) card1 = collection.GetCardByID(ID1);
+	if (card1 == nullptr) return;
 
-	int deckIndex = -1;
-	for (int i = 0; i < deck.size(); i++)
-	{
-		if (deck[i]->id == deckID)
-		{
-			deckIndex = i;
-			break;
-		}
-	}
-	if (deckIndex == -1) {
-		std::cout << "Error: card not found in deck\n";
-		return deckID;
-	}
+	auto card2 = deck->GetCardByID(ID2);
+	if (card2 == nullptr) card2 = collection.GetCardByID(ID1);
+	if (card2 == nullptr) return;
 
-	auto deckCard = deck[deckIndex];
-	auto collectionCard = collection[collectionIndex];
+	if (!deck->TrySwapCard(&collection, card1, card2)) return;
 
-	deck[deckIndex] = collectionCard;
-	collection[collectionIndex] = deckCard;
+	card1->Reset();
+	card2->Reset();
 
-	collectionCard->Register();
-	collectionCard->Reset();
-	deckCard->UnRegister();
-	deckCard->Reset();
-
-	return 0;
+	if (collection.Contains(card1)) card1->UnRegister();
+	if (collection.Contains(card2)) card2->UnRegister();
+	if (deck->Contains(card1)) card1->Register();
+	if (deck->Contains(card2)) card2->Register();
 }
 
 #pragma region State/Save/Load
@@ -88,12 +100,7 @@ json::JSON* Player::GetState()
 	(*state)["generic"] = *Character::GetState();
 	(*state)["xp"] = xp;
 	(*state)["gold"] = gold;
-	
-	(*state)["collection"] = json::Array();
-	for(auto& card : collection)
-	{
-		(*state)["collection"].append(*card->GetState());
-	}
+	(*state)["collection"] = *collection.GetState();
 
 	return state;
 }
@@ -105,12 +112,7 @@ json::JSON Player::GetSave()
 	(save)["generic"] = Character::GetSave();
 	(save)["xp"] = xp;
 	(save)["gold"] = gold;
-
-	(save)["collection"] = json::Array();
-	for (auto& card : collection)
-	{
-		(save)["collection"].append(card->GetSave());
-	}
+	(save)["collection"] = collection.GetSave();
 
 	return save;
 }
@@ -122,18 +124,8 @@ void Player::SetSave(json::JSON save)
 	xp = save["xp"].ToInt();
 	gold = save["gold"].ToInt();
 
-	for (auto& card : collection) 
-	{
-		if (card == nullptr) continue;
-		card->ReturnToPool();
-	}
-
-	collection.clear();
-
-	for (auto& card : save["collection"].ArrayRange()) 
-	{
-		collection.push_back(BaseCard::LoadSave(this, card));
-	}
+	collection.SetSave(save["collection"], this);
+	collection.SetCardsRegistered(false);
 }
 
 #pragma endregion

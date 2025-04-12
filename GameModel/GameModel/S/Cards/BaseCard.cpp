@@ -9,7 +9,7 @@ void BaseCard::Initialize()
 {
     cardName = new LocalizedString(LocalizedString::TABLE::CARDS);
     cardDescription = new LocalizedString(LocalizedString::TABLE::CARDS);
-    InternalInitialize(cardID, baseDmg, baseCooldown, cardName, cardDescription);
+    InternalInitialize(cardID, baseDmg, baseHealing, baseCooldown, baseVariables, cardName, cardDescription, iconName);
 
     Reset();
 }
@@ -18,6 +18,12 @@ void BaseCard::Reset()
 {
     cooldown = baseCooldown;
     dmg = baseDmg;
+    healing = baseHealing;
+    
+    for (int i = 0; i < baseVariables.size(); i++) 
+    {
+        variables[i] = baseVariables[i];
+    }
 }
 
 void BaseCard::Tick()
@@ -35,22 +41,9 @@ void BaseCard::ReturnToPool()
     CardPool::ReturnInstance(this);
 }
 
-bool BaseCard::TryPlay(InterActor* pTarget)
-{
-    if (IsCharged())
-    {
-        Reset();
-        auto interaction = InteractionPool<PlayInteraction>().GetInstance(pOwner, pTarget);
-        interaction->Initialize(this);
-        InteractionManager::AddNext(interaction);
-        return true;
-    }
-
-    return false;
-}
-
-void BaseCard::InternalInitialize(int& cardID, int& baseDmg, int& baseCooldown, LocalizedString* cardName, LocalizedString* cardDescription) {}
 void BaseCard::Play(PlayInteraction* pTarget) {}
+void BaseCard::InternalInitialize(int& cardID, int& baseDmg, int& baseHealing, int& baseCooldown, 
+    std::array<int, 3>& baseVariables, LocalizedString* cardName, LocalizedString* cardDescription, std::string& iconName) {}
 
 #pragma region State/Save/Load
 json::JSON* BaseCard::GetState()
@@ -61,6 +54,7 @@ json::JSON* BaseCard::GetState()
     (*state)["dmg"] = dmg;
     (*state)["activeCooldown"] = cooldown;
     (*state)["cooldown"] = baseCooldown;
+    (*state)["cardIcon"] = iconName;
     (*state)["cardName"] = cardName->Format();
     (*state)["cardDescription"] = cardDescription->Format();
 
@@ -84,17 +78,16 @@ json::JSON BaseCard::GetSave()
     return save;
 }
 
+#include "H/AttackCard.h"
 BaseCard* BaseCard::LoadSave(Character* owner, json::JSON save)
 {
     auto card = CardPool::GetInstance(owner, save["cardID"].ToInt());
     card->dmg = save["dmg"].ToInt();
     card->cooldown = save["activeCooldown"].ToInt();
 
-    int iterator = 0;
-    for (auto& var : save["variables"].ArrayRange()) 
+    for (auto i = 0; i < save["variables"].size(); i++) 
     {
-        card->variables[iterator] = var.ToInt();
-        iterator++;
+        card->variables[i] = save["variables"][i].ToInt();
     }
 
     return card;

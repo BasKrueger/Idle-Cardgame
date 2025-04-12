@@ -11,6 +11,7 @@ void DamageInteraction::Initialize(int damage)
 void DamageInteraction::InternalPerform()
 {
 	if (pTarget == 0) return;
+	if (attackDamage <= 0) return;
 
 	LocalizedString* log;
 	if (AdventureLog::AddLog(log, "DamageTaken"))

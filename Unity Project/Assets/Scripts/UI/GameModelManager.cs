@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 
 public class GameModelManager : MonoBehaviour
 {
-    public const float TICK_COOLDOWN = 1;
+    public const float TICK_COOLDOWN = 1f;
 
     public List<IGameViewAsync> activeViewsAsync = new List<IGameViewAsync>();
     public List<IGameView> activeViews = new List<IGameView>();
@@ -40,7 +39,7 @@ public class GameModelManager : MonoBehaviour
         QualitySettings.vSyncCount = 0;
         LocalizationSettings.SelectedLocaleChanged += (locale) => GameDLL.SetLanguage(locale.LocaleName);
 
-        while (LoadManager.loading) await UniTask.WaitForEndOfFrame();
+        await UniTask.WaitUntil(() => !LoadManager.loading);
         if (!LoadManager.simulated)
         {
             GameDLL.Initialize(LocalizationSettings.SelectedLocale.LocaleName);
@@ -59,7 +58,7 @@ public class GameModelManager : MonoBehaviour
         {
             GameDLL.Tick();
             await UniTask.WaitForEndOfFrame();
-            GameDLL.GetGameStates();
+            GameDLL.GetGameStates(true);
 
             while(rawStates.Count > 0)
             {

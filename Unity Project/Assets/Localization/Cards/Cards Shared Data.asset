@@ -39,6 +39,70 @@ MonoBehaviour:
     m_Key: SlowAttack_Text
     m_Metadata:
       m_Items: []
+  - m_Id: 29977200822120448
+    m_Key: HPPotion_Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29977403746742272
+    m_Key: HPPotion_Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29977537964470272
+    m_Key: PowerPotion_Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29977841288146944
+    m_Key: PowerPotion_Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29982659587141632
+    m_Key: DoubleStrike_Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29983210592858112
+    m_Key: DoubleStrike_Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29986514894909440
+    m_Key: CrazyPotion_Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29986578191151104
+    m_Key: CrazyPotion_Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30001236356689920
+    m_Key: ChargedStrike_Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30001392254775296
+    m_Key: ChargedStrike_Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30359377049088000
+    m_Key: SpikeShield_Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30359526865432576
+    m_Key: SpikeShield_Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30365636208947200
+    m_Key: HealingShield_Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30365686519623680
+    m_Key: HealingShield_Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30370626973528064
+    m_Key: TieUp_Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30370677049323520
+    m_Key: TieUp_Text
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

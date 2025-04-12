@@ -1,5 +1,15 @@
 c:\users\bastian_krueger\desktop\repositories\idle-cardgame\unity project\assets\plugins\android\arm64\lib__gamemodelso.so.recipe
+c:\users\bastian_krueger\desktop\repositories\idle-cardgame\gamemodel\gamemodelso\arm64\debug\filelog.o
+c:\users\bastian_krueger\desktop\repositories\idle-cardgame\gamemodel\gamemodelso\arm64\debug\deck.o
+c:\users\bastian_krueger\desktop\repositories\idle-cardgame\gamemodel\gamemodelso\arm64\debug\healingshieldcard.o
+c:\users\bastian_krueger\desktop\repositories\idle-cardgame\gamemodel\gamemodelso\arm64\debug\spikeshieldcard.o
+c:\users\bastian_krueger\desktop\repositories\idle-cardgame\gamemodel\gamemodelso\arm64\debug\chargedstrikecard.o
+c:\users\bastian_krueger\desktop\repositories\idle-cardgame\gamemodel\gamemodelso\arm64\debug\crazypotioncard.o
+c:\users\bastian_krueger\desktop\repositories\idle-cardgame\gamemodel\gamemodelso\arm64\debug\doublestrikecard.o
 c:\users\bastian_krueger\desktop\repositories\idle-cardgame\gamemodel\gamemodelso\arm64\debug\game.o
+c:\users\bastian_krueger\desktop\repositories\idle-cardgame\gamemodel\gamemodelso\arm64\debug\healinteraction.o
+c:\users\bastian_krueger\desktop\repositories\idle-cardgame\gamemodel\gamemodelso\arm64\debug\powerpotioncard.o
+c:\users\bastian_krueger\desktop\repositories\idle-cardgame\gamemodel\gamemodelso\arm64\debug\healpotioncard.o
 c:\users\bastian_krueger\desktop\repositories\idle-cardgame\gamemodel\gamemodelso\arm64\debug\attackcard.o
 c:\users\bastian_krueger\desktop\repositories\idle-cardgame\gamemodel\gamemodelso\arm64\debug\basecard.o
 c:\users\bastian_krueger\desktop\repositories\idle-cardgame\gamemodel\gamemodelso\arm64\debug\cardpool.o
@@ -32,11 +42,12 @@ c:\users\bastian_krueger\desktop\repositories\idle-cardgame\gamemodel\gamemodels
 c:\users\bastian_krueger\desktop\repositories\idle-cardgame\gamemodel\gamemodelso\arm64\debug\logsubentry.o
 c:\users\bastian_krueger\desktop\repositories\idle-cardgame\gamemodel\gamemodelso\arm64\debug\reward.o
 c:\users\bastian_krueger\desktop\repositories\idle-cardgame\gamemodel\gamemodelso\arm64\debug\rewardstash.o
+c:\users\bastian_krueger\desktop\repositories\idle-cardgame\gamemodel\gamemodelso\arm64\debug\tieupcard.o
 c:\users\bastian_krueger\desktop\repositories\idle-cardgame\gamemodel\gamemodelso\arm64\debug\gamemodelso.o
-c:\users\bastian_krueger\desktop\repositories\idle-cardgame\gamemodel\gamemodelso\arm64\debug\lib__gamemodelso.so
-c:\users\bastian_krueger\desktop\repositories\idle-cardgame\unity project\assets\plugins\android\arm64\lib__gamemodelso.so
-c:\users\bastian_krueger\desktop\repositories\idle-cardgame\gamemodel\gamemodelso\arm64\debug\gamemodelso.tlog\cl.items.tlog
+c:\users\bastian_krueger\desktop\repositories\idle-cardgame\gamemodel\gamemodelso\arm64\debug\gamemodelso.tlog\clang-ld.read.1.tlog
+c:\users\bastian_krueger\desktop\repositories\idle-cardgame\gamemodel\gamemodelso\arm64\debug\gamemodelso.tlog\clang-ld.write.1.tlog
 c:\users\bastian_krueger\desktop\repositories\idle-cardgame\gamemodel\gamemodelso\arm64\debug\gamemodelso.tlog\clang.command.1.tlog
+c:\users\bastian_krueger\desktop\repositories\idle-cardgame\gamemodel\gamemodelso\arm64\debug\gamemodelso.tlog\clang.read.1.tlog
 c:\users\bastian_krueger\desktop\repositories\idle-cardgame\gamemodel\gamemodelso\arm64\debug\gamemodelso.tlog\gamemodelso.write.1u.tlog
 c:\users\bastian_krueger\desktop\repositories\idle-cardgame\gamemodel\gamemodelso\arm64\debug\gamemodelso.tlog\microsoft.build.cpptasks.clangcompile.read.1.tlog
 c:\users\bastian_krueger\desktop\repositories\idle-cardgame\gamemodel\gamemodelso\arm64\debug\gamemodelso.tlog\microsoft.build.cpptasks.clangcompile.write.1.tlog

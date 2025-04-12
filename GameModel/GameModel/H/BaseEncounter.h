@@ -19,8 +19,10 @@ public:
 	void ReturnToPool();
 	
 protected:
-	std::array<Character*, 3> NPCs;
 	std::array<int, 2> variables;
+
+	void SetNPC(int slot, Character* pCharacter);
+	Character* GetNPC(int slot);
 
 	virtual void InternalInitialize(Player* pPlayer, bool& staticBackground, int& encounterID);
 	virtual void InternalTick(Player* pPlayer);
@@ -29,6 +31,7 @@ protected:
 	virtual bool IsOngoing();
 
 private:
+	std::array<Character*, 3> NPCs;
 	int id = IDManager::NewID();
 	bool hasStaticBackground = true;
 

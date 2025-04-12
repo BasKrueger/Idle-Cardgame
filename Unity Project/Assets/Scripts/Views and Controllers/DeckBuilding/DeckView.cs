@@ -35,10 +35,10 @@ public class DeckView : MonoBehaviour, IGameView
     {
         if (activeViews.Count > 0) return;
 
-        foreach(var card in playerState.autoDeck)
+        foreach(var card in playerState.autoDeck.deckContent)
         {
             var instance = Instantiate(viewModel, content, false);
-            instance.Content.UpdateTexts(card);
+            instance.Content.Show(card);
             instance.transform.gameObject.name = card.cardDescription;
             
             instance.Clicked += CardSelected.Invoke;
@@ -63,12 +63,6 @@ public class DeckView : MonoBehaviour, IGameView
     
     private void UpdateMarker(CharacterState playerState)
     {
-        if(playerState.autoDeckInPlayOrder.Count == 0)
-        {
-            Debug.LogError("Error: deck is empty");
-            return;
-        }
-
-        marker.SetTarget(activeViews[playerState.autoDeckInPlayOrder.First().id].transform);
+        marker.SetTarget(activeViews[playerState.autoDeck.InPlayOrder.First().id].transform);
     }
 }

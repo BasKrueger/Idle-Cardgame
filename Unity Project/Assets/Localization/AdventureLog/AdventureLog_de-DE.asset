@@ -50,6 +50,10 @@ MonoBehaviour:
     m_Localized: '{0} wurde besiegt'
     m_Metadata:
       m_Items: []
+  - m_Id: 29955423567933440
+    m_Localized: '{0} hat {1} leben bei {2} geheilt'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

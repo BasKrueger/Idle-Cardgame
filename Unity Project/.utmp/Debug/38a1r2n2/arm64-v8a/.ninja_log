@@ -1,10 +1,10 @@
 # ninja log v5
-25	1243	7658206670076949	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	549f951b1cd5e9f1
-40	1263	7658206670121995	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	66ef49d65d22b95d
-0	1313	7658206670788099	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	f7b944a7b7468762
-6	1358	7658206671454122	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	1eab29e5ca7633
-50	1401	7658206671877840	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	a5849f5e8c4dcb41
-18	1439	7658206672282433	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	d1f1fbb4dc01b9ef
-33	1473	7658206672567744	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	62fbc47b44e33f63
-12	1481	7658206672598038	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	b7b00359a215c2ce
-1482	1584	7658206673721715	C:/Users/Bastian_Krueger/Desktop/Repositories/Idle-Cardgame/Unity Project/Library/PramData/AndroidApplicationController/Cache/com.DefaultCompany.IdleRoguelike/gradle-project/unityLibrary/build/intermediates/cxx/Debug/38a1r2n2/obj/arm64-v8a/libgame.so	7a380e785acd01f7
+29	1354	7661852119703982	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	62fbc47b44e33f63
+36	1368	7661852119890523	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	a5849f5e8c4dcb41
+7	1371	7661852119916570	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	1eab29e5ca7633
+43	1401	7661852120266908	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	66ef49d65d22b95d
+12	1442	7661852120664073	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	f7b944a7b7468762
+17	1469	7661852120958520	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	549f951b1cd5e9f1
+23	1501	7661852121287500	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	d1f1fbb4dc01b9ef
+0	1576	7661852122034307	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	b7b00359a215c2ce
+1576	1729	7661852123583747	C:/Users/Bastian_Krueger/Desktop/Repositories/Idle-Cardgame/Unity Project/Library/PramData/AndroidApplicationController/Cache/com.DefaultCompany.IdleRoguelike/gradle-project/unityLibrary/build/intermediates/cxx/Debug/38a1r2n2/obj/arm64-v8a/libgame.so	7a380e785acd01f7

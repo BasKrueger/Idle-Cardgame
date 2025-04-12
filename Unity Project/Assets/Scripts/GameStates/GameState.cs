@@ -13,8 +13,8 @@ public class GameState
     {
         var result = JsonUtility.FromJson<GameState>(json);
 
-        var cards = new List<CardState>(result.player.generic.autoDeck);
-        result.encounter.NPCs.ForEach(npc => cards.AddRange(npc.autoDeck));
+        var cards = new List<CardState>(result.player.generic.autoDeck.deckContent);
+        result.encounter.NPCs.ForEach(npc => cards.AddRange(npc.autoDeck.deckContent));
 
         return result;
     }

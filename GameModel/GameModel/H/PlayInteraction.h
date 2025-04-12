@@ -6,7 +6,7 @@ class BaseCard;
 class PlayInteraction : public BaseInteraction
 {
 public:
-	BaseCard* cardToPlay;
+	BaseCard* cardToPlay = nullptr;
 	void Initialize(BaseCard* card);
 
 protected:

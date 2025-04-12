@@ -1013,6 +1013,7 @@ MonoBehaviour:
   descriptionLabel: {fileID: 1052975397004225060}
   nameLabel: {fileID: 788516961109920333}
   anim: {fileID: 2117580648405443216}
+  icon: {fileID: 5192247820189575400}
 --- !u!95 &2117580648405443216
 Animator:
   serializedVersion: 7

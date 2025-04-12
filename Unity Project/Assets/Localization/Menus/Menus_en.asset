@@ -98,6 +98,26 @@ MonoBehaviour:
     m_Localized: Almost Done...
     m_Metadata:
       m_Items: []
+  - m_Id: 29914237813714944
+    m_Localized: Done
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29914999952306176
+    m_Localized: Initializing Game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29915485082284032
+    m_Localized: No savefile found
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29915634697302016
+    m_Localized: No meta savefile found
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29916373410705408
+    m_Localized: Saving...
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

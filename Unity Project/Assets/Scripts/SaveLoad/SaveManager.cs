@@ -16,7 +16,5 @@ public static class SaveManager
 
         File.WriteAllText(metaSavePath, JsonUtility.ToJson(meta, true));
         File.WriteAllText(gameSavePath, GameDLL.GetSaveState());
-
-        Debug.LogWarning("saved progress");
     }
 }

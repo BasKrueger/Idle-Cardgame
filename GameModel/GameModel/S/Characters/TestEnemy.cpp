@@ -5,15 +5,15 @@
 
 const int TestEnemy::characterID;
 
-void TestEnemy::InternalInitialize(int& charID, int& baseHP, int& baseDamage, LocalizedString* characterName)
+void TestEnemy::InternalInitialize(int& charID, int& baseHP, int& baseDamage, LocalizedString* characterName, Deck* deck)
 {
 	charID = characterID;
-	baseHP = 5;
+	baseHP = 10;
 	baseDamage = 0;
 	characterName->SetKey("GenericEnemy");
 
 	for (int i = 0; i < 3; i++)
 	{
-		deck[i] = CardPool::GetInstance(this, AttackCard::cardID);
+		deck->Add(CardPool::GetInstance(this, AttackCard::cardID));
 	}
 }

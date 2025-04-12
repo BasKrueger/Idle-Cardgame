@@ -1,6 +1,16 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(520,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
   pch.cpp
+  FileLog.cpp
+  Deck.cpp
+  HealingShieldCard.cpp
+  SpikeShieldCard.cpp
+  ChargedStrikeCard.cpp
+  CrazyPotionCard.cpp
+  DoubleStrikeCard.cpp
   Game.cpp
+  HealInteraction.cpp
+  PowerPotionCard.cpp
+  HealPotionCard.cpp
   AttackCard.cpp
   BaseCard.cpp
   CardPool.cpp
@@ -10,6 +20,8 @@
   CharacterPool.cpp
   Player.cpp
   TestEnemy.cpp
+  Generating Code...
+  Compiling...
   BaseEncounter.cpp
   CombatEncounter.cpp
   EncounterManager.cpp
@@ -20,8 +32,6 @@
   BaseInteraction.cpp
   BeforeInteraction.cpp
   DamageInteraction.cpp
-  Generating Code...
-  Compiling...
   DieInteraction.cpp
   InteractionManager.cpp
   InteractionPool.cpp
@@ -32,9 +42,12 @@
   LocalizedString.cpp
   Localizer.cpp
   LogEntry.cpp
+  Generating Code...
+  Compiling...
   LogSubEntry.cpp
   Reward.cpp
   RewardStash.cpp
+  TieUpCard.cpp
   dllmain.cpp
   GameModelLib.cpp
   Generating Code...

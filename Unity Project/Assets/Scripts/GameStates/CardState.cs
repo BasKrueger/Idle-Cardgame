@@ -10,4 +10,5 @@ public class CardState
     public int cooldown;
     public string cardName;
     public string cardDescription;
+    public string cardIcon;
 }

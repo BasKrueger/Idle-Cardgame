@@ -32,10 +32,10 @@ public class CollectionView : MonoBehaviour, IGameView
     {
         if (activeViews.Count > 0) return;
         
-        foreach(var card in playerState.collection)
+        foreach(var card in playerState.collection.deckContent)
         {
             var instance = Instantiate(cardView, content, false);
-            instance.Content.UpdateTexts(card);
+            instance.Content.Show(card);
             instance.Content.ShowAsMedium();
 
             instance.Clicked += CardSelected.Invoke;

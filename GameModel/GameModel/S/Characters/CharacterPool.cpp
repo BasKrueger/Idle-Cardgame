@@ -32,13 +32,14 @@ Character* CharacterPool::GetInstance(int characterID)
 	Character* result = poolContent[characterID].back();
 	poolContent[characterID].pop_back();
 
-	result->Initialize();
 	result->Register();
+	result->Initialize();
 
 	return result;
 }
 
 void CharacterPool::ReturnInstance(Character* pInstance)
 {
+	pInstance->UnRegister();
 	poolContent[pInstance->characterID].push_back(pInstance);
 }

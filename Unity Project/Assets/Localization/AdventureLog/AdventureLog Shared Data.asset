@@ -47,6 +47,10 @@ MonoBehaviour:
     m_Key: Death
     m_Metadata:
       m_Items: []
+  - m_Id: 29955423567933440
+    m_Key: Heal
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

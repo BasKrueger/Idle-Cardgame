@@ -6,12 +6,14 @@
 
 const int AttackCard::cardID;
 
-void AttackCard::InternalInitialize(int& cID,  int& baseDmg, int& baseCooldown, LocalizedString* cardName, LocalizedString* cardDescription)
+void AttackCard::InternalInitialize(int& cID,  int& baseDmg, int& baseHealing, int& baseCooldown, 
+    std::array<int, 3>& baseVariables, LocalizedString* cardName, LocalizedString* cardDescription, std::string& iconName)
 {
     cID = cardID;
     baseCooldown = 6;
     baseDmg = 2;
 
+    iconName = "Set1/Sword";
     cardName->SetKey("Attack_Name");
     cardDescription->SetKey("Attack_Text");
     cardDescription->BindFormatVariable(&dmg);

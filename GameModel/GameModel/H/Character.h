@@ -5,16 +5,19 @@
 #include "H/Json.hpp"
 #include "H/LocalizedString.h"
 #include "H/IDManager.h"
+#include "H/Deck.h"
 
 class DamageInteraction;
+class HealInteraction;
 class DieInteraction;
 class BaseCard;
 
 class Character : public InterActor
 {
 public:
-	LocalizedString* characterName = nullptr;
 	int characterID = -1;
+	LocalizedString* characterName = nullptr;
+	Deck* deck = nullptr;
 
 	void Initialize();
 	void Tick();
@@ -23,14 +26,13 @@ public:
 	void EngageInCombat(Character* pNewEnemy);
 	void DisengageInCombat();
 	void TakeDamage(DamageInteraction* interaction);
+	void Heal(HealInteraction* interaction);
 	void Die(DieInteraction* interaction);
 	void ReturnCharacterToPool();
 
 protected:
-	std::array<BaseCard*, 20> deck;
 	int hp = 0;
-	
-	virtual void InternalInitialize(int& charID, int& baseHP, int& baseDamage, LocalizedString* characterName);
+	virtual void InternalInitialize(int& charID, int& baseHP, int& baseDamage, LocalizedString* characterName, Deck* deck);
 
 private:
 	enum PHASE { IDLE, COMBAT, DEAD };
@@ -44,9 +46,9 @@ private:
 	int dmg = 0;
 	int baseDamage = 0;
 	int baseHP = 0;
-	int currentCardIndex = 0;
 	
-	void TryPlayNextCard(BaseCard* card);
+	void TryPlayNextCard(InterActor* pTarget);
+	void PlayCard(BaseCard* pCard, InterActor* pTarget);
 
 #pragma region State/Save/Load
 public:
