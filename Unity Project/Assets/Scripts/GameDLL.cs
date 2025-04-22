@@ -34,7 +34,7 @@ public static class GameDLL
     public static extern void Skip(float seconds);
 
     [DllImport(dllName)]
-    public static extern int SwapCards(int collection, int deck);
+    public static extern int SwapCards(int A, int B);
 
     [DllImport(dllName)]
     private static extern bool PopCachedGameState(StringBuilder str, int maxLength);

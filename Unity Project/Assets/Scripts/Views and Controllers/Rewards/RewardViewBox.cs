@@ -28,11 +28,6 @@ public class RewardViewBox : MonoBehaviour
         cards.SetUp(reward, collection);
     }
 
-    public void Show()
-    {
-        cards.Show();
-    }
-
     private void OnClaimStarted(int cardID)
     {
         bonus.ClaimBonus();

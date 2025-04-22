@@ -13,11 +13,11 @@ public class CardRewardView : MonoBehaviour
     [SerializeField]
     private RectTransform content;
     [SerializeField]
-    private RewardCardView cardTemplate;
+    private CardSlot slotTemplate;
 
     private RewardState reward;
     private CollectionView collection;
-    private List<RewardCardView> activeCards = new();
+    private List<CardSlot> activeSlots = new();
 
     public void SetUp(RewardState reward, CollectionView collection)
     {
@@ -31,73 +31,49 @@ public class CardRewardView : MonoBehaviour
         this.collection = collection;
         this.reward = reward;
         SpawnCards(reward);
+        ScheduleReveal();
     }
 
     public void SpawnCards(RewardState reward)
     {
-        foreach (CardView t in content.GetComponentsInChildren<CardView>())
+        foreach (var t in content.GetComponentsInChildren<CardSlot>())
         {
             Destroy(t.gameObject);
         }
 
         foreach (var state in reward.cards)
         {
-            var instance = Instantiate(cardTemplate);
-            instance.Content.Show(state);
-            instance.Content.ShowAsDefault();
-            instance.Content.SetFill(1);
-            instance.Clicked += OnCardSelected;
+            var instance = Instantiate(slotTemplate);
 
             instance.transform.SetParent(content, false);
             instance.transform.SetAsFirstSibling();
+            instance.Clicked += OnSlotSelected;
 
-            activeCards.Add(instance);
+            instance.TrySpawnCard(state);
+
+            activeSlots.Add(instance);
         }
 
-        activeCards.Reverse();
+        activeSlots.Reverse();
     }
 
-    private async void OnCardSelected(CardView clickedCard)
+    private void OnSlotSelected(CardSlot clickedSlot)
     {
-        activeCards.ForEach(card => card.Clicked -= OnCardSelected);
-        activeCards.Where(card => card != clickedCard).ToList().ForEach(card => card.HideCard());
+        activeSlots.ForEach(slot => slot.Clicked -= OnSlotSelected);
+        activeSlots.Where(slot => slot != clickedSlot).ToList().ForEach(slot => slot.DetachCard());
 
-        claimStarted?.Invoke(clickedCard.Content.displayID);
+        claimStarted?.Invoke(clickedSlot.card.lastState.id);
 
-        await AnimateClaim(clickedCard);
+        collection.TryAddFrom(clickedSlot);
 
         claimEnded?.Invoke();
     }
 
-    private async UniTask AnimateClaim(CardView card)
+    private void ScheduleReveal()
     {
-        card.Content.transform.SetParent(transform.parent.parent.parent.parent, true);
-
-        var emptyCard = collection.SpawnEmptyCard();
-        await MoveCardContent(card, emptyCard);
-        emptyCard.Content = card.Content;
-        emptyCard.Content.ShowAsMedium();
-    }
-
-    private async UniTask MoveCardContent(CardView cardA, CardView cardB)
-    {
-        cardA.Content.OverrideGlobalPosition(true, cardA.Content.transform.position);
-        await cardA.Content.SetTarget(cardB.transform);
-        cardA.Content.transform.SetParent(cardB.transform, true);
-        cardA.Content.OverrideGlobalPosition(false);
-    }
-
-    public async void Show()
-    {
-        for(int i = 0;i < activeCards.Count; i++)
+        for (int i = 0; i < activeSlots.Count; i++)
         {
-            activeCards[i].DiscoverCard(i * 0.4f);
+            activeSlots[i].card.RevealAfter(i * 0.4f + 0.1f);
         }
-
-        while(activeCards.Any(card => card.animationDoneSource.Task.Status == UniTaskStatus.Pending))
-        {
-            await UniTask.WaitForEndOfFrame();
-        }
-        activeCards.ForEach(card => card.ReturnToPreAnimationParent());
     }
 }

@@ -81,7 +81,7 @@ public class BonusRewardView : MonoBehaviour
             { 1, 0 }
         };
 
-        var particles = await ParticleUI.Splatter(template, amount, origin.transform.position, 1.5f);
+        var particles = await ParticleUI.SplatterMain(template, amount, origin.transform.position, 1.5f);
 
         for (int i = 0; i < particles.Count; i++)
         {

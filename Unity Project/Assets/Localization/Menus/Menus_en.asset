@@ -59,7 +59,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 19131497577246720
-    m_Localized: '{0} new rewards'
+    m_Localized: '{0} new reward(s)'
     m_Metadata:
       m_Items: []
   - m_Id: 19470130419134464
@@ -116,6 +116,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 29916373410705408
     m_Localized: Saving...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32506979710464000
+    m_Localized: Chose another card to swap place with
     m_Metadata:
       m_Items: []
   references:

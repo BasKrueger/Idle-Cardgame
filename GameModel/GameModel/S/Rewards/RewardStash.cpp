@@ -21,6 +21,25 @@ void RewardStash::Initialize(Player* player)
 	RefillCacheTier(0);
 	RefillCacheTier(1);
 	RefillCacheTier(2);
+
+	UnlockReward(0);
+	UnlockReward(0);
+	UnlockReward(0);
+	UnlockReward(0);
+	UnlockReward(0);
+	UnlockReward(0);
+	UnlockReward(0);
+	UnlockReward(0);
+	UnlockReward(0);
+	UnlockReward(0);
+	UnlockReward(0);
+	UnlockReward(0);
+	UnlockReward(0);
+	UnlockReward(0);
+	UnlockReward(0);
+	UnlockReward(0);
+	UnlockReward(0);
+	UnlockReward(0);
 }
 
 void RewardStash::UnlockReward(int tier)

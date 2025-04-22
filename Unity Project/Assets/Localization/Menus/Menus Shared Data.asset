@@ -129,6 +129,10 @@ MonoBehaviour:
     m_Key: Saving
     m_Metadata:
       m_Items: []
+  - m_Id: 32506979710464000
+    m_Key: EditDescription
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

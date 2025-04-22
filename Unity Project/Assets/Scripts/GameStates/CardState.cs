@@ -6,8 +6,8 @@ public class CardState
 {
     public int id;
     public int dmg;
-    public int activeCooldown;
-    public int cooldown;
+    public float activeCooldown;
+    public float cooldown;
     public string cardName;
     public string cardDescription;
     public string cardIcon;

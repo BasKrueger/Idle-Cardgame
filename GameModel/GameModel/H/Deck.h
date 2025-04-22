@@ -26,10 +26,10 @@ public:
 	BaseCard* GetCurrentCard();
 	BaseCard* GetCardByID(int id);
 	bool Contains(BaseCard* pCard);
+	bool FindCardIndex(BaseCard* pCard, int& outVal);
 
 private:
 	void PushBackCards(int entryIndex);
-	bool FindCardIndex(BaseCard* pCard, int& outVal);
 #pragma endregion
 
 #pragma region State/Save/Load

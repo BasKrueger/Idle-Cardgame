@@ -15,7 +15,7 @@
 ",19110777329610752,"","Treasure Chest","","SChatztruhe
 ",""
 "Rewards_Description",19111989399580672,"","Pick a card to add to your collection!","","Wähle eine Karte um sie deiner Sammlung hinzuzufügen!",""
-"Rewards_Button",19131497577246720,"","{0} new rewards","","{0} neuen Belohnungen",""
+"Rewards_Button",19131497577246720,"","{0} new reward(s)","","{0} neue Belohnung(en)",""
 "Rewards_Button_Empty",19470130419134464,"","No new rewards","","keine neuen Belohnungen",""
 "Claim_Button
 ",20555052298858496,"","Claim","","Sammeln",""
@@ -33,3 +33,4 @@
 "MissingSaveFile",29915485082284032,"","No savefile found","","Keinen Speicherstand gefunden",""
 "MissingMetaFile",29915634697302016,"","No meta savefile found","","Keinen Meta-Speicherstand gefunden",""
 "Saving",29916373410705408,"","Saving...","","Speichern...",""
+"EditDescription",32506979710464000,"","Chose another card to swap place with","","Wähle eine andere Karte zum Plätze tauschen",""

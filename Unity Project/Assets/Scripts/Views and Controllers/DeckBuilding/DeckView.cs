@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,63 +7,76 @@ using UnityEngine;
 
 public class DeckView : MonoBehaviour, IGameView
 {
-    public event Action<CardView> CardSelected;
+    public event Action<CardSlot> SlotSelected;
     
     [SerializeField]
-    private Transform content;
+    private List<CardSlot> slots;
     [SerializeField]
-    private CardView viewModel;
-    [SerializeField]
-    private TargetFollower marker;
+    private CardSlot editSlot;
 
-    private Dictionary<int, CardView> activeViews = new();
-    
+    private Dictionary<int, CardSlot> IdToSlot = new();
+    private bool setuped = false;
+
     private void Awake()
     {
-        foreach(var t in content.GetComponentsInChildren<CardView>())
+        foreach (CardSlot slot in slots)
         {
-            Destroy(t.gameObject);
+            slot.ContentChanged += OnSlotChanged;
+            slot.Clicked += (slot) => SlotSelected?.Invoke(slot);
         }
     }
-        
+
     public void OnGameStateUpdate(GameState gameState)
     {
         TrySpawnCards(gameState.player.generic);
-        UpdateMarker(gameState.player.generic);
+        UpdateCards(gameState.player.generic);
     }
-    
+
     private void TrySpawnCards(CharacterState playerState)
     {
-        if (activeViews.Count > 0) return;
+        if (setuped) return;
 
-        foreach(var card in playerState.autoDeck.deckContent)
+        for(int i = 0;i < playerState.autoDeck.deckContent.Count && i < slots.Count; i++)
         {
-            var instance = Instantiate(viewModel, content, false);
-            instance.Content.Show(card);
-            instance.transform.gameObject.name = card.cardDescription;
-            
-            instance.Clicked += CardSelected.Invoke;
-            instance.ContentChanged += OnCardContentChanged;
-            
-            instance.Content.ShowAsMedium();
-            activeViews.Add(card.id, instance);
+            slots[i].TrySpawnCard(playerState.autoDeck.deckContent[i]);
         }
 
-        marker.transform.SetAsLastSibling();
+        setuped = true;
     }
     
-    private void OnCardContentChanged(CardViewContent oldContent, CardView view)
+    private void UpdateCards(CharacterState playerState)
     {
-        if (oldContent != null && activeViews.ContainsKey(oldContent.displayID)) 
+        playerState.autoDeck.deckContent.ForEach(state => { if (IdToSlot.ContainsKey(state.id)) IdToSlot[state.id].TryUpdateCard(state); });
+
+        if(editSlot.card != null)
         {
-            activeViews.Remove(oldContent.displayID);
+            var previewState = playerState.autoDeck.deckContent.FirstOrDefault(state => editSlot.card.lastState.id == state.id);
+            editSlot.TryUpdateCard(previewState, true);
+        }
+    }
+
+    private void OnSlotChanged(CardSlot slot)
+    {
+        IdToSlot.TryRemoveByValue(slot);
+        
+        if (slot.card == null) return;
+        IdToSlot.Add(slot.card.lastState.id, slot);
+    }
+}
+
+public static partial class Extensions
+{
+    public static bool TryRemoveByValue<T, T2>(this Dictionary<T, T2> source, T2 toRemove)
+    {
+        foreach(var pair in source)
+        {
+            if(pair.Value.Equals(toRemove))
+            {
+                source.Remove(pair.Key);
+                return true;
+            }
         }
 
-        activeViews.TryAdd(view.Content.displayID, view);
-    }
-    
-    private void UpdateMarker(CharacterState playerState)
-    {
-        marker.SetTarget(activeViews[playerState.autoDeck.InPlayOrder.First().id].transform);
+        return false;
     }
 }

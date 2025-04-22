@@ -17,73 +17,65 @@ public class DeckBuildingController : MonoBehaviour
     private CollectionView collection;
     [SerializeField]
     private DeckView deck;
-    
-    private CardView selectedCard;
+
+    [SerializeField]
+    private CardSlot previewSlot;
+
+    private CardSlot SlotA = null;
+    private CardSlot SlotB = null;
 
     private void Awake()
     {
-        collection.CardSelected += ActivateEditMode;
-        deck.CardSelected += SwapSelectedCardWith;
+        collection.SlotSelected += OnSlotSelected;
+        deck.SlotSelected += OnSlotSelected;
     }
 
-    private void ActivateEditMode(CardView view)
+    private void OnSlotSelected(CardSlot other)
     {
-        if (selectedCard != null) return;
+        if(other == SlotA)
+        {
+            previewSlot.TrySwapCards(other);
+            SlotA = null;
 
-        selectedCard = view;
-        anim.SetBool(editModeBool, true);
+            anim.SetBool(editModeBool, false);
+            return;
+        }
 
-        view.Content.ShowAsMega();
-        view.Content.transform.SetParent(previewContent, true);
-        view.Content.OverrideGlobalPosition(true, view.transform.position);
-        view.Content.SetTarget(previewContent.transform);
+        if (SlotA == null) SlotA = other;
+        else if (SlotB == null) SlotB = other;
+
+        if (previewSlot.card == null) previewSlot.TrySwapCards(other);
+        if (!TryPerformSwap()) anim.SetBool(editModeBool, true);
     }
 
-    private async void SwapSelectedCardWith(CardView other)
+    private bool TryPerformSwap()
     {
-        if (selectedCard == null) return;
+        if (SlotA == null || SlotB == null) return false;
 
-        GameDLL.SwapCards(selectedCard.Content.displayID, other.Content.displayID);
+        SlotB.TrySwapCards(previewSlot);
+        SlotA.TrySwapCards(previewSlot);
+
+        GameDLL.SwapCards(SlotA.card.lastState.id, SlotB.card.lastState.id);
         SaveManager.Save();
-        GameDLL.CreateGameState();
+        
+        SlotA = null;
+        SlotB = null;
 
         anim.SetBool(editModeBool, false);
-
-        selectedCard.Content.ShowAsMedium();
-        other.Content.ShowAsMedium();
         
-        await UniTask.WhenAll(
-            MoveCardContent(selectedCard, other),
-            MoveCardContent(other, selectedCard)
-        );
-        
-        var selectedContent = selectedCard.Content;
-        selectedCard.Content = other.Content;
-        other.Content = selectedContent;
-
-        selectedCard = null;
+        return true;
     }
 
-    private async UniTask MoveCardContent(CardView cardA, CardView cardB)
+    public void OnCancelPressed()
     {
-        cardA.Content.OverrideGlobalPosition(true, cardA.Content.transform.position);
-        await cardA.Content.SetTarget(cardB.transform);
-        cardA.Content.transform.SetParent(cardB.transform, true);
-        cardA.Content.OverrideGlobalPosition(false);
-    }
+        if(previewSlot != null && SlotA != null)
+        {
+            previewSlot.TrySwapCards(SlotA);
+        }
 
-    public async void OnCancelPressed()
-    {
-        if (selectedCard == null) return;
+        SlotA = null;
+        SlotB = null;
 
         anim.SetBool(editModeBool, false);
-        selectedCard.Content.ShowAsMedium();
-        
-        await selectedCard.Content.SetTarget(selectedCard.transform);
-
-        selectedCard.Content.transform.SetParent(selectedCard.transform, true);
-        selectedCard.Content.OverrideGlobalPosition(false);
-
-        selectedCard = null;
     }
 }

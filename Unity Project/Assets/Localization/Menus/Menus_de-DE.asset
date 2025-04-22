@@ -63,7 +63,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 19131497577246720
-    m_Localized: '{0} neuen Belohnungen'
+    m_Localized: '{0} neue Belohnung(en)'
     m_Metadata:
       m_Items: []
   - m_Id: 19470130419134464
@@ -120,6 +120,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 29916373410705408
     m_Localized: Speichern...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32506979710464000
+    m_Localized: "W\xE4hle eine andere Karte zum Pl\xE4tze tauschen"
     m_Metadata:
       m_Items: []
   references:

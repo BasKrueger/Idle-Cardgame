@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class RewardCardView : CardView
 {
+    /*
     private static readonly int discoverTrigger = Animator.StringToHash("DiscoverReward");
     private static readonly int hideTrigger = Animator.StringToHash("HideReward");
 
@@ -78,4 +79,5 @@ public class RewardCardView : CardView
             tapIcon.SetTrigger(tapIdleTrigger);
         }
     }
+    */
 }

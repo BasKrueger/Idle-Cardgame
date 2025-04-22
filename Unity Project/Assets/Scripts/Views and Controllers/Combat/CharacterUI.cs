@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using System.Linq;
 using UnityEngine;
 
 public class CharacterUI : MonoBehaviour
@@ -17,7 +18,8 @@ public class CharacterUI : MonoBehaviour
     public async UniTask OnCharacterStateUpdateAsync(CharacterState characterState)
     {
         anim.SetBool(COMBAT_BOOL, characterState.phase == CharacterPhase.Combat);
-        
+
+        await cardQueue.OnGameStateUpdateAsync(characterState);
         healthbar.OnCharacterStateUpdate(characterState);
     }
     

@@ -21,24 +21,32 @@ void Deck::Remove(BaseCard* pCard)
 	}
 }
 
-bool Deck::TrySwapCard(Deck* pOtherDeck, BaseCard* pCard1, BaseCard* pCard2)
+bool Deck::TrySwapCard(Deck* pDeckB, BaseCard* pCard1, BaseCard* pCard2)
 {
-	int card1Index = -1;
-	bool card1IsInOtherDeck = true;
-	if (FindCardIndex(pCard1, card1Index)) card1IsInOtherDeck = false;
-	else if (pOtherDeck->FindCardIndex(pCard1, card1Index)){}
-	else return false;
+	struct tmpData 
+	{
+		BaseCard* pCard;
+		Deck* pDeck = nullptr;
+		int index = -1;
 
-	int card2Index = -1;
-	bool card2IsInOtherDeck = true;
-	if (FindCardIndex(pCard2, card2Index)) card2IsInOtherDeck = false;
-	else if (pOtherDeck->FindCardIndex(pCard2, card2Index)){}
-	else return false;
+		tmpData (BaseCard* pCard, Deck* pDeckA, Deck* pDeckB)
+		{
+			this->pCard = pCard;
 
-	if (card1IsInOtherDeck) pOtherDeck->content[card2Index] = pCard1;
-	else content[card2Index] = pCard1;
-	if (card2IsInOtherDeck) pOtherDeck->content[card1Index] = pCard2;
-	else content[card1Index] = pCard2;
+			if (pDeckA->Contains(pCard)) pDeck = pDeckA;
+			else if (pDeckB->Contains(pCard)) pDeck = pDeckB;
+
+			if (pDeck != nullptr) pDeck->FindCardIndex(pCard, index);
+		}
+	};
+
+	tmpData card1(pCard1, this, pDeckB);
+	tmpData card2(pCard2, this, pDeckB);
+
+	if (card1.pDeck == nullptr || card2.pDeck == nullptr) return false;
+
+	card1.pDeck->content[card1.index] = card2.pCard;
+	card2.pDeck->content[card2.index] = card1.pCard;
 
 	return true;
 }

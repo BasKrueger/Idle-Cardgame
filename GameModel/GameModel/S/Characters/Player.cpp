@@ -48,6 +48,9 @@ void Player::InternalInitialize(int& charID, int& baseHP, int& baseDamage, Local
 	baseDamage = 0;
 	characterName->SetKey("Player");
 
+	collection.Add(CardPool::GetInstance(this, FastAttackCard::cardID));
+	collection.Add(CardPool::GetInstance(this, DoubleStrikeCard::cardID));
+
 	deck->Add(CardPool::GetInstance(this, AttackCard::cardID));
 	deck->Add(CardPool::GetInstance(this, FastAttackCard::cardID));
 	deck->Add(CardPool::GetInstance(this, SlowAttackCard::cardID));
@@ -66,8 +69,6 @@ void Player::InternalInitialize(int& charID, int& baseHP, int& baseDamage, Local
 	deck->Add(CardPool::GetInstance(this, AttackCard::cardID));
 	deck->Add(CardPool::GetInstance(this, AttackCard::cardID));
 	deck->Add(CardPool::GetInstance(this, AttackCard::cardID));
-	deck->Add(CardPool::GetInstance(this, AttackCard::cardID));
-	deck->Add(CardPool::GetInstance(this, AttackCard::cardID));
 }
 
 void Player::SwitchCards(int ID1, int ID2)
@@ -77,7 +78,7 @@ void Player::SwitchCards(int ID1, int ID2)
 	if (card1 == nullptr) return;
 
 	auto card2 = deck->GetCardByID(ID2);
-	if (card2 == nullptr) card2 = collection.GetCardByID(ID1);
+	if (card2 == nullptr) card2 = collection.GetCardByID(ID2);
 	if (card2 == nullptr) return;
 
 	if (!deck->TrySwapCard(&collection, card1, card2)) return;

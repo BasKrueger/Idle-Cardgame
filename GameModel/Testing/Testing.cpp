@@ -81,6 +81,7 @@ int main()
     std::cout << "Test with logs... \n";
     Initialize();
     Localize("English(en)");
+   
     for (int i = 0; i < 100; i++) 
     {
         Tick();

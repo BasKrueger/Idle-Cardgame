@@ -12,6 +12,7 @@ public class GameModelManager : MonoBehaviour
     public List<IGameViewAsync> activeViewsAsync = new List<IGameViewAsync>();
     public List<IGameView> activeViews = new List<IGameView>();
 
+    [SerializeField] private bool printStates;
     [SerializeField] private List<MonoBehaviour> views;
     private Queue<GameState> asyncStates = new Queue<GameState>();
 
@@ -58,7 +59,7 @@ public class GameModelManager : MonoBehaviour
         {
             GameDLL.Tick();
             await UniTask.WaitForEndOfFrame();
-            GameDLL.GetGameStates(true);
+            GameDLL.GetGameStates(printStates);
 
             while(rawStates.Count > 0)
             {

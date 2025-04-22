@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 public class RewardView : MonoBehaviour, IGameView
 {
-    private static int rewardModeBool = Animator.StringToHash("RewardMode");
+    public static int rewardModeBool = Animator.StringToHash("RewardMode");
     private const float boxMoveSpeed = 6;
 
     [Header("PRefabs")]
@@ -22,16 +22,20 @@ public class RewardView : MonoBehaviour, IGameView
     [SerializeField]
     private Animator anim;
     [SerializeField]
+    private CollectionView collection;
+
+    [Header("")]
+    [SerializeField]
     private Button rewardButton;
     [SerializeField]
     private TextMeshProUGUI rewardButtonLabel;
 
+    [Header("")]
     [SerializeField]
     private StatView goldParticleTarget;
     [SerializeField]
     private StatView xpParticleTarget;
-    [SerializeField]
-    private CollectionView collection;
+   
 
     private Dictionary<int, RewardState> unclaimedRewards = new();
     private (int id, RewardViewBox box) active;
@@ -39,12 +43,7 @@ public class RewardView : MonoBehaviour, IGameView
 
     private void Awake()
     {
-        foreach(RewardViewBox t in content.GetComponentsInChildren<RewardViewBox>())
-        {
-            Destroy(t.gameObject);
-        }
-
-        anim.GetComponent<AnimEventForwarder>().rewardFinished += OnOpenAnimationFinished;
+        rewardButton.onClick.AddListener(OnRewardModeClicked);
     }
 
     public void OnGameStateUpdate(GameState gameState)
@@ -102,7 +101,6 @@ public class RewardView : MonoBehaviour, IGameView
         active.box = nextBox;
         active.id = state.ID;
 
-        if (nextBox != null) nextBox.Show();
         moving = false;
     }
 
@@ -148,11 +146,5 @@ public class RewardView : MonoBehaviour, IGameView
            : string.Format(new LocalizedString("Menus", "Rewards_Button").GetLocalizedString(), state.rewardCount);
 
         rewardButton.interactable = state.rewardCount > 0;
-    }
-
-    private void OnOpenAnimationFinished()
-    {
-        if (!this.enabled || active.box == null) return;
-        active.box.Show();
     }
 }

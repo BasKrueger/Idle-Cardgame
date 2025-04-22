@@ -1,10 +1,7 @@
-using System;
+using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
-using Cysharp.Threading.Tasks;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Playables;
 
 public class CardQueueView : MonoBehaviour
 {
@@ -12,110 +9,66 @@ public class CardQueueView : MonoBehaviour
     private bool flipCards;
 
     [SerializeField]
-    private CardView mikroViewTemplate;
-    [SerializeField]
-    private Transform content;
-    [SerializeField]
-    private List<Vector3> previewPositions;
+    private List<CardSlot> previewSlots;
 
-    private Pool<CardView> viewPool;
-    private Dictionary<int, CardView> activeViews = new Dictionary<int, CardView>();
-
-    private void Awake()
-    {
-        viewPool = new Pool<CardView>(mikroViewTemplate, this.transform, previewPositions.Count + 1);
-    }
-    
     public void OnGameStateUpdate(CharacterState characterState)
     {
-        var statesToDisplay = characterState.autoDeck.InPlayOrder.Take(previewPositions.Count).ToDictionary(card => card.id, card=> card);
+        var displayStates = characterState.autoDeck.InPlayOrder.Take(4).ToList();
 
-        DestroyRemovedCards(statesToDisplay);
-        SpawnNewCards(statesToDisplay);
-        MoveExistingCards(statesToDisplay);
-        UpdateCardSize(statesToDisplay);
-        UpdateCardContent(statesToDisplay);
-        UpdateSiblingOrder(statesToDisplay);
-    }
-    
-    private void DestroyRemovedCards(Dictionary<int, CardState> validStates)
-    {
-        var copy = new Dictionary<int, CardView>(activeViews);
-        
-        foreach(var activePair in copy)
-        {
-            if(!validStates.ContainsKey(activePair.Key))
-            {
-                activeViews[activePair.Key].ShowPlayed(viewPool);
-                activeViews.Remove(activePair.Key);
-            }
-        }
-    }
-    
-    private void SpawnNewCards(Dictionary<int, CardState> validStates)
-    {
-        var missingStates = validStates.Where(pair => !activeViews.ContainsKey(pair.Key)).ToArray();
-        
-        for(int i =0;i < missingStates.Length; i++)
-        {
-            var view = viewPool.GetInstance();
-            
-            view.transform.SetParent(content);
-            view.transform.localPosition = previewPositions[i];
-            view.transform.SetAsLastSibling();
-            view.Content.SetTextsFlipped(flipCards);
-
-            activeViews.Add(missingStates[i].Key, view);
-        }
-    }
-    
-    private void MoveExistingCards(Dictionary<int, CardState> validStates)
-    {
-        int i = 0;
-        foreach(var pair in validStates)
-        {
-            MoveCardOverTime(activeViews[pair.Key], previewPositions[i], 0.25f);
-            i++;
-        }
-    }
-    
-    private void UpdateCardSize(Dictionary<int, CardState> validStates)
-    {
-        activeViews[validStates.Keys.First()].Content.ShowAsMini();
-        
-        activeViews.Where(pair => pair.Key != validStates.Keys.First())
-        .ToList().ForEach(pair => pair.Value.Content.ShowAsMikro());
+        MoveCards(displayStates);
+        SpawnCards(displayStates);
+        UpdateCards(displayStates);
     }
 
-    private void UpdateCardContent(Dictionary<int, CardState> validStates)
+    public async UniTask OnGameStateUpdateAsync(CharacterState characterState)
     {
-        foreach (var pair in validStates)
-        {
-            activeViews[pair.Key].Content.Show(pair.Value);
-        }
+        var displayStates = characterState.autoDeck.InPlayOrder.Take(4).ToList();
     }
-    
-    private void UpdateSiblingOrder(Dictionary<int, CardState> validStates)
+
+    private async void MoveCards(List<CardState> states)
     {
-        activeViews[validStates.Last().Key].transform.SetAsFirstSibling();
-    }
-    
-    private async void MoveCardOverTime(CardView card, Vector3 target, float time)
-    {
-        if (card.transform.position == target) return;
-        
-        var startPosition = card.transform.localPosition;
-        var timer = 0f;
-        
-        while(timer < time)
+        var moves = new List<(CardView card, CardSlot fromSlot, CardSlot toSlot)>();
+
+        for (int i = 0; i < previewSlots.Count; i++)
         {
-            if (card == null) return;            
-            
-            await UniTask.WaitForEndOfFrame();
-            card.transform.localPosition = Vector3.Lerp(startPosition, target, timer / time);
-            timer += Time.deltaTime;
+            if (previewSlots[i].card == null) continue;
+            if (previewSlots[i].card.lastState.id == states[i].id) continue;
+
+            var otherSlot = previewSlots.Where(slot => slot.card != null)
+                .Where(slot => slot != previewSlots[0] && slot != previewSlots[i])
+                .FirstOrDefault(slot => slot.card.lastState.id == states[i].id);
+
+            if (otherSlot != default) moves.Add((otherSlot.card, otherSlot, previewSlots[i]));
         }
 
-        card.transform.localPosition = target;
+        moves.Reverse();
+
+        foreach(var tuple in moves)
+        {
+            tuple.fromSlot.DetachCard();
+            tuple.toSlot.DetachCard();
+        }
+
+        foreach(var tuple in moves)
+        {
+            var _ = tuple.toSlot.TryAddCard(tuple.card);
+            tuple.card.transform.SetAsLastSibling();
+        }
+    }
+
+    private void UpdateCards(List<CardState> states)
+    {
+        for(int i = 0;i < states.Count; i++)
+        {
+            previewSlots[i].TryUpdateCard(states[i]);
+        }
+    }
+
+    private void SpawnCards(List<CardState> states)
+    {
+        for (int i = 0; i < states.Count; i++)
+        {
+            previewSlots[i].TrySpawnCard(states[i]);
+        }
     }
 }

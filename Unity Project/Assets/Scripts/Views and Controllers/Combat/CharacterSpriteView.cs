@@ -24,6 +24,7 @@ public class CharacterSpriteView : MonoBehaviour
         switch (characterState.animationTrigger)
         {
             case CharacterAnimationTrigger.CardPlayed:
+                await UniTask.WaitForSeconds(0.35f);
                 await AnimationTrigger(ATTACK_TRIGGER);
                 break;
 

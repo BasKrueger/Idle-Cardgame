@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using System.Collections;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
@@ -9,9 +10,19 @@ public class DllTest : MonoBehaviour
     [SerializeField]
     private Image img;
 
-    public void Start()
+    public CardSlot A;
+    public CardSlot B;
+    public CardSlot C;
+
+    public async Task Start()
     {
-        StartCoroutine(Test());
+        A.TrySpawnCard(new CardState());
+
+        A.TrySwapCards(B);
+
+        B.TrySwapCards(C);
+
+        //StartCoroutine(Test());
     }
 
     IEnumerator Test()

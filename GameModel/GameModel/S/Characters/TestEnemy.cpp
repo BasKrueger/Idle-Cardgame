@@ -8,7 +8,7 @@ const int TestEnemy::characterID;
 void TestEnemy::InternalInitialize(int& charID, int& baseHP, int& baseDamage, LocalizedString* characterName, Deck* deck)
 {
 	charID = characterID;
-	baseHP = 10;
+	baseHP = 500;
 	baseDamage = 0;
 	characterName->SetKey("GenericEnemy");
 
