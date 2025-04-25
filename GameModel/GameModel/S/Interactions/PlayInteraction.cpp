@@ -6,25 +6,25 @@
 
 void PlayInteraction::Initialize(BaseCard* card)
 {
-	cardToPlay = card;
+	toPlay = card;
 }
 
 void PlayInteraction::InternalPerform()
 {
-	if (cardToPlay == nullptr) return;
+	if (toPlay == nullptr) return;
 
 	LocalizedString* log;
 	if (AdventureLog::AddLog(log, "CardPlayed"))
 	{
 		log->BindFormatVariable(pSource->pOwner->characterName);
-		log->BindFormatVariable(cardToPlay->cardName);
+		log->BindFormatVariable(toPlay->cardName);
 	}
 
-	cardToPlay->Play(this);
+	toPlay->Play(this);
 }
 
 void PlayInteraction::ReturnToPool()
 {
-	cardToPlay = 0;
+	toPlay = 0;
 	InteractionPool<PlayInteraction>().ReturnInstance(this);
 }

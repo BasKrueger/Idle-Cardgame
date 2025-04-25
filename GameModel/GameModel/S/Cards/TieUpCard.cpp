@@ -18,8 +18,6 @@ void TieUpCard::InternalInitialize(int& cID, int& baseDmg, int& baseHealing, int
 
 void TieUpCard::Play(PlayInteraction* pPlay)
 {
-	if(pPlay->pSource == this)
-	{
-		pPlay->pTarget->pOwner->deck->GetNextCard()->cooldown += variables[0];
-	}
+	pPlay->pTarget->pOwner->deck->GetNextCard()->cooldown += variables[0];
+	pPlay->pTarget->pOwner->deck->GetNextCard()->baseCooldown += variables[0];
 }

@@ -13,6 +13,8 @@
 #include "PlayInteraction.h"
 #include "HealInteraction.h"
 #include "PerformInteraction.h"
+#include "AddBuffInteraction.h"
+#include "RemoveBuffInteraction.h"
 
 #define DECLARE_INTERACTIONHANDLING(T)\
 private:\
@@ -39,6 +41,8 @@ public:
 	DECLARE_INTERACTIONHANDLING(DieInteraction)
 	DECLARE_INTERACTIONHANDLING(PlayInteraction)
 	DECLARE_INTERACTIONHANDLING(HealInteraction)
+	DECLARE_INTERACTIONHANDLING(AddBuffInteraction)
+	DECLARE_INTERACTIONHANDLING(RemoveBuffInteraction)
 
 private:
 	static std::vector<BaseInteraction*> queuedInteractions;

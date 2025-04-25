@@ -78,6 +78,8 @@ void Skip()
 int main()
 {
     Skip();
+    Dump();
+
     std::cout << "Test with logs... \n";
     Initialize();
     Localize("English(en)");
@@ -88,6 +90,7 @@ int main()
     }
 
     std::cout << "Success";
+
     
     return 0;
 }

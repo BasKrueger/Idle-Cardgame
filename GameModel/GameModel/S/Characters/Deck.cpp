@@ -21,6 +21,15 @@ void Deck::Remove(BaseCard* pCard)
 	}
 }
 
+void Deck::Reset()
+{
+	currentCardIndex = 0;
+	for (auto& card : content) 
+	{
+		card->FullReset();
+	}
+}
+
 bool Deck::TrySwapCard(Deck* pDeckB, BaseCard* pCard1, BaseCard* pCard2)
 {
 	struct tmpData 
@@ -79,6 +88,14 @@ void Deck::SetCardsRegistered(bool active)
 	}
 }
 
+void Deck::TickCardBuffs()
+{
+	for (auto& card : content) 
+	{
+		card->BuffTick();
+	}
+}
+
 #pragma region Utility
 void Deck::PushBackCards(int entryIndex)
 {
@@ -99,6 +116,21 @@ bool Deck::FindCardIndex(BaseCard* pCard, int& outVal)
 	return false;
 }
 
+BaseCard* Deck::GetCardByIndex(int index)
+{
+	while (index < 0) 
+	{
+		index += content.size();
+	}
+
+	while (index > content.size() - 1) 
+	{
+		index -= content.size();
+	}
+
+	return content[index];
+}
+
 bool Deck::Contains(BaseCard* pCard)
 {
 	int index = -1;
@@ -107,20 +139,16 @@ bool Deck::Contains(BaseCard* pCard)
 
 BaseCard* Deck::GetNextCard(int add)
 {
-	auto index = currentCardIndex;
+	auto index = currentCardIndex + add;
 
-	for (int i = 0; add > 0; i++)
+	while (index < 0)
 	{
-		add--;
-		index++;
-		if (index > content.size() - 1) index = 0;
+		index += content.size();
 	}
 
-	for(int i = 0; add < 0;i++)
+	while (index > content.size() - 1)
 	{
-		add++;
-		index--;
-		if (index < 0) index = content.size() - 1;
+		index -= content.size();
 	}
 
 	return content[index];

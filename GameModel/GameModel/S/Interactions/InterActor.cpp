@@ -27,6 +27,8 @@ DEFINE_INTERACTIONRECEPTION(DieInteraction)
 DEFINE_INTERACTIONRECEPTION(PlayInteraction)
 DEFINE_INTERACTIONRECEPTION(DamageInteraction)
 DEFINE_INTERACTIONRECEPTION(HealInteraction)
+DEFINE_INTERACTIONRECEPTION(AddBuffInteraction)
+DEFINE_INTERACTIONRECEPTION(RemoveBuffInteraction)
 
 InterActor::~InterActor()
 {
@@ -42,6 +44,8 @@ void InterActor::Register()
 	INITINTERACTION(PlayInteraction);
 	INITINTERACTION(DamageInteraction)
 	INITINTERACTION(HealInteraction)
+	INITINTERACTION(AddBuffInteraction)
+	INITINTERACTION(RemoveBuffInteraction)
 }
 
 void InterActor::UnRegister()
@@ -53,4 +57,6 @@ void InterActor::UnRegister()
 	REMOVEINTERACTION(PlayInteraction)
 	REMOVEINTERACTION(DamageInteraction)
 	REMOVEINTERACTION(HealInteraction)
+	REMOVEINTERACTION(AddBuffInteraction)
+	REMOVEINTERACTION(RemoveBuffInteraction)
 }

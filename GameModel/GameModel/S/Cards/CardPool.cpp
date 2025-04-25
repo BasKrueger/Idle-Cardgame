@@ -10,6 +10,14 @@
 #include "H/SpikeShieldCard.h"
 #include "H/HealingShieldCard.h"
 #include "H/TieUpCard.h"
+#include "H/CrossSwords.h"
+#include "H/SwordHail.h"
+#include "H/HarmlessPotion.h"
+#include "H/BreakSword.h"
+#include "H/BootsCard.h"
+#include "H/ThrowSwordCard.h"
+#include "H/MightySwordCard.h"
+#include "H/WoundingStrikeCard.h"
 
 #define RegCard(CardClassName) case CardClassName::cardID: for (int i = 0; i < poolContent[CardClassName::cardID].size(); i++) \
 { if (poolContent[CardClassName::cardID][i] != nullptr) continue; poolContent[CardClassName::cardID][i] = new CardClassName();} break;
@@ -28,16 +36,24 @@ bool CardPool::ReFillPool(int cardID)
 	switch (cardID)
 	{
 		RegCard(AttackCard)
-		RegCard(SlowAttackCard)
-		RegCard(FastAttackCard)
-		RegCard(HealPotionCard)
-		RegCard(PowerPotionCard)
-		RegCard(DoubleStrikeCard)
-		RegCard(CrazyPotionCard)
-		RegCard(ChargedStrikeCard)
-		RegCard(SpikeShieldCard)
-		RegCard(HealingShieldCard)
-		RegCard(TieUpCard)
+			RegCard(SlowAttackCard)
+			RegCard(FastAttackCard)
+			RegCard(HealPotionCard)
+			RegCard(PowerPotionCard)
+			RegCard(DoubleStrikeCard)
+			RegCard(CrazyPotionCard)
+			RegCard(ChargedStrikeCard)
+			RegCard(SpikeShieldCard)
+			RegCard(HealingShieldCard)
+			RegCard(TieUpCard)
+			RegCard(CrossSwords)
+			RegCard(SwordHail)
+			RegCard(HarmlessPotion)
+			RegCard(BreakSword)
+			RegCard(BootsCard)
+			RegCard(ThrowSwordCard)
+			RegCard(MightySwordCard)
+			RegCard(WoundingStrikeCard)
 
 	default:
 		return false;
@@ -64,8 +80,8 @@ BaseCard* CardPool::GetInstance(Character* owner, int cardID)
 		return GetInstance(owner, cardID);
 	}
 
-	result->Register();
 	result->pOwner = owner;
+	result->Register();
 	result->Initialize();
 
 	return result;

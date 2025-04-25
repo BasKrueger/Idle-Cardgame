@@ -106,6 +106,70 @@ MonoBehaviour:
     m_Localized: Your enemies next card takes {0} longer to charge
     m_Metadata:
       m_Items: []
+  - m_Id: 35396217263157248
+    m_Localized: Cross Swords
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35397155210194944
+    m_Localized: Deal the combined damage of both adjecent cards ({0})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35403559220342784
+    m_Localized: Sword hail
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35403646050824192
+    m_Localized: Deal {0} damage {1} times
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35405750769348608
+    m_Localized: '"Harmless" Potion'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35405931053117440
+    m_Localized: Increase all non-Damage numbers of the next card by {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35408499997208576
+    m_Localized: Break Sword
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35408602262728704
+    m_Localized: Your opponents next card deals {0} damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35414526352224256
+    m_Localized: Boots
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35414564574916608
+    m_Localized: Reduce the cooldown of your next {0} cards by {1}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35417249520873472
+    m_Localized: Throw Sword
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35417337991327744
+    m_Localized: Use your next card with {0}x damage. Then make it useless
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35424818742226944
+    m_Localized: Mighty Sword
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35424885691707392
+    m_Localized: Deal {0} damage. Buffs count {1} times (total:{2})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35783150577446912
+    m_Localized: Wounding Strike
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35783242814386176
+    m_Localized: 'Debuff: Wound '
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -11,6 +11,8 @@ class DamageInteraction;
 class DieInteraction;
 class PlayInteraction;
 class HealInteraction;
+class RemoveBuffInteraction;
+class AddBuffInteraction;
 
 class InterActor
 {
@@ -27,6 +29,8 @@ public:
 	DECLARE_INTERACTIONRECEPTION(PlayInteraction)
 	DECLARE_INTERACTIONRECEPTION(DamageInteraction)
 	DECLARE_INTERACTIONRECEPTION(HealInteraction)
+	DECLARE_INTERACTIONRECEPTION(RemoveBuffInteraction)
+	DECLARE_INTERACTIONRECEPTION(AddBuffInteraction)
 
 private:
 	bool isRegistered = false;

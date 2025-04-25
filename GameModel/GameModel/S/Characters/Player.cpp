@@ -17,6 +17,14 @@
 #include "H/SpikeShieldCard.h"
 #include "H/HealingShieldCard.h"
 #include "H/TieUpCard.h"
+#include "H/CrossSwords.h"
+#include "H/SwordHail.h"
+#include "H/HarmlessPotion.h"
+#include "H/BreakSword.h"
+#include "H/BootsCard.h"
+#include "H/ThrowSwordCard.h"
+#include "H/MightySwordCard.h"
+#include "H/WoundingStrikeCard.h"
 
 const int Player::characterID;
 
@@ -51,24 +59,24 @@ void Player::InternalInitialize(int& charID, int& baseHP, int& baseDamage, Local
 	collection.Add(CardPool::GetInstance(this, FastAttackCard::cardID));
 	collection.Add(CardPool::GetInstance(this, DoubleStrikeCard::cardID));
 
-	deck->Add(CardPool::GetInstance(this, AttackCard::cardID));
+	deck->Add(CardPool::GetInstance(this, BootsCard::cardID));
+	deck->Add(CardPool::GetInstance(this, WoundingStrikeCard::cardID));
 	deck->Add(CardPool::GetInstance(this, FastAttackCard::cardID));
 	deck->Add(CardPool::GetInstance(this, SlowAttackCard::cardID));
 	deck->Add(CardPool::GetInstance(this, HealPotionCard::cardID));
 	deck->Add(CardPool::GetInstance(this, PowerPotionCard::cardID));
+	deck->Add(CardPool::GetInstance(this, MightySwordCard::cardID));
 	deck->Add(CardPool::GetInstance(this, DoubleStrikeCard::cardID));
 	deck->Add(CardPool::GetInstance(this, CrazyPotionCard::cardID));
-	deck->Add(CardPool::GetInstance(this, FastAttackCard::cardID));
 	deck->Add(CardPool::GetInstance(this, ChargedStrikeCard::cardID));
 	deck->Add(CardPool::GetInstance(this, SpikeShieldCard::cardID));
 	deck->Add(CardPool::GetInstance(this, HealingShieldCard::cardID));
 	deck->Add(CardPool::GetInstance(this, TieUpCard::cardID));
-	deck->Add(CardPool::GetInstance(this, AttackCard::cardID));
-	deck->Add(CardPool::GetInstance(this, AttackCard::cardID));
-	deck->Add(CardPool::GetInstance(this, AttackCard::cardID));
-	deck->Add(CardPool::GetInstance(this, AttackCard::cardID));
-	deck->Add(CardPool::GetInstance(this, AttackCard::cardID));
-	deck->Add(CardPool::GetInstance(this, AttackCard::cardID));
+	deck->Add(CardPool::GetInstance(this, CrossSwords::cardID));
+	deck->Add(CardPool::GetInstance(this, SwordHail::cardID));
+	deck->Add(CardPool::GetInstance(this, HarmlessPotion::cardID));
+	deck->Add(CardPool::GetInstance(this, BreakSword::cardID));
+	deck->Add(CardPool::GetInstance(this, ThrowSwordCard::cardID));
 }
 
 void Player::SwitchCards(int ID1, int ID2)
@@ -83,8 +91,8 @@ void Player::SwitchCards(int ID1, int ID2)
 
 	if (!deck->TrySwapCard(&collection, card1, card2)) return;
 
-	card1->Reset();
-	card2->Reset();
+	card1->ResetCooldown();
+	card2->ResetCooldown();
 
 	if (collection.Contains(card1)) card1->UnRegister();
 	if (collection.Contains(card2)) card2->UnRegister();

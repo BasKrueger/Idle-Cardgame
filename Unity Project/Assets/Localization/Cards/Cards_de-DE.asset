@@ -109,6 +109,71 @@ MonoBehaviour:
     m_Localized: "Die n\xE4chste gegnerische Karte braucht {0} l\xE4nger zum aufladen"
     m_Metadata:
       m_Items: []
+  - m_Id: 35396217263157248
+    m_Localized: Schwerte Kreuzen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35397155210194944
+    m_Localized: "F\xFCge den kombinierten Schaden der benachbarten Karten zu ({0})"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35403559220342784
+    m_Localized: Schwerthagel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35403646050824192
+    m_Localized: "F\xFCge {1} mal {0} schaden zu"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35405750769348608
+    m_Localized: '"Harmloser" Trank'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35405931053117440
+    m_Localized: "Erh\xF6he alle nicht-schadensnummern der n\xE4chsten Karte um {0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35408499997208576
+    m_Localized: Schwert Brechen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35408602262728704
+    m_Localized: "Die n\xE4chste Karte des Gegners macht {0} schaden"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35414526352224256
+    m_Localized: Stiefel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35414564574916608
+    m_Localized: "Reduziere den Cooldown deiner {0} n\xE4chsten Karten um {1}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35417249520873472
+    m_Localized: Schwert Werfen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35417337991327744
+    m_Localized: "Benutze deine n\xE4chste Karte mit {0} fachen schaden. Mach es
+      dann nutzlos"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35424818742226944
+    m_Localized: "M\xE4chtiges Schwert"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35424885691707392
+    m_Localized: "Verursache {0} schaden. Buffs z\xE4hlen {1} fach (total:{2})"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35783150577446912
+    m_Localized: Verwundener Schlag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35783242814386176
+    m_Localized: 'Debuff: Wunde'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

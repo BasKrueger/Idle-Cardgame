@@ -103,6 +103,70 @@ MonoBehaviour:
     m_Key: TieUp_Text
     m_Metadata:
       m_Items: []
+  - m_Id: 35396217263157248
+    m_Key: CrossSwords_Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35397155210194944
+    m_Key: CrossSwords_Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35403559220342784
+    m_Key: SwordHail_Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35403646050824192
+    m_Key: SwordHail_Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35405750769348608
+    m_Key: HarmlessPotion_Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35405931053117440
+    m_Key: HarmlessPotion_Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35408499997208576
+    m_Key: BreakSword_Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35408602262728704
+    m_Key: BreakSword_Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35414526352224256
+    m_Key: Boots_Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35414564574916608
+    m_Key: Boots_Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35417249520873472
+    m_Key: ThrowSword_Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35417337991327744
+    m_Key: ThrowSword_Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35424818742226944
+    m_Key: MightySword_Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35424885691707392
+    m_Key: MightySword_Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35783150577446912
+    m_Key: WoundingStrike_Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35783242814386176
+    m_Key: WoundingStrike_Text
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

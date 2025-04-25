@@ -14,6 +14,14 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)H\BleedBuff.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)H\BuffPool.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)H\AddBuffInteraction.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)H\Buff.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)H\BootsCard.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)H\BreakSword.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)H\HarmlessPotion.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)H\CrossSwords.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)FileLog.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)H\Deck.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)H\HealingShieldCard.h" />
@@ -66,8 +74,24 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)H\PowerPotionCard.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)H\SpikeShieldCard.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)H\TieUpCard.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)H\SwordHail.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)H\ThrowSwordCard.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)H\MightySwordCard.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)H\RemoveBuffInteraction.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)H\WoundingStrikeCard.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)S\Buffs\BleedBuff.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)S\Interactions\AddBuffInteraction.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)S\Buffs\BuffPool.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)S\Interactions\RemoveBuffInteraction.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)S\Buffs\Buff.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)S\Cards\MightySwordCard.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)S\Cards\BootsCard.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)S\Cards\BreakSwordCard.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)S\Cards\HarmlessPotion.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)S\Cards\SwordHail.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)S\Cards\CrossSwords.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)FileLog.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)S\Characters\Deck.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)S\Cards\HealingShieldCard.cpp" />
@@ -112,5 +136,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)S\Rewards\Reward.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)S\Rewards\RewardStash.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)S\Cards\TieUpCard.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)S\Cards\ThrowSwordCard.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)S\Cards\WoundingStrikeCard.cpp" />
   </ItemGroup>
 </Project>

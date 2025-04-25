@@ -10,11 +10,13 @@ class Deck
 public:
 	void Add(BaseCard* pCard);
 	void Remove(BaseCard* pCard);
+	void Reset();
 	bool TrySwapCard(Deck* pOtherDeck, BaseCard* pCard1, BaseCard* pCard2);
 
 	void AdvanceToNextCard();
 	void ReturnContentToPool();
 	void SetCardsRegistered(bool active);
+	void TickCardBuffs();
 
 private:
 	int currentCardIndex = 0;
@@ -27,6 +29,7 @@ public:
 	BaseCard* GetCardByID(int id);
 	bool Contains(BaseCard* pCard);
 	bool FindCardIndex(BaseCard* pCard, int& outVal);
+	BaseCard* GetCardByIndex(int index);
 
 private:
 	void PushBackCards(int entryIndex);

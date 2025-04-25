@@ -7,7 +7,10 @@
 #include "H/IDManager.h"
 
 class Character;
-class PlayInteraction;
+class Buff;
+class PlayInteraction; 
+class AddBuffInteraction;
+class RemoveBuffInteraction;
 
 class BaseCard : public InterActor
 {
@@ -19,14 +22,20 @@ public:
 	int dmg = 0;
 	int healing = 0;
 	int cooldown = 0;
+	int baseCooldown = 0;
 	std::array<int, 3> variables;
 
 	void Initialize();
-	void Reset();
+	void ResetCooldown();
+	void FullReset();
 
 	void Tick();
+	void BuffTick();
 	bool IsCharged();
 	void ReturnToPool();
+
+	void AttachBuff(AddBuffInteraction* pInteraction);
+	void RemoveBuff(RemoveBuffInteraction* pInteraction);
 
 	virtual void Play(PlayInteraction* pTarget);
 
@@ -36,9 +45,9 @@ protected:
 
 private:
 	int baseDmg = 0;
-	int baseCooldown = 0;
 	int baseHealing = 0;
 	
+	std::vector<Buff*> buffs;
 	std::array<int, 3> baseVariables;
 	std::string iconName = "undefined";
 

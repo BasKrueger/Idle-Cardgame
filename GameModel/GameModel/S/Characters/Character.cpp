@@ -27,6 +27,8 @@ void Character::Initialize()
 
 void Character::Tick()
 {
+	deck->TickCardBuffs();
+
 	if (pEnemy == nullptr) return;
 
 	if(!pEnemy->IsAlive())
@@ -57,13 +59,14 @@ void Character::PlayCard(BaseCard* pCard, InterActor* pTarget)
 	interaction->Initialize(pCard);
 	InteractionManager::AddNext(interaction);
 
-	pCard->Reset();
+	pCard->ResetCooldown();
 }
 
 void Character::EngageInCombat(Character* pNewEnemy)
 {
 	pEnemy = pNewEnemy;
 	currentPhase = PHASE::COMBAT;
+	deck->Reset();
 	Game::CaptureGameState();
 }
 
