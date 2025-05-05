@@ -5,14 +5,13 @@
 const int HealingShieldCard::cardID;
 
 void HealingShieldCard::InternalInitialize(int& cID, int& baseDmg, int& baseHealing, int& baseCooldown, 
-	std::array<int, 3>& baseVariables, LocalizedString* cardName, LocalizedString* cardDescription, std::string& iconName)
+	std::array<int, 3>& baseVariables, LocalizedString* cardDescription, std::string& iconName)
 {
 	cID = cardID;
 	baseCooldown = 6;
 	iconName = "Set2/Icon10";
 
-	cardName->SetKey("HealingShield_Name");
-	cardDescription->SetKey("HealingShield_Text");
+	cardDescription->SetKey("HealingShield");
 }
 
 void HealingShieldCard::Play(PlayInteraction* pPlay)

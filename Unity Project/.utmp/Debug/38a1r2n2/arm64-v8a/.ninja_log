@@ -1,10 +1,19 @@
 # ninja log v5
 29	1354	7661852119703982	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	62fbc47b44e33f63
-36	1368	7661852119890523	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	a5849f5e8c4dcb41
-7	1371	7661852119916570	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	1eab29e5ca7633
-43	1401	7661852120266908	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	66ef49d65d22b95d
 12	1442	7661852120664073	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	f7b944a7b7468762
+1576	1729	7661852123583747	C:/Users/Bastian_Krueger/Desktop/Repositories/Idle-Cardgame/Unity Project/Library/PramData/AndroidApplicationController/Cache/com.DefaultCompany.IdleRoguelike/gradle-project/unityLibrary/build/intermediates/cxx/Debug/38a1r2n2/obj/arm64-v8a/libgame.so	7a380e785acd01f7
+36	1368	7661852119890523	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	a5849f5e8c4dcb41
+43	1401	7661852120266908	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	66ef49d65d22b95d
+7	1371	7661852119916570	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	1eab29e5ca7633
 17	1469	7661852120958520	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	549f951b1cd5e9f1
 23	1501	7661852121287500	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	d1f1fbb4dc01b9ef
 0	1576	7661852122034307	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	b7b00359a215c2ce
-1576	1729	7661852123583747	C:/Users/Bastian_Krueger/Desktop/Repositories/Idle-Cardgame/Unity Project/Library/PramData/AndroidApplicationController/Cache/com.DefaultCompany.IdleRoguelike/gradle-project/unityLibrary/build/intermediates/cxx/Debug/38a1r2n2/obj/arm64-v8a/libgame.so	7a380e785acd01f7
+39	1004	7676285812542447	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	62fbc47b44e33f63
+13	1009	7676285812612213	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	1eab29e5ca7633
+19	1012	7676285812624120	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	549f951b1cd5e9f1
+25	1022	7676285812740763	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	a5849f5e8c4dcb41
+46	1039	7676285812968138	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	66ef49d65d22b95d
+8	1070	7676285813277336	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	f7b944a7b7468762
+33	1144	7676285813948223	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	d1f1fbb4dc01b9ef
+2	1205	7676285814577331	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	b7b00359a215c2ce
+1206	1321	7676285815786188	C:/Users/Bastian_Krueger/Desktop/Repositories/Idle-Cardgame/Unity Project/Library/PramData/AndroidApplicationController/Cache/com.DefaultCompany.IdleRoguelike/gradle-project/unityLibrary/build/intermediates/cxx/Debug/38a1r2n2/obj/arm64-v8a/libgame.so	7a380e785acd01f7

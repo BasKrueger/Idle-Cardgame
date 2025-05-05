@@ -30,7 +30,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)H\DoubleStrikeCard.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)H\HealInteraction.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)H\HealPotionCard.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)H\AdventureLog.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)H\AfterInteraction.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)H\AttackCard.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)H\BaseCard.h" />
@@ -61,8 +60,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)H\Json.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)H\LocalizedString.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)H\Localizer.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)H\LogEntry.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)H\LogSubEntry.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)H\PerformInteraction.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)H\Player.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)H\PlayInteraction.h" />
@@ -128,11 +125,8 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)S\Interactions\InterActor.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)S\Interactions\PerformInteraction.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)S\Interactions\PlayInteraction.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)S\Logs\AdventureLog.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)S\Logs\LocalizedString.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)S\Logs\Localizer.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)S\Logs\LogEntry.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)S\Logs\LogSubEntry.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)S\Localization\LocalizedString.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)S\Localization\Localizer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)S\Rewards\Reward.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)S\Rewards\RewardStash.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)S\Cards\TieUpCard.cpp" />

@@ -2,7 +2,6 @@
 #include "H/TestEnemy.h"
 #include "H/EncounterPool.h"
 #include "H/CharacterPool.h"
-#include "H/AdventureLog.h"
 #include "H/Player.h"
 
 const int CombatEncounter::encounterID;
@@ -16,10 +15,6 @@ void CombatEncounter::InternalInitialize(Player* pPlayer, bool& hasStaticBackgro
 {
     eID = encounterID;
     hasStaticBackground = true;
-
-    AdventureLog::BeginNewSection();
-    LocalizedString* log;
-    AdventureLog::AddLog(log, "CombatEncounter");
 
     SetNPC(0, CharacterPool::GetInstance(TestEnemy::characterID));
     pPlayer->EngageInCombat(GetNPC(0));

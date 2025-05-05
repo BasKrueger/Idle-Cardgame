@@ -51,11 +51,8 @@
   InterActor.cpp
   PerformInteraction.cpp
   PlayInteraction.cpp
-  AdventureLog.cpp
   LocalizedString.cpp
   Localizer.cpp
-  LogEntry.cpp
-  LogSubEntry.cpp
   Reward.cpp
   RewardStash.cpp
   TieUpCard.cpp

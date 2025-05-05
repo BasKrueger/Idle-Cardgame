@@ -4,15 +4,14 @@
 const int ThrowSwordCard::cardID;
 
 void ThrowSwordCard::InternalInitialize(int& cID, int& baseDmg, int& baseHealing, int& baseCooldown,
-	std::array<int, 3>& baseVariables, LocalizedString* cardName, LocalizedString* cardDescription, std::string& iconName)
+	std::array<int, 3>& baseVariables, LocalizedString* cardDescription, std::string& iconName)
 {
 	cID = cardID;
 	baseCooldown = 10;
 	baseVariables[0] = 3;
 
 	iconName = "Set2/Icon28";
-	cardName->SetKey("ThrowSword_Name");
-	cardDescription->SetKey("ThrowSword_Text");
+	cardDescription->SetKey("ThrowSword");
 	cardDescription->BindFormatVariable(&variables[0]);
 }
 

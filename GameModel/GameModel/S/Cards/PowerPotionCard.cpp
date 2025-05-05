@@ -5,15 +5,14 @@
 const int PowerPotionCard::cardID;
 
 void PowerPotionCard::InternalInitialize(int& cID, int& baseDmg, int& baseHealing, int& baseCooldown, 
-	std::array<int, 3>& baseVariables, LocalizedString* cardName, LocalizedString* cardText, std::string& iconName)
+	std::array<int, 3>& baseVariables, LocalizedString* cardText, std::string& iconName)
 {
 	cID = cardID;
 	baseCooldown = 4;
 	baseVariables[0] = 1;
 
 	iconName = "Set1/PowerPotion";
-	cardName->SetKey("PowerPotion_Name");
-	cardText->SetKey("PowerPotion_Text");
+	cardText->SetKey("PowerPotion");
 	cardText->BindFormatVariable(&baseVariables[0]);
 }
 

@@ -4,14 +4,13 @@
 const int CrossSwords::cardID;
 
 void CrossSwords::InternalInitialize(int& cID, int& baseDmg, int& baseHealing, int& baseCooldown,
-	std::array<int, 3>& baseVariables, LocalizedString* cardName, LocalizedString* cardDescription, std::string& iconName)
+	std::array<int, 3>& baseVariables, LocalizedString* cardDescription, std::string& iconName)
 {
 	cID = cardID;
 	baseCooldown = 10;
 
 	iconName = "Set2/Icon14";
-	cardName->SetKey("CrossSwords_Name");
-	cardDescription->SetKey("CrossSwords_Text");
+	cardDescription->SetKey("CrossSwords");
 	cardDescription->BindFormatVariable(&dmg);
 }
 

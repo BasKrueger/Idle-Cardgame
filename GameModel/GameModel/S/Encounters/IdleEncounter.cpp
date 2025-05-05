@@ -1,6 +1,5 @@
 #include "H/IdleEncounter.h"
 #include "H/EncounterPool.h"
-#include "H/AdventureLog.h"
 #include "H/Player.h"
 
 const int IdleEncounter::encounterID;
@@ -15,14 +14,7 @@ void IdleEncounter::InternalInitialize(Player* pPlayer, bool& hasStaticBackgroun
 	eID = encounterID;
 	hasStaticBackground = false;
 
-	AdventureLog::BeginNewSection();
-	LocalizedString* log;
-	if (AdventureLog::AddLog(log, "IdleEncounter"))
-	{
-		log->BindFormatVariable(pPlayer->characterName);
-	}
-
-	BaseEncounter::variables[0] = 60;
+	BaseEncounter::variables[0] = 20;
 }
 
 void IdleEncounter::InternalEnd(Player* pPlayer)

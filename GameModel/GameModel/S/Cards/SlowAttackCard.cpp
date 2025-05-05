@@ -7,15 +7,14 @@
 const int SlowAttackCard::cardID;
 
 void SlowAttackCard::InternalInitialize(int& cID, int& baseDmg, int&baseHealing, int& baseCooldown, 
-    std::array<int, 3>& baseVariables, LocalizedString* cardName, LocalizedString* cardDescription, std::string& iconName)
+    std::array<int, 3>& baseVariables, LocalizedString* cardDescription, std::string& iconName)
 {
     cID = cardID;
     baseCooldown = 8;
     baseDmg = 3;
 
     iconName = "Set1/Axe";
-    cardName->SetKey("SlowAttack_Name");
-    cardDescription->SetKey("SlowAttack_Text");
+    cardDescription->SetKey("SlowAttack");
     cardDescription->BindFormatVariable(&dmg);
 }
 

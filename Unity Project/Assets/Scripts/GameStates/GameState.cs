@@ -6,7 +6,6 @@ public class GameState
 {
     public PlayerState player;
     public EncounterState encounter;
-    public LogState log;
     public RewardStashState rewards;
 
     public static GameState Parse(string json)

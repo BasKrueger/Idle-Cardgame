@@ -126,6 +126,10 @@ MonoBehaviour:
     m_Localized: "W\xE4hle eine andere Karte zum Pl\xE4tze tauschen"
     m_Metadata:
       m_Items: []
+  - m_Id: 37185997265235968
+    m_Localized: Abenteuerkarte
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

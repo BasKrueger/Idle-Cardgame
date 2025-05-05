@@ -2,7 +2,6 @@
 #include "H/Player.h"
 #include "H/InteractionManager.h"
 #include "H/Json.hpp"
-#include "H/AdventureLog.h"
 #include "H/RewardStash.h"
 #include "H/CardPool.h"
 #include "H/ChargedStrikeCard.h"
@@ -16,9 +15,7 @@ Player* Game::pPlayer = nullptr;
 void Game::Initialize()
 {
 	CardPool::Initialize();
-	AdventureLog::Reset();
 	InteractionManager::Initialize();
-	AdventureLog::AddLog("RunStart");
 
 	stateGenerationEnabled = false;
 
@@ -49,9 +46,6 @@ void Game::Tick()
 
 void Game::Skip(float seconds)
 {
-	AdventureLog::Reset();
-
-	AdventureLog::SetLogRecordingActive(false);
 	stateGenerationEnabled = false;
 
 	for(int i =0; i < seconds; i++)
@@ -60,7 +54,6 @@ void Game::Skip(float seconds)
 	}
 
 	stateGenerationEnabled = true;
-	AdventureLog::SetLogRecordingActive(true);
 }
 
 void Game::SwapCards(int ID1, int ID2)
@@ -90,7 +83,6 @@ void Game::CaptureGameState()
 
 	(*state)["player"] = *pPlayer->GetState();
 	(*state)["encounter"] = *pEncounters->GetState();
-	(*state)["log"] = *AdventureLog::GetState();
 	(*state)["rewards"] = *RewardStash::GetState();
 
 	cachedStates.push_back(state->dump());

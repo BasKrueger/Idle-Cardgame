@@ -40,6 +40,8 @@ json::JSON* Buff::GetState()
 	if (state == nullptr) state = new json::JSON;
 
 	(*state)["icon"] = iconName;
+	(*state)["duration"] = duration;
+	(*state)["id"] = id;
 
 	return state;
 }

@@ -15,8 +15,6 @@ class RemoveBuffInteraction;
 class BaseCard : public InterActor
 {
 public:
-	LocalizedString* cardName;
-
 	int id = IDManager::NewID();
 	int cardID = -1;
 	int dmg = 0;
@@ -41,7 +39,7 @@ public:
 
 protected:
 	virtual void InternalInitialize(int& cID, int& baseDmg, int& baseHealing, int& baseCooldown, 
-		std::array<int, 3>& baseVariables, LocalizedString* cardName, LocalizedString* cardDescription, std::string& iconName);
+		std::array<int, 3>& baseVariables, LocalizedString* cardDescription, std::string& iconName);
 
 private:
 	int baseDmg = 0;

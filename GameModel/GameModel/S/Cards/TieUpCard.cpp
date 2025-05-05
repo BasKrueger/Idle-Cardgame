@@ -4,15 +4,14 @@
 const int TieUpCard::cardID;
 
 void TieUpCard::InternalInitialize(int& cID, int& baseDmg, int& baseHealing, int& baseCooldown, 
-	std::array<int, 3>& baseVariables, LocalizedString* cardName, LocalizedString* cardDescription, std::string& iconName)
+	std::array<int, 3>& baseVariables, LocalizedString* cardDescription, std::string& iconName)
 {
 	cID = cardID;
 	baseCooldown = 4;
 	baseVariables[0] = 3;
 
 	iconName = "Set2/Icon34";
-	cardName->SetKey("TieUp_Name");
-	cardDescription->SetKey("TieUp_Text");
+	cardDescription->SetKey("TieUp");
 	cardDescription->BindFormatVariable(&variables[0]);
 }
 

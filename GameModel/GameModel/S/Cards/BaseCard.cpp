@@ -11,9 +11,8 @@
 
 void BaseCard::Initialize()
 {
-    cardName = new LocalizedString(LocalizedString::TABLE::CARDS);
     cardDescription = new LocalizedString(LocalizedString::TABLE::CARDS);
-    InternalInitialize(cardID, baseDmg, baseHealing, baseCooldown, baseVariables, cardName, cardDescription, iconName);
+    InternalInitialize(cardID, baseDmg, baseHealing, baseCooldown, baseVariables, cardDescription, iconName);
 
     FullReset();
 }
@@ -102,7 +101,7 @@ void BaseCard::RemoveBuff(RemoveBuffInteraction* pInteraction)
 
 void BaseCard::Play(PlayInteraction* pTarget) {}
 void BaseCard::InternalInitialize(int& cardID, int& baseDmg, int& baseHealing, int& baseCooldown, 
-    std::array<int, 3>& baseVariables, LocalizedString* cardName, LocalizedString* cardDescription, std::string& iconName) {}
+    std::array<int, 3>& baseVariables, LocalizedString* cardDescription, std::string& iconName) {}
 
 #pragma region State/Save/Load
 json::JSON* BaseCard::GetState()
@@ -114,7 +113,6 @@ json::JSON* BaseCard::GetState()
     (*state)["activeCooldown"] = cooldown;
     (*state)["cooldown"] = baseCooldown;
     (*state)["cardIcon"] = iconName;
-    (*state)["cardName"] = cardName->Format();
     (*state)["cardDescription"] = cardDescription->Format();
 
     (*state)["buffs"] = json::Array();

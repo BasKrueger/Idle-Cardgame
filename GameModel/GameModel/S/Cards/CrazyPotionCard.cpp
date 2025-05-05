@@ -5,15 +5,14 @@
 const int CrazyPotionCard::cardID;
 
 void CrazyPotionCard::InternalInitialize(int& cID, int& baseDmg, int& baseHealing, int& baseCooldown, 
-	std::array<int, 3>& baseVariables, LocalizedString* cardName, LocalizedString* cardDescription, std::string& iconName)
+	std::array<int, 3>& baseVariables, LocalizedString* cardDescription, std::string& iconName)
 {
 	cID = cardID;
 	baseCooldown = 10;
 	baseVariables[0] = 1;
 
 	iconName = "Set1/CrazyPotion";
-	cardName->SetKey("CrazyPotion_Name");
-	cardDescription->SetKey("CrazyPotion_Text");
+	cardDescription->SetKey("CrazyPotion");
 	cardDescription->BindFormatVariable(&variables[0]);
 }
 

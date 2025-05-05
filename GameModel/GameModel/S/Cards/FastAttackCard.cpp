@@ -7,15 +7,14 @@
 const int FastAttackCard::cardID;
 
 void FastAttackCard::InternalInitialize(int& cID, int& baseDmg, int& baseHealing, int& baseCooldown, 
-    std::array<int, 3>& baseVariables, LocalizedString* cardName, LocalizedString* cardDescription, std::string& iconName)
+    std::array<int, 3>& baseVariables, LocalizedString* cardDescription, std::string& iconName)
 {
     cID = cardID;
     baseCooldown = 3;
     baseDmg = 1;
 
     iconName = "Set1/Bow";
-    cardName->SetKey("FastAttack_Name");
-    cardDescription->SetKey("FastAttack_Text");
+    cardDescription->SetKey("FastAttack");
     cardDescription->BindFormatVariable(&dmg);
 }
 

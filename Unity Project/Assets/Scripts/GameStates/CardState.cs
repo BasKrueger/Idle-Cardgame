@@ -11,4 +11,5 @@ public class CardState
     public string cardName;
     public string cardDescription;
     public string cardIcon;
+    public List<BuffState> buffs;
 }

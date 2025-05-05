@@ -133,6 +133,12 @@ MonoBehaviour:
     m_Key: EditDescription
     m_Metadata:
       m_Items: []
+  - m_Id: 37185997265235968
+    m_Key: 'AdventureMap_Title
+
+'
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

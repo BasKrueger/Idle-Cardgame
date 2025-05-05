@@ -9,21 +9,20 @@
 const int WoundingStrikeCard::cardID;
 
 void WoundingStrikeCard::InternalInitialize(int& cID, int& baseDmg, int& baseHealing, int& baseCooldown,
-	std::array<int, 3>& baseVariables, LocalizedString* cardName, LocalizedString* cardDescription, std::string& iconName)
+	std::array<int, 3>& baseVariables, LocalizedString* cardDescription, std::string& iconName)
 {
 	cID = cardID;
 	baseCooldown = 4;
 
 	iconName = "Set2/Icon18";
-	cardName->SetKey("WoundingStrike_Name");
-	cardDescription->SetKey("WoundingStrike_Text");
+	cardDescription->SetKey("WoundingStrike");
 }
 
 void WoundingStrikeCard::Play(PlayInteraction* pPlay)
 {
 	auto interaction = InteractionPool<AddBuffInteraction>().GetInstance(pPlay);
 	auto buff = BuffPool::GetInstance(BleedBuff::buffID);
-	interaction->Initialize(buff, pPlay->pTarget->pOwner);
+	interaction->Initialize(buff, pPlay->pSource->pOwner);
 	InteractionManager::AddNext(interaction);
 }
 

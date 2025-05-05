@@ -4,7 +4,7 @@
 const int SwordHail::cardID;
 
 void SwordHail::InternalInitialize(int& cID, int& baseDmg, int& baseHealing, int& baseCooldown,
-	std::array<int, 3>& baseVariables, LocalizedString* cardName, LocalizedString* cardDescription, std::string& iconName)
+	std::array<int, 3>& baseVariables, LocalizedString* cardDescription, std::string& iconName)
 {
 	cID = cardID;
 	baseCooldown = 30;
@@ -12,8 +12,7 @@ void SwordHail::InternalInitialize(int& cID, int& baseDmg, int& baseHealing, int
 	baseDmg = 1;
 
 	iconName = "Set2/Icon20";
-	cardName->SetKey("SwordHail_Name");
-	cardDescription->SetKey("SwordHail_Text");
+	cardDescription->SetKey("SwordHail");
 	cardDescription->BindFormatVariable(&dmg);
 	cardDescription->BindFormatVariable(&variables[0]);
 }

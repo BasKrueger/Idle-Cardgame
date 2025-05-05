@@ -6,15 +6,14 @@
 const int HealPotionCard::cardID;
 
 void HealPotionCard::InternalInitialize(int& cID, int& baseDmg, int& baseHealing, int& baseCooldown, 
-	std::array<int, 3>& baseVariables, LocalizedString* cardName, LocalizedString* cardDescription, std::string& iconName)
+	std::array<int, 3>& baseVariables, LocalizedString* cardDescription, std::string& iconName)
 {
 	cID = cardID;
 	baseCooldown = 10;
 	baseHealing = 15;
 
 	iconName = "Set1/HPPotion";
-	cardName->SetKey("HPPotion_Name");
-	cardDescription->SetKey("HPPotion_Text");
+	cardDescription->SetKey("HPPotion");
 	cardDescription->BindFormatVariable(&baseHealing);
 }
 

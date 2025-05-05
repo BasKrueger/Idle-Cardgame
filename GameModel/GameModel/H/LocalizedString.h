@@ -26,7 +26,7 @@ private:
 class LocalizedString
 {
 public: 
-	enum TABLE { ADVENTURE_LOG, CHARACTERS, CARDS, MENUS };
+	enum TABLE { CHARACTERS, CARDS };
 	
 	LocalizedString();
 	LocalizedString(TABLE table);

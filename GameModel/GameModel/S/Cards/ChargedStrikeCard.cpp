@@ -6,15 +6,14 @@
 const int ChargedStrikeCard::cardID;
 
 void ChargedStrikeCard::InternalInitialize(int& cID, int& baseDmg, int& baseHealing, int& baseCooldown, 
-	std::array<int, 3>& baseVariables, LocalizedString* cardName, LocalizedString* cardDescription, std::string& iconName)
+	std::array<int, 3>& baseVariables, LocalizedString* cardDescription, std::string& iconName)
 {
 	cID = cardID;
 	baseCooldown = 10;
 	baseVariables[0] = 1;
 
 	iconName = "Set2/Icon11";
-	cardName->SetKey("ChargedStrike_Name");
-	cardDescription->SetKey("ChargedStrike_Text");
+	cardDescription->SetKey("ChargedStrike");
 	cardDescription->BindFormatVariable(&dmg);
 	cardDescription->BindFormatVariable(&variables[0]);
 }

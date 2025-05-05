@@ -12,6 +12,9 @@ public class CardView : MonoBehaviour
     [HideInInspector]
     public CardSlot slot;
 
+    [SerializeField]
+    private CardBuffViewManager buffs;
+
     public CardState lastState { get; private set; }
     public float scaleSpeed { set; private get; }
     public float moveSpeed { set; private get; }
@@ -56,6 +59,7 @@ public class CardView : MonoBehaviour
 
         UpdateCooldownFill(state.activeCooldown / state.cooldown);
         TryPlayPlayedAnimation(state);
+        buffs.Display(state);
 
         lastState = state;
     }
@@ -87,6 +91,7 @@ public class CardView : MonoBehaviour
         {
             rect.anchoredPosition = Vector2.MoveTowards(rect.anchoredPosition, targetContent.anchoredPosition, moveSpeed * Time.deltaTime * preferedUI.canvas.pixelRect.height);
             rect.sizeDelta = Vector2.MoveTowards(rect.sizeDelta, targetContent.sizeDelta, scaleSpeed * Time.deltaTime * preferedUI.canvas.pixelRect.height);
+            buffs.UpdateIconSize();
 
             if (rect.anchoredPosition == targetContent.anchoredPosition && rect.sizeDelta == targetContent.sizeDelta) break;
 

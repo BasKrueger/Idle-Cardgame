@@ -8,12 +8,12 @@ void BleedBuff::InternalInitialize(int& id, int& duration, std::array<int, 3>& v
 	variables[0] = 1;
 
 	duration = 4;
-	iconName = "undefined";
+	iconName = "Set2/Icon18";
 }
 
 void BleedBuff::OnTick()
 {
-	auto dmg = InteractionPool<DamageInteraction>().GetInstance(pOwner, pOwner);
+	auto dmg = InteractionPool<DamageInteraction>().GetInstance(pOwner, pOwner->pEnemy);
 	dmg->Initialize(variables[0]);
 	InteractionManager::AddNext(dmg);
 }

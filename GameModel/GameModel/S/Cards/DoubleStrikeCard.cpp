@@ -5,7 +5,7 @@
 const int DoubleStrikeCard::cardID;
 
 void DoubleStrikeCard::InternalInitialize(int& cID, int& baseDmg, int& baseHealing, int& baseCooldown, 
-	std::array<int, 3>& baseVariables, LocalizedString* cardName, LocalizedString* cardDescription, std::string& iconName)
+	std::array<int, 3>& baseVariables, LocalizedString* cardDescription, std::string& iconName)
 {
 	cID = cardID;
 	baseDmg = 1;
@@ -13,8 +13,7 @@ void DoubleStrikeCard::InternalInitialize(int& cID, int& baseDmg, int& baseHeali
 	iconName = "Set1/Wand";
 
 	baseVariables[0] = 2;
-	cardName->SetKey("DoubleStrike_Name");
-	cardDescription->SetKey("DoubleStrike_Text");
+	cardDescription->SetKey("DoubleStrike");
 	cardDescription->BindFormatVariable(&dmg);
 	cardDescription->BindFormatVariable(&variables[0]);
 }

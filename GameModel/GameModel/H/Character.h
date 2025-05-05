@@ -18,6 +18,7 @@ public:
 	int characterID = -1;
 	LocalizedString* characterName = nullptr;
 	Deck* deck = nullptr;
+	Character* pEnemy = nullptr;
 
 	void Initialize();
 	void Tick();
@@ -40,7 +41,6 @@ private:
 
 	PHASE currentPhase = PHASE::IDLE;
 	TRIGGERANIMATION nextAnimationTrigger = TRIGGERANIMATION::NONE;
-	Character* pEnemy = nullptr;
 
 	int id = IDManager::NewID();
 	int dmg = 0;

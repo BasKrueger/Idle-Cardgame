@@ -122,6 +122,10 @@ MonoBehaviour:
     m_Localized: Chose another card to swap place with
     m_Metadata:
       m_Items: []
+  - m_Id: 37185997265235968
+    m_Localized: Adventure-map
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

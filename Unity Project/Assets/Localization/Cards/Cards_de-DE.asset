@@ -18,16 +18,8 @@ MonoBehaviour:
   m_Metadata:
     m_Items: []
   m_TableData:
-  - m_Id: 60756389888
-    m_Localized: Angriff
-    m_Metadata:
-      m_Items: []
   - m_Id: 192826634240
     m_Localized: Verursache {0} schaden
-    m_Metadata:
-      m_Items: []
-  - m_Id: 3129414053888
-    m_Localized: Schneller Angriff
     m_Metadata:
       m_Items: []
   - m_Id: 3191552667648
@@ -38,36 +30,16 @@ MonoBehaviour:
     m_Localized: Verursache {0} schaden
     m_Metadata:
       m_Items: []
-  - m_Id: 19875856857755648
-    m_Localized: Schwerer Angriff
-    m_Metadata:
-      m_Items: []
-  - m_Id: 29977200822120448
-    m_Localized: Heilungstrank
-    m_Metadata:
-      m_Items: []
   - m_Id: 29977403746742272
     m_Localized: Heilt {0} HP
-    m_Metadata:
-      m_Items: []
-  - m_Id: 29977537964470272
-    m_Localized: Krafttrank
     m_Metadata:
       m_Items: []
   - m_Id: 29977841288146944
     m_Localized: "Deine n\xE4chste Karte macht {0} mehr schaden"
     m_Metadata:
       m_Items: []
-  - m_Id: 29982659587141632
-    m_Localized: Doppelschlag
-    m_Metadata:
-      m_Items: []
   - m_Id: 29983210592858112
     m_Localized: Verursache {0} mal {1} schaden
-    m_Metadata:
-      m_Items: []
-  - m_Id: 29986514894909440
-    m_Localized: "Ver\xFCckter Trank"
     m_Metadata:
       m_Items: []
   - m_Id: 29986578191151104
@@ -75,17 +47,9 @@ MonoBehaviour:
       {0}"
     m_Metadata:
       m_Items: []
-  - m_Id: 30001236356689920
-    m_Localized: Aufgeladener Schlag
-    m_Metadata:
-      m_Items: []
   - m_Id: 30001392254775296
     m_Localized: "Verursache {0} schaden. Verbessert bei {1} f\xFCr jede vorher gespielte
       Karte."
-    m_Metadata:
-      m_Items: []
-  - m_Id: 30359377049088000
-    m_Localized: Stachelschild
     m_Metadata:
       m_Items: []
   - m_Id: 30359526865432576
@@ -93,64 +57,32 @@ MonoBehaviour:
       ihn zur\xFCck"
     m_Metadata:
       m_Items: []
-  - m_Id: 30365636208947200
-    m_Localized: Heilungsshield
-    m_Metadata:
-      m_Items: []
   - m_Id: 30365686519623680
     m_Localized: Heile beim aufladen schaden statt welchen zu nehmen
-    m_Metadata:
-      m_Items: []
-  - m_Id: 30370626973528064
-    m_Localized: Fesseln
     m_Metadata:
       m_Items: []
   - m_Id: 30370677049323520
     m_Localized: "Die n\xE4chste gegnerische Karte braucht {0} l\xE4nger zum aufladen"
     m_Metadata:
       m_Items: []
-  - m_Id: 35396217263157248
-    m_Localized: Schwerte Kreuzen
-    m_Metadata:
-      m_Items: []
   - m_Id: 35397155210194944
     m_Localized: "F\xFCge den kombinierten Schaden der benachbarten Karten zu ({0})"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 35403559220342784
-    m_Localized: Schwerthagel
     m_Metadata:
       m_Items: []
   - m_Id: 35403646050824192
     m_Localized: "F\xFCge {1} mal {0} schaden zu"
     m_Metadata:
       m_Items: []
-  - m_Id: 35405750769348608
-    m_Localized: '"Harmloser" Trank'
-    m_Metadata:
-      m_Items: []
   - m_Id: 35405931053117440
     m_Localized: "Erh\xF6he alle nicht-schadensnummern der n\xE4chsten Karte um {0}"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 35408499997208576
-    m_Localized: Schwert Brechen
     m_Metadata:
       m_Items: []
   - m_Id: 35408602262728704
     m_Localized: "Die n\xE4chste Karte des Gegners macht {0} schaden"
     m_Metadata:
       m_Items: []
-  - m_Id: 35414526352224256
-    m_Localized: Stiefel
-    m_Metadata:
-      m_Items: []
   - m_Id: 35414564574916608
     m_Localized: "Reduziere den Cooldown deiner {0} n\xE4chsten Karten um {1}"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 35417249520873472
-    m_Localized: Schwert Werfen
     m_Metadata:
       m_Items: []
   - m_Id: 35417337991327744
@@ -158,16 +90,8 @@ MonoBehaviour:
       dann nutzlos"
     m_Metadata:
       m_Items: []
-  - m_Id: 35424818742226944
-    m_Localized: "M\xE4chtiges Schwert"
-    m_Metadata:
-      m_Items: []
   - m_Id: 35424885691707392
     m_Localized: "Verursache {0} schaden. Buffs z\xE4hlen {1} fach (total:{2})"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 35783150577446912
-    m_Localized: Verwundener Schlag
     m_Metadata:
       m_Items: []
   - m_Id: 35783242814386176

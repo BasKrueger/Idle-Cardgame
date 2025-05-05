@@ -1,6 +1,8 @@
 #pragma once
 #include "csv.h"
 #include "LocalizedString.h"
+#include <map>
+#include <array>
 
 class Localizer
 {
@@ -10,9 +12,9 @@ public:
 
 private:
 	static rapidcsv::Document* cardDoc;
-	static rapidcsv::Document* logDoc;
 	static rapidcsv::Document* characterDoc;
 
 	static std::string currentLanguage;
+	static std::array<std::map<std::string, std::string>, 2> cachedLocalizations;
 };
 

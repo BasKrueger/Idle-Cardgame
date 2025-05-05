@@ -15,156 +15,80 @@ MonoBehaviour:
   m_TableCollectionName: Cards
   m_TableCollectionNameGuidString: bda35803cac54364b98a6ac51e523eb8
   m_Entries:
-  - m_Id: 60756389888
-    m_Key: Attack_Name
-    m_Metadata:
-      m_Items: []
   - m_Id: 192826634240
-    m_Key: Attack_Text
-    m_Metadata:
-      m_Items: []
-  - m_Id: 3129414053888
-    m_Key: FastAttack_Name
+    m_Key: Attack
     m_Metadata:
       m_Items: []
   - m_Id: 3191552667648
-    m_Key: FastAttack_Text
-    m_Metadata:
-      m_Items: []
-  - m_Id: 19875856857755648
-    m_Key: SlowAttack_Name
+    m_Key: FastAttack
     m_Metadata:
       m_Items: []
   - m_Id: 19875859386920960
-    m_Key: SlowAttack_Text
-    m_Metadata:
-      m_Items: []
-  - m_Id: 29977200822120448
-    m_Key: HPPotion_Name
+    m_Key: SlowAttack
     m_Metadata:
       m_Items: []
   - m_Id: 29977403746742272
-    m_Key: HPPotion_Text
-    m_Metadata:
-      m_Items: []
-  - m_Id: 29977537964470272
-    m_Key: PowerPotion_Name
+    m_Key: HPPotion
     m_Metadata:
       m_Items: []
   - m_Id: 29977841288146944
-    m_Key: PowerPotion_Text
-    m_Metadata:
-      m_Items: []
-  - m_Id: 29982659587141632
-    m_Key: DoubleStrike_Name
+    m_Key: PowerPotion
     m_Metadata:
       m_Items: []
   - m_Id: 29983210592858112
-    m_Key: DoubleStrike_Text
-    m_Metadata:
-      m_Items: []
-  - m_Id: 29986514894909440
-    m_Key: CrazyPotion_Name
+    m_Key: DoubleStrike
     m_Metadata:
       m_Items: []
   - m_Id: 29986578191151104
-    m_Key: CrazyPotion_Text
-    m_Metadata:
-      m_Items: []
-  - m_Id: 30001236356689920
-    m_Key: ChargedStrike_Name
+    m_Key: CrazyPotion
     m_Metadata:
       m_Items: []
   - m_Id: 30001392254775296
-    m_Key: ChargedStrike_Text
-    m_Metadata:
-      m_Items: []
-  - m_Id: 30359377049088000
-    m_Key: SpikeShield_Name
+    m_Key: ChargedStrike
     m_Metadata:
       m_Items: []
   - m_Id: 30359526865432576
-    m_Key: SpikeShield_Text
-    m_Metadata:
-      m_Items: []
-  - m_Id: 30365636208947200
-    m_Key: HealingShield_Name
+    m_Key: SpikeShield
     m_Metadata:
       m_Items: []
   - m_Id: 30365686519623680
-    m_Key: HealingShield_Text
-    m_Metadata:
-      m_Items: []
-  - m_Id: 30370626973528064
-    m_Key: TieUp_Name
+    m_Key: HealingShield
     m_Metadata:
       m_Items: []
   - m_Id: 30370677049323520
-    m_Key: TieUp_Text
-    m_Metadata:
-      m_Items: []
-  - m_Id: 35396217263157248
-    m_Key: CrossSwords_Name
+    m_Key: TieUp
     m_Metadata:
       m_Items: []
   - m_Id: 35397155210194944
-    m_Key: CrossSwords_Text
-    m_Metadata:
-      m_Items: []
-  - m_Id: 35403559220342784
-    m_Key: SwordHail_Name
+    m_Key: CrossSwords
     m_Metadata:
       m_Items: []
   - m_Id: 35403646050824192
-    m_Key: SwordHail_Text
-    m_Metadata:
-      m_Items: []
-  - m_Id: 35405750769348608
-    m_Key: HarmlessPotion_Name
+    m_Key: SwordHail
     m_Metadata:
       m_Items: []
   - m_Id: 35405931053117440
-    m_Key: HarmlessPotion_Text
-    m_Metadata:
-      m_Items: []
-  - m_Id: 35408499997208576
-    m_Key: BreakSword_Name
+    m_Key: HarmlessPotion
     m_Metadata:
       m_Items: []
   - m_Id: 35408602262728704
-    m_Key: BreakSword_Text
-    m_Metadata:
-      m_Items: []
-  - m_Id: 35414526352224256
-    m_Key: Boots_Name
+    m_Key: BreakSword
     m_Metadata:
       m_Items: []
   - m_Id: 35414564574916608
-    m_Key: Boots_Text
-    m_Metadata:
-      m_Items: []
-  - m_Id: 35417249520873472
-    m_Key: ThrowSword_Name
+    m_Key: Boots
     m_Metadata:
       m_Items: []
   - m_Id: 35417337991327744
-    m_Key: ThrowSword_Text
-    m_Metadata:
-      m_Items: []
-  - m_Id: 35424818742226944
-    m_Key: MightySword_Name
+    m_Key: ThrowSword
     m_Metadata:
       m_Items: []
   - m_Id: 35424885691707392
-    m_Key: MightySword_Text
-    m_Metadata:
-      m_Items: []
-  - m_Id: 35783150577446912
-    m_Key: WoundingStrike_Name
+    m_Key: MightySword
     m_Metadata:
       m_Items: []
   - m_Id: 35783242814386176
-    m_Key: WoundingStrike_Text
+    m_Key: WoundingStrike
     m_Metadata:
       m_Items: []
   m_Metadata:

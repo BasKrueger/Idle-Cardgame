@@ -95,9 +95,6 @@ public class LoadManager : MonoBehaviour
 
     private async Task SimulateAFKProgress(System.TimeSpan timeDelta)
     {
-        Debug.LogWarning("disabled simulation for testing purposes");
-        return;
-
         while (timeDelta.TotalSeconds >= GameModelManager.TICK_COOLDOWN)
         {
             var startingTime = System.DateTime.Now;

@@ -78,12 +78,11 @@ void Skip()
 int main()
 {
     Skip();
-    Dump();
 
-    std::cout << "Test with logs... \n";
+    return 0;
+    std::cout << "Test with state generation... \n";
     Initialize();
     Localize("English(en)");
-   
     for (int i = 0; i < 100; i++) 
     {
         Tick();
